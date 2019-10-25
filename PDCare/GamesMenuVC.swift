@@ -13,6 +13,10 @@ class GamesMenuVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func OpenBalanceGame(_ sender: Any) {
+        performSegue(withIdentifier: "BalanceSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

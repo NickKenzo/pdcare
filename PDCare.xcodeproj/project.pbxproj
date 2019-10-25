@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FA810652363B901005D1A4A /* Balance_Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA810642363B901005D1A4A /* Balance_Game.swift */; };
 		7E793F492363963F007B40DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F482363963F007B40DF /* AppDelegate.swift */; };
 		7E793F4B2363963F007B40DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F4A2363963F007B40DF /* ViewController.swift */; };
 		7E793F4E2363963F007B40DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E793F4C2363963F007B40DF /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3FA810642363B901005D1A4A /* Balance_Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance_Game.swift; sourceTree = "<group>"; };
 		7E793F452363963F007B40DF /* PDCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E793F482363963F007B40DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E793F4A2363963F007B40DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				7E793F7C2363A182007B40DF /* GamesMenuVC.swift */,
 				7E793F7E2363A1A2007B40DF /* ScoresVC.swift */,
 				7E793F802363A1B6007B40DF /* PlaylistVC.swift */,
+				3FA810642363B901005D1A4A /* Balance_Game.swift */,
 			);
 			path = PDCare;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA810652363B901005D1A4A /* Balance_Game.swift in Sources */,
 				7E793F7D2363A182007B40DF /* GamesMenuVC.swift in Sources */,
 				7E793F7F2363A1A2007B40DF /* ScoresVC.swift in Sources */,
 				7E793F4B2363963F007B40DF /* ViewController.swift in Sources */,
