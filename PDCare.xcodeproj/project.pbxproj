@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2063EDBD2363B73D0078FED5 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063EDBC2363B73D0078FED5 /* GameViewController.swift */; };
 		7E793F492363963F007B40DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F482363963F007B40DF /* AppDelegate.swift */; };
 		7E793F4B2363963F007B40DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F4A2363963F007B40DF /* ViewController.swift */; };
 		7E793F4E2363963F007B40DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E793F4C2363963F007B40DF /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2063EDBC2363B73D0078FED5 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7E793F452363963F007B40DF /* PDCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E793F482363963F007B40DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E793F4A2363963F007B40DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		7E793F472363963F007B40DF /* PDCare */ = {
 			isa = PBXGroup;
 			children = (
+				2063EDBC2363B73D0078FED5 /* GameViewController.swift */,
 				7E793F482363963F007B40DF /* AppDelegate.swift */,
 				7E793F4A2363963F007B40DF /* ViewController.swift */,
 				7E793F4C2363963F007B40DF /* Main.storyboard */,
@@ -269,6 +272,7 @@
 				7E793F7F2363A1A2007B40DF /* ScoresVC.swift in Sources */,
 				7E793F4B2363963F007B40DF /* ViewController.swift in Sources */,
 				7E793F812363A1B6007B40DF /* PlaylistVC.swift in Sources */,
+				2063EDBD2363B73D0078FED5 /* GameViewController.swift in Sources */,
 				7E793F492363963F007B40DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

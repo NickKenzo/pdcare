@@ -19,7 +19,10 @@ class GamesMenuVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func openMemoryGame(_ sender: Any) {
+        performSegue(withIdentifier: "memorySegue", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
