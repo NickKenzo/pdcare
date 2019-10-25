@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  PDcare_draft
+//  PDCare
 //
-//  Created by Tianhao Li on 10/22/19.
-//  Copyright © 2019 Group_14. All rights reserved.
+//  Created by Russell Ho on 2019-10-25.
+//  Copyright © 2019 PDCare. All rights reserved.
 //
 
 import UIKit

@@ -1,14 +1,14 @@
 //
-//  PDcare_draftUITests.swift
-//  PDcare_draftUITests
+//  PDCareUITests.swift
+//  PDCareUITests
 //
-//  Created by Tianhao Li on 10/22/19.
-//  Copyright © 2019 Group_14. All rights reserved.
+//  Created by Russell Ho on 2019-10-25.
+//  Copyright © 2019 PDCare. All rights reserved.
 //
 
 import XCTest
 
-class PDcare_draftUITests: XCTestCase {
+class PDCareUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
