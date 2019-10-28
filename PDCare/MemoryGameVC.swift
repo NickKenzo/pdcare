@@ -1,16 +1,16 @@
 //
-//  GameViewController.swift
+//  MemoryGameController.swift
 //  SimonSays
 //
 //  Created by nskinner on 10/25/19.
-//  Copyright © 2019 nskinner. All rights reserved.
+//  Copyright © 2019 PDCare. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class MemoryGameVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

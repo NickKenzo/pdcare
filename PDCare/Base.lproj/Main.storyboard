@@ -200,7 +200,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenBalanceGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="iKZ-XQ-O9O"/>
+                                            <action selector="OpenBalanceGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="GFv-YK-AbD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JM2-G6-Jmm">
@@ -245,47 +245,18 @@
                         <viewLayoutGuide key="safeArea" id="8ax-ef-9yJ"/>
                     </view>
                     <connections>
-                        <segue destination="jUE-dp-8uy" kind="presentation" identifier="BalanceSegue" id="Gw8-v0-1dE"/>
                         <segue destination="qBo-EW-OwR" kind="presentation" identifier="memorySegue" id="NqF-7n-wxr"/>
+                        <segue destination="ou1-U1-jM3" kind="presentation" identifier="balanceSegue" id="dMB-bL-oet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1O-ux-jwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="628" y="-699"/>
         </scene>
-        <!--Balance Game-->
-        <scene sceneID="PKb-19-SSv">
-            <objects>
-                <viewController id="jUE-dp-8uy" customClass="Balance_Game" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1uJ-1b-fOH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPv-XK-ApF">
-                                <rect key="frame" x="33" y="56" width="30" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="&lt;">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="goBack:" destination="jUE-dp-8uy" eventType="touchUpInside" id="SeB-Dr-raL"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="UBA-2Q-bOW"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aYa-2R-WqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1551" y="-699"/>
-        </scene>
-        <!--Game View Controller-->
+        <!--Memory GameVC-->
         <scene sceneID="1rA-3D-cWh">
             <objects>
-                <viewController id="qBo-EW-OwR" customClass="GameViewController" customModule="PDCare" sceneMemberID="viewController">
+                <viewController id="qBo-EW-OwR" customClass="MemoryGameVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Aus-p5-91Y" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -378,6 +349,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyi-4Z-13E" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="32"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="CCM-OM-H4e">
+            <objects>
+                <viewController id="ou1-U1-jM3" customClass="GameViewController" customModule="PDCare" sceneMemberID="viewController">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ebN-pg-9u8" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="C4A-hk-1UA"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="57x-Xp-Yyi" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1652" y="-699"/>
         </scene>
     </scenes>
 </document>
