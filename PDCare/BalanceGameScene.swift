@@ -9,32 +9,55 @@
 import SpriteKit
 import CoreMotion
 
-class GameScene: SKScene, SKPhysicsContactDelegate{
+class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     let manager = CMMotionManager()
     var ball = SKSpriteNode()
+    var wall = SKSpriteNode()
     var mazeEnd = SKSpriteNode()
+    var score = 1000000
     
     override func didMove(to view: SKView) {
         
-        
         self.physicsWorld.contactDelegate = self
         
+        // Initialize sprites
         ball = self.childNode(withName: "ball") as! SKSpriteNode
+        wall = self.childNode(withName: "wall") as! SKSpriteNode
+        
+        // Initialize physics bodies
+        //ball.physicsBody = SKPhysicsBody(circleOfRadius: 32)
+        
+        // Initialize masks
+        ball.physicsBody?.contactTestBitMask = 1
+        ball.physicsBody?.categoryBitMask = 1
+        wall.physicsBody?.contactTestBitMask = 0
+        wall.physicsBody?.categoryBitMask = 1
         
         manager.startAccelerometerUpdates()
         manager.accelerometerUpdateInterval = 0.1
         manager.startAccelerometerUpdates(to: OperationQueue.main){
             (data, error) in
             
-            self.physicsWorld.gravity = CGVector.init(dx: CGFloat((data?.acceleration.x)!) * 10, dy: CGFloat((data?.acceleration.y)!) * 10)
+            /**** Currently physicsWorld.gravity does not override settings in sks file and we need to figure out why ****/
+            //self.physicsWorld.gravity = CGVector(dx: CGFloat((data?.acceleration.x)!) * 0, dy: CGFloat((data?.acceleration.y)!) * 0)
+            self.physicsWorld.gravity = CGVector(dx: CGFloat(0), dy: CGFloat(0))
             
         }
-        
     }
     
+    func didEnd(_ contact: SKPhysicsContact) {
+        // Called when one object ends contact with another
+        if contact.bodyA.node?.name == "ball" || contact.bodyB.node?.name == "ball" {
+            score -= 5000
+            
+            /*** Ball position below does not get set and we need to figure out why ***/
+            ball.position = CGPoint(x: CGFloat(256.67), y: CGFloat(-640))
+        }
+    }
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        print(score);
     }
 }
