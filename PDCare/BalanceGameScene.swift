@@ -16,6 +16,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var wall = SKSpriteNode()
     var mazeEnd = SKSpriteNode()
     var score = 1000000
+    var resetPos = false
     
     override func didMove(to view: SKView) {
         
@@ -40,8 +41,9 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
             (data, error) in
             
             /**** Currently physicsWorld.gravity does not override settings in sks file and we need to figure out why ****/
+            /**** Works if you set it in the func update, see below ****/
             //self.physicsWorld.gravity = CGVector(dx: CGFloat((data?.acceleration.x)!) * 0, dy: CGFloat((data?.acceleration.y)!) * 0)
-            self.physicsWorld.gravity = CGVector(dx: CGFloat(0), dy: CGFloat(0))
+            //self.physicsWorld.gravity = CGVector(dx: CGFloat(0), dy: CGFloat(0))
             
         }
     }
@@ -52,12 +54,22 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
             score -= 5000
             
             /*** Ball position below does not get set and we need to figure out why ***/
-            ball.position = CGPoint(x: CGFloat(256.67), y: CGFloat(-640))
+            //ball.position = CGPoint(x: 256.67, y: -640)
+            resetPos = true
+            
         }
     }
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         print(score);
+        
+        //this works
+        //self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        
+        if (resetPos){
+            ball.position = CGPoint(x: 256.67, y: -640)
+            resetPos = false
+        }
     }
 }
