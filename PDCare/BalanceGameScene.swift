@@ -17,6 +17,8 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var mazeEnd = SKSpriteNode()
     var score = 1000000
     var resetPos = false
+    var startingPos=CGPoint(x: 0, y: 0)
+    var firstmove=true
     
     override func didMove(to view: SKView) {
         
@@ -64,11 +66,16 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         /* Called before each frame is rendered */
         print(score);
         
+        if (firstmove){
+            startingPos=ball.position
+            firstmove=false
+        }
+        
         //this works
         //self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
         if (resetPos){
-            ball.position = CGPoint(x: 256.67, y: -640)
+            ball.position = startingPos
             resetPos = false
         }
     }
