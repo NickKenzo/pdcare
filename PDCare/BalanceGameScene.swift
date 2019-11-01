@@ -14,6 +14,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     let manager = CMMotionManager()
     var ball = SKSpriteNode()
     var wall = SKSpriteNode()
+    var goal = SKSpriteNode()
     var mazeEnd = SKSpriteNode()
     var score = 1000000
     var resetPos = false
@@ -27,6 +28,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         // Initialize sprites
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         wall = self.childNode(withName: "wall") as! SKSpriteNode
+        goal = self.childNode(withName: "goal") as! SKSpriteNode
         
         startingPos=ball.position
         
@@ -38,6 +40,8 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         ball.physicsBody?.categoryBitMask = 1
         wall.physicsBody?.contactTestBitMask = 0
         wall.physicsBody?.categoryBitMask = 1
+        goal.physicsBody?.contactTestBitMask = 0
+        goal.physicsBody?.categoryBitMask = 1
         
         manager.startAccelerometerUpdates()
         manager.accelerometerUpdateInterval = 0.1
@@ -52,15 +56,18 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         }
     }
     
-    func didEnd(_ contact: SKPhysicsContact) {
+    func didBegin(_ contact: SKPhysicsContact) {
         // Called when one object ends contact with another
-        if contact.bodyA.node?.name == "ball" || contact.bodyB.node?.name == "ball" {
+        if (contact.bodyA.node?.name == "ball"&&contact.bodyB.node?.name == "wall") || (contact.bodyB.node?.name == "ball"&&contact.bodyA.node?.name == "wall") {
             score -= 5000
             
             /*** Ball position below does not get set and we need to figure out why ***/
             //ball.position = CGPoint(x: 256.67, y: -640)
             resetPos = true
             
+        }
+        if contact.bodyA.node?.name == "goal" || contact.bodyB.node?.name == "goal" {
+            score += 50000
         }
     }
     
