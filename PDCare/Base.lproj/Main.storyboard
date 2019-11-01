@@ -169,6 +169,36 @@
             </objects>
             <point key="canvasLocation" x="646" y="12"/>
         </scene>
+        <!--Drawing GameVC Scene-->
+        <scene sceneID="1hM-Pp-SCK">
+            <objects>
+                <viewController id="fip-Uj-wFK" userLabel="Drawing GameVC Scene" customClass="DrawingGameVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pem-ab-8pu" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98a-gy-XnI">
+                                <rect key="frame" x="16" y="44" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="gToMainMenu:" destination="P4r-O6-u8y" eventType="touchUpInside" id="Y4h-ux-K7t"/>
+                                    <segue destination="P4r-O6-u8y" kind="presentation" identifier="" id="gVL-Bf-C2q"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aRT-3Y-vL6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPf-xY-cd4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2370" y="-771"/>
+        </scene>
         <!--Games MenuVC-->
         <scene sceneID="UJP-xH-IEm">
             <objects>
@@ -187,6 +217,7 @@
                                 </state>
                                 <connections>
                                     <action selector="gToMainMenu:" destination="P4r-O6-u8y" eventType="touchUpInside" id="sDu-ZE-5IN"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="oa8-CM-6CQ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
@@ -210,6 +241,9 @@
                                         <state key="normal" title="Draw">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="OpenDrawingGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="Ebq-H9-SSR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-Yo-qv9">
                                         <rect key="frame" x="0.0" y="353.5" width="260" height="146.5"/>
@@ -247,6 +281,7 @@
                     <connections>
                         <segue destination="qBo-EW-OwR" kind="presentation" identifier="memorySegue" id="NqF-7n-wxr"/>
                         <segue destination="ou1-U1-jM3" kind="presentation" identifier="balanceSegue" id="dMB-bL-oet"/>
+                        <segue destination="fip-Uj-wFK" kind="presentation" identifier="drawingSegue" id="WZh-L2-qHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1O-ux-jwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyi-4Z-13E" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="32"/>
+            <point key="canvasLocation" x="1652" y="-181"/>
         </scene>
         <!--Balance GameVC-->
         <scene sceneID="CCM-OM-H4e">
@@ -363,7 +398,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57x-Xp-Yyi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="-699"/>
+            <point key="canvasLocation" x="1633" y="-1358"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gVL-Bf-C2q"/>
+    </inferredMetricsTieBreakers>
 </document>

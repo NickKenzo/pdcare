@@ -13,10 +13,6 @@ class GamesMenuVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func OpenBalanceGame(_ sender: Any) {
-        performSegue(withIdentifier: "balanceSegue", sender: self)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +21,14 @@ class GamesMenuVC: UIViewController {
     
     @IBAction func openMemoryGame(_ sender: Any) {
         performSegue(withIdentifier: "memorySegue", sender: self)
+    }
+    
+    @IBAction func OpenBalanceGame(_ sender: Any) {
+        performSegue(withIdentifier: "balanceSegue", sender: self)
+    }
+    
+    @IBAction func OpenDrawingGame(_ sender: Any) {
+        performSegue(withIdentifier: "drawingSegue", sender: self)
     }
     
     /*
