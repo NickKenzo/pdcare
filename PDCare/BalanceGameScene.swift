@@ -28,6 +28,8 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         wall = self.childNode(withName: "wall") as! SKSpriteNode
         
+        startingPos=ball.position
+        
         // Initialize physics bodies
         //ball.physicsBody = SKPhysicsBody(circleOfRadius: 32)
         
@@ -66,16 +68,13 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         /* Called before each frame is rendered */
         print(score);
         
-        if (firstmove){
-            startingPos=ball.position
-            firstmove=false
-        }
-        
+                
         //this works
         //self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
         if (resetPos){
             ball.position = startingPos
+            ball.physicsBody?.velocity = CGVector(dx: 0,dy: 0)
             resetPos = false
         }
     }
