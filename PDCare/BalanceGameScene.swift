@@ -19,7 +19,6 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var score = 1000000
     var resetPos = false
     var startingPos=CGPoint(x: 0, y: 0)
-    var firstmove=true
     
     override func didMove(to view: SKView) {
         
