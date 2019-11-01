@@ -187,7 +187,7 @@
                                 </state>
                                 <connections>
                                     <action selector="gToMainMenu:" destination="P4r-O6-u8y" eventType="touchUpInside" id="Y4h-ux-K7t"/>
-                                    <segue destination="P4r-O6-u8y" kind="presentation" id="gVL-Bf-C2q"/>
+                                    <segue destination="P4r-O6-u8y" kind="presentation" identifier="" id="gVL-Bf-C2q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -221,7 +221,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
-                                <rect key="frame" x="57.5" y="83.5" width="260" height="500"/>
+                                <rect key="frame" x="57.5" y="103.5" width="260" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-If-jSu">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="146.5"/>
@@ -281,7 +281,7 @@
                     <connections>
                         <segue destination="qBo-EW-OwR" kind="presentation" identifier="memorySegue" id="NqF-7n-wxr"/>
                         <segue destination="ou1-U1-jM3" kind="presentation" identifier="balanceSegue" id="dMB-bL-oet"/>
-                        <segue destination="fip-Uj-wFK" kind="presentation" id="WZh-L2-qHe"/>
+                        <segue destination="fip-Uj-wFK" kind="presentation" identifier="drawingSegue" id="WZh-L2-qHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1O-ux-jwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
