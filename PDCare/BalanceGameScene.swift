@@ -87,10 +87,18 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         /* Called before each frame is rendered */
         print(score);
         score -= 100;
+        /*
+        var xacc =
+        if(score < 990000){
+             xacc = 10;
+        }
+        */
         
-                
+        //let accelerometerData = manager.accelerometerData
+        self.physicsWorld.gravity = CGVector(dx: (manager.accelerometerData?.acceleration.x ?? 0), dy: (manager.accelerometerData?.acceleration.y ?? 0))
+ 
         //this works
-        //self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        //self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
         
         if (resetPos){
             ball.position = startingPos
