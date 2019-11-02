@@ -15,7 +15,6 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var ball = SKSpriteNode()
     var wall = SKSpriteNode()
     var goal = SKSpriteNode()
-    var mazeEnd = SKSpriteNode()
     var score = 1000000
     var resetPos = false
     var startingPos=CGPoint(x: 0, y: 0)
@@ -85,17 +84,13 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-        print(score);
         score -= 100;
-        /*
-        var xacc =
-        if(score < 990000){
-             xacc = 10;
-        }
-        */
+        scoreDisplay = self.childNode(withName: "scoreDisplay") as! SKLabelNode;
+        scoreDisplay.text = "Score:" + String(score);
+        scoreDisplay.fontSize = 65;
         
         //let accelerometerData = manager.accelerometerData
-        self.physicsWorld.gravity = CGVector(dx: (manager.accelerometerData?.acceleration.x ?? 0), dy: (manager.accelerometerData?.acceleration.y ?? 0))
+        self.physicsWorld.gravity = CGVector(dx: ((manager.accelerometerData?.acceleration.x ?? 0) * 5), dy: ((manager.accelerometerData?.acceleration.y ?? 0) * 5))
  
         //this works
         //self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
