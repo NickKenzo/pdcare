@@ -38,9 +38,9 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         // Initialize masks
         ball.physicsBody?.contactTestBitMask = 1
         ball.physicsBody?.categoryBitMask = 1
-        wall.physicsBody?.contactTestBitMask = 0
+        wall.physicsBody?.contactTestBitMask = 1
         wall.physicsBody?.categoryBitMask = 1
-        goal.physicsBody?.contactTestBitMask = 0
+        goal.physicsBody?.contactTestBitMask = 1
         goal.physicsBody?.categoryBitMask = 1
         
         manager.startAccelerometerUpdates()
@@ -58,7 +58,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     func didBegin(_ contact: SKPhysicsContact) {
         // Called when one object ends contact with another
-        if (contact.bodyA.node?.name == "ball"&&contact.bodyB.node?.name == "wall") || (contact.bodyB.node?.name == "ball"&&contact.bodyA.node?.name == "wall") {
+        if (contact.bodyB.node?.name == "wall") || (contact.bodyA.node?.name == "wall") {
             score -= 5000
             
             /*** Ball position below does not get set and we need to figure out why ***/
@@ -66,8 +66,9 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
             resetPos = true
             
         }
-        if let view = self.view as! SKView? {
+        
         if contact.bodyA.node?.name == "goal" || contact.bodyB.node?.name == "goal" {
+            if let view = self.view as! SKView? {
             if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
