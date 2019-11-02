@@ -19,6 +19,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var score = 1000000
     var resetPos = false
     var startingPos=CGPoint(x: 0, y: 0)
+    var scoreDisplay = SKLabelNode();
     
     override func didMove(to view: SKView) {
         
@@ -65,14 +66,26 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
             resetPos = true
             
         }
+        if let view = self.view as! SKView? {
         if contact.bodyA.node?.name == "goal" || contact.bodyB.node?.name == "goal" {
-            score += 50000
+            if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+                scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode;
+                scoreDisplay.text = "Score:" + String(score);
+                scoreDisplay.fontSize = 65;
+            }
+        }
         }
     }
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         print(score);
+        score -= 100;
         
                 
         //this works
