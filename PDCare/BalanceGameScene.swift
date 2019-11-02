@@ -19,7 +19,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var score = 1000000
     var resetPos = false
     var startingPos=CGPoint(x: 0, y: 0)
-    var firstmove=true
+    var scoreDisplay = SKLabelNode();
     
     override func didMove(to view: SKView) {
         
@@ -38,9 +38,9 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         // Initialize masks
         ball.physicsBody?.contactTestBitMask = 1
         ball.physicsBody?.categoryBitMask = 1
-        wall.physicsBody?.contactTestBitMask = 0
+        wall.physicsBody?.contactTestBitMask = 1
         wall.physicsBody?.categoryBitMask = 1
-        goal.physicsBody?.contactTestBitMask = 0
+        goal.physicsBody?.contactTestBitMask = 1
         goal.physicsBody?.categoryBitMask = 1
         
         manager.startAccelerometerUpdates()
@@ -58,7 +58,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     func didBegin(_ contact: SKPhysicsContact) {
         // Called when one object ends contact with another
-        if (contact.bodyA.node?.name == "ball"&&contact.bodyB.node?.name == "wall") || (contact.bodyB.node?.name == "ball"&&contact.bodyA.node?.name == "wall") {
+        if (contact.bodyB.node?.name == "wall") || (contact.bodyA.node?.name == "wall") {
             score -= 5000
             
             /*** Ball position below does not get set and we need to figure out why ***/
@@ -66,18 +66,39 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
             resetPos = true
             
         }
+        
         if contact.bodyA.node?.name == "goal" || contact.bodyB.node?.name == "goal" {
-            score += 50000
+            if let view = self.view as! SKView? {
+            if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+                scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode;
+                scoreDisplay.text = "Score:" + String(score);
+                scoreDisplay.fontSize = 65;
+            }
+        }
         }
     }
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         print(score);
+        score -= 100;
+        /*
+        var xacc =
+        if(score < 990000){
+             xacc = 10;
+        }
+        */
         
-                
+        //let accelerometerData = manager.accelerometerData
+        self.physicsWorld.gravity = CGVector(dx: (manager.accelerometerData?.acceleration.x ?? 0), dy: (manager.accelerometerData?.acceleration.y ?? 0))
+ 
         //this works
-        //self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        //self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
         
         if (resetPos){
             ball.position = startingPos
