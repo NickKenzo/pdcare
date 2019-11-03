@@ -13,7 +13,10 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     let manager = CMMotionManager()
     var ball = SKSpriteNode()
-    var wall = SKSpriteNode()
+    var map = [SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
+               SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
+               SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
+               SKSpriteNode()]
     var goal = SKSpriteNode()
     var score = 1000000
     var resetPos = false
@@ -26,7 +29,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         
         // Initialize sprites
         ball = self.childNode(withName: "ball") as! SKSpriteNode
-        wall = self.childNode(withName: "wall") as! SKSpriteNode
+        map[0] = self.childNode(withName: "map0") as! SKSpriteNode
         goal = self.childNode(withName: "goal") as! SKSpriteNode
         
         startingPos=ball.position
@@ -37,8 +40,8 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         // Initialize masks
         ball.physicsBody?.contactTestBitMask = 1
         ball.physicsBody?.categoryBitMask = 1
-        wall.physicsBody?.contactTestBitMask = 1
-        wall.physicsBody?.categoryBitMask = 1
+        map[0].physicsBody?.contactTestBitMask = 1
+        map[0].physicsBody?.categoryBitMask = 1
         goal.physicsBody?.contactTestBitMask = 1
         goal.physicsBody?.categoryBitMask = 1
         
