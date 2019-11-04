@@ -1,10 +1,14 @@
 //
 //  AppDelegate.swift
 //  PDCare
+//  CMPT 275 Group 14 "P.D. Caretakers"
 //
 //  Created by Russell Ho on 2019-10-25.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/AppDelegate.swift
 
 import UIKit
 

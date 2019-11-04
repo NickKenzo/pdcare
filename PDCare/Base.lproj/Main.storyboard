@@ -46,7 +46,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenGamesMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ogi-4E-EKo"/>
+                                            <action selector="openGamesMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="POi-rw-yxE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -91,7 +91,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenBalanceGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="GFv-YK-AbD"/>
+                                            <action selector="openBalanceGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="dHr-rN-S8n"/>
                                         </connections>
                                     </button>
                                 </subviews>
