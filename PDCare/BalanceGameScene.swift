@@ -28,6 +28,8 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     let manager = CMMotionManager()
     //Initialize sprite variables
     var ball = SKSpriteNode()
+    // Initialize 10 different map and goal nodes for now in order to
+    // allow more maps to be drawn in the future
     var map = [SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
                SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
                SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
