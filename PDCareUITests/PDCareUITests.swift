@@ -5,6 +5,12 @@
 //  Created by Russell Ho on 2019-10-25.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file is our UI test. It runs through all buttons and checks UI functionality.
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/edit/Version1/PDCareUITests/PDCareUITests.swift
+
 
 import XCTest
 
