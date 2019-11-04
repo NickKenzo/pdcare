@@ -9,6 +9,8 @@
 //  This file is the view controller for the main application
 //  This file currently only contains the option to move to the games menu
 //
+//  Known Bugs: None
+//
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/ViewController.swift
