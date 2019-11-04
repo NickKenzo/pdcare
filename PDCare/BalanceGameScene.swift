@@ -11,7 +11,9 @@
 //  The basic logic decrements the score the longer the game goes on and also decrements when a player makes contact with a wall.
 //  The game ends as soon as the ball makes contact with the goal.
 //
-//  Known Bugs: Score will rarely not decrement when the ball hits the wall
+//  Known Bugs: - Score will rarely not decrement when the ball hits the wall
+//              - When holding a collision with a portruding corner, points
+//                will rapidly sink to 0
 //
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
