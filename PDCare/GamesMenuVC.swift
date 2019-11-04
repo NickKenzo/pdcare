@@ -9,6 +9,8 @@
 //  This file handles the view controller for the games menu.
 //  This file contains any segues to any of the games (just balance for now)
 //
+//  Known Bugs: None
+//
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/GamesMenuVC.swift
