@@ -26,6 +26,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var startingPos = CGPoint(x: 0, y: 0)
     var scoreDisplay = SKLabelNode()
     var mapNum = 0
+    var isGameOver = false
     
     override func didMove(to view: SKView) {
         
@@ -62,29 +63,47 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         }
         
         if contact.bodyA.node?.name == goal[mapNum].name || contact.bodyB.node?.name == goal[mapNum].name {
-            if let view = self.view {
-                if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
-                    // Set the scale mode to scale to fit the window
-                    scene.scaleMode = .aspectFill
-                    
-                    // Present the scene
-                    view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
-                    scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode
-                    scoreDisplay.text = "Score:" + String(score)
-                    scoreDisplay.fontSize = 65
+            gameOver()
+        }
+    }
+    
+    func gameOver() {
+        if let view = self.view {
+            if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
+                scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode
+                if score <= 0 {
+                    scoreDisplay.text = "Score: 0"
                 }
+                else {
+                    scoreDisplay.text = "Score: " + String(score)
+                }
+                scoreDisplay.fontSize = 65
             }
         }
     }
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if score <= 0 {
+            gameOver()
+        }
+        
         ball.physicsBody?.contactTestBitMask = UInt32(Int(pow(2, Double(mapNum))))
         ball.physicsBody?.categoryBitMask = UInt32(pow(2, Double(mapNum)))
         ball.physicsBody?.collisionBitMask = UInt32(pow(2, Double(mapNum)))
         score -= 500
         scoreDisplay = self.childNode(withName: "scoreDisplay") as! SKLabelNode
-        scoreDisplay.text = "Score:" + String(score)
+        if score <= 0 {
+            scoreDisplay.text = "Score: 0"
+        }
+        else {
+            scoreDisplay.text = "Score: " + String(score)
+        }
         scoreDisplay.fontSize = 65;
         
         self.physicsWorld.gravity = CGVector(dx: ((manager.accelerometerData?.acceleration.x ?? 0) * 5), dy: ((manager.accelerometerData?.acceleration.y ?? 0) * 5))
