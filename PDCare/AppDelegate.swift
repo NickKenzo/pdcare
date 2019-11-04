@@ -8,6 +8,8 @@
 //
 //  Default file for UI application. No changes made.
 //
+//  Known Bugs: None
+//
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/AppDelegate.swift
