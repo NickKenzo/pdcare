@@ -68,7 +68,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
                     scene.scaleMode = .aspectFill
                     
                     // Present the scene
-                    view.presentScene(scene)
+                    view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
                     scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode
                     scoreDisplay.text = "Score:" + String(score)
                     scoreDisplay.fontSize = 65
