@@ -31,15 +31,26 @@ class PDCareUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         let app = XCUIApplication()
+        // Test play button (Check for existence and interactivity).
         let playButton = app.buttons["Play"]
         XCTAssertTrue(playButton.exists)
         playButton.tap()
+        
+        // Test "PDCare" back button (Check for existence and interactivity).
         XCTAssertTrue(app.navigationBars["PDCare.GamesMenuVC"].buttons["PDCare"].exists)
         app.navigationBars["PDCare.GamesMenuVC"].buttons["PDCare"].tap()
+        
+        // Transition back to Games Menu
         XCTAssertTrue(playButton.exists)
         playButton.tap()
+        
+        // Check for existence of "Balance" button.
         XCTAssertTrue(app.buttons["Balance"].exists)
         
+        
+        
+        // This test should fail.
+        // Testing for non-existant button.
         XCTAssertTrue(app.buttons["DNE"].exists)
     }
 
