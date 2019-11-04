@@ -10,26 +10,14 @@ import UIKit
 
 class GamesMenuVC: UIViewController {
     
-    @IBAction func gToMainMenu(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func openMemoryGame(_ sender: Any) {
-        performSegue(withIdentifier: "memorySegue", sender: self)
-    }
-    
     @IBAction func OpenBalanceGame(_ sender: Any) {
         performSegue(withIdentifier: "balanceSegue", sender: self)
-    }
-    
-    @IBAction func OpenDrawingGame(_ sender: Any) {
-        performSegue(withIdentifier: "drawingSegue", sender: self)
     }
     
     /*

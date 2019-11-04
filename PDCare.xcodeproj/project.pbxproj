@@ -7,14 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2063EDBD2363B73D0078FED5 /* MemoryGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */; };
 		58100AFA2367A8E80045722B /* BalanceGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AF92367A8E80045722B /* BalanceGameVC.swift */; };
 		58100AFC2367A9030045722B /* BalanceGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AFB2367A9020045722B /* BalanceGameScene.swift */; };
 		58100AFE2367A90D0045722B /* BalanceGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 58100AFD2367A90D0045722B /* BalanceGameScene.sks */; };
 		58100B002367A9300045722B /* BalanceGameActions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 58100AFF2367A9300045722B /* BalanceGameActions.sks */; };
-		6F884C4A236CE28A003EB1C2 /* DrawingGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */; };
-		6F884C4C236CE745003EB1C2 /* DrawingGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6F884C4B236CE745003EB1C2 /* DrawingGameScene.sks */; };
-		6F884C4E236CE77C003EB1C2 /* DrawingGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F884C4D236CE77C003EB1C2 /* DrawingGameScene.swift */; };
 		7E6B6058236D068A003818F7 /* BalanceGameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7E6B6057236D068A003818F7 /* BalanceGameOverScene.sks */; };
 		7E793F492363963F007B40DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F482363963F007B40DF /* AppDelegate.swift */; };
 		7E793F4B2363963F007B40DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F4A2363963F007B40DF /* ViewController.swift */; };
@@ -24,8 +20,6 @@
 		7E793F5E23639641007B40DF /* PDCareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F5D23639641007B40DF /* PDCareTests.swift */; };
 		7E793F6923639641007B40DF /* PDCareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F6823639641007B40DF /* PDCareUITests.swift */; };
 		7E793F7D2363A182007B40DF /* GamesMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F7C2363A182007B40DF /* GamesMenuVC.swift */; };
-		7E793F7F2363A1A2007B40DF /* ScoresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F7E2363A1A2007B40DF /* ScoresVC.swift */; };
-		7E793F812363A1B6007B40DF /* PlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E793F802363A1B6007B40DF /* PlaylistVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,14 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryGameVC.swift; sourceTree = "<group>"; };
 		58100AF92367A8E80045722B /* BalanceGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameVC.swift; sourceTree = "<group>"; };
 		58100AFB2367A9020045722B /* BalanceGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameScene.swift; sourceTree = "<group>"; };
 		58100AFD2367A90D0045722B /* BalanceGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalanceGameScene.sks; sourceTree = "<group>"; };
 		58100AFF2367A9300045722B /* BalanceGameActions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalanceGameActions.sks; sourceTree = "<group>"; };
-		6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingGameVC.swift; sourceTree = "<group>"; };
-		6F884C4B236CE745003EB1C2 /* DrawingGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = DrawingGameScene.sks; sourceTree = "<group>"; };
-		6F884C4D236CE77C003EB1C2 /* DrawingGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingGameScene.swift; sourceTree = "<group>"; };
 		7E6B6057236D068A003818F7 /* BalanceGameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalanceGameOverScene.sks; sourceTree = "<group>"; };
 		7E793F452363963F007B40DF /* PDCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E793F482363963F007B40DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,8 +59,6 @@
 		7E793F6823639641007B40DF /* PDCareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDCareUITests.swift; sourceTree = "<group>"; };
 		7E793F6A23639641007B40DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E793F7C2363A182007B40DF /* GamesMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesMenuVC.swift; sourceTree = "<group>"; };
-		7E793F7E2363A1A2007B40DF /* ScoresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresVC.swift; sourceTree = "<group>"; };
-		7E793F802363A1B6007B40DF /* PlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +109,6 @@
 		7E793F472363963F007B40DF /* PDCare */ = {
 			isa = PBXGroup;
 			children = (
-				2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */,
 				7E793F482363963F007B40DF /* AppDelegate.swift */,
 				7E793F4A2363963F007B40DF /* ViewController.swift */,
 				7E793F4C2363963F007B40DF /* Main.storyboard */,
@@ -129,16 +116,11 @@
 				7E793F5123639641007B40DF /* LaunchScreen.storyboard */,
 				7E793F5423639641007B40DF /* Info.plist */,
 				7E793F7C2363A182007B40DF /* GamesMenuVC.swift */,
-				7E793F7E2363A1A2007B40DF /* ScoresVC.swift */,
-				7E793F802363A1B6007B40DF /* PlaylistVC.swift */,
 				58100AF92367A8E80045722B /* BalanceGameVC.swift */,
 				58100AFB2367A9020045722B /* BalanceGameScene.swift */,
 				58100AFD2367A90D0045722B /* BalanceGameScene.sks */,
 				7E6B6057236D068A003818F7 /* BalanceGameOverScene.sks */,
 				58100AFF2367A9300045722B /* BalanceGameActions.sks */,
-				6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */,
-				6F884C4D236CE77C003EB1C2 /* DrawingGameScene.swift */,
-				6F884C4B236CE745003EB1C2 /* DrawingGameScene.sks */,
 			);
 			path = PDCare;
 			sourceTree = "<group>";
@@ -267,7 +249,6 @@
 			files = (
 				7E793F5323639641007B40DF /* LaunchScreen.storyboard in Resources */,
 				7E6B6058236D068A003818F7 /* BalanceGameOverScene.sks in Resources */,
-				6F884C4C236CE745003EB1C2 /* DrawingGameScene.sks in Resources */,
 				58100B002367A9300045722B /* BalanceGameActions.sks in Resources */,
 				58100AFE2367A90D0045722B /* BalanceGameScene.sks in Resources */,
 				7E793F5023639641007B40DF /* Assets.xcassets in Resources */,
@@ -298,13 +279,8 @@
 			files = (
 				58100AFA2367A8E80045722B /* BalanceGameVC.swift in Sources */,
 				7E793F7D2363A182007B40DF /* GamesMenuVC.swift in Sources */,
-				6F884C4A236CE28A003EB1C2 /* DrawingGameVC.swift in Sources */,
-				6F884C4E236CE77C003EB1C2 /* DrawingGameScene.swift in Sources */,
 				58100AFC2367A9030045722B /* BalanceGameScene.swift in Sources */,
-				7E793F7F2363A1A2007B40DF /* ScoresVC.swift in Sources */,
 				7E793F4B2363963F007B40DF /* ViewController.swift in Sources */,
-				7E793F812363A1B6007B40DF /* PlaylistVC.swift in Sources */,
-				2063EDBD2363B73D0078FED5 /* MemoryGameVC.swift in Sources */,
 				7E793F492363963F007B40DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
