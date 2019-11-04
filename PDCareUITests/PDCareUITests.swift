@@ -29,6 +29,18 @@ class PDCareUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let app = XCUIApplication()
+        let playButton = app.buttons["Play"]
+        XCTAssertTrue(playButton.exists)
+        playButton.tap()
+        XCTAssertTrue(app.navigationBars["PDCare.GamesMenuVC"].buttons["PDCare"].exists)
+        app.navigationBars["PDCare.GamesMenuVC"].buttons["PDCare"].tap()
+        XCTAssertTrue(playButton.exists)
+        playButton.tap()
+        XCTAssertTrue(app.buttons["Balance"].exists)
+        
+        XCTAssertTrue(app.buttons["DNE"].exists)
     }
 
 }
