@@ -25,11 +25,12 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var resetPos = false
     var startingPos = CGPoint(x: 0, y: 0)
     var scoreDisplay = SKLabelNode();
-    var mapNum = 1
+    var mapNum = 0
     
     override func didMove(to view: SKView) {
         
         self.physicsWorld.contactDelegate = self
+        mapNum = Int.random(in: 0 ..< 2)
         
         // Initialize sprites
         ball = self.childNode(withName: "ball") as! SKSpriteNode
