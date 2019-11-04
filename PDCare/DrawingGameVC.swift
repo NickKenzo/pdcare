@@ -11,6 +11,10 @@ import SpriteKit
 
 class DrawingGameVC: UIViewController {
     
+    @IBAction func gToMainMenu(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //

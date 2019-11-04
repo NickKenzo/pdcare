@@ -154,7 +154,6 @@
                                 </state>
                                 <connections>
                                     <action selector="sToMainMenu:" destination="FjE-cb-fCJ" eventType="touchUpInside" id="p0v-0t-scA"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="xbG-5I-PnI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -188,7 +187,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
-                                <rect key="frame" x="57.5" y="73.5" width="260" height="500"/>
+                                <rect key="frame" x="57.5" y="93.5" width="260" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-If-jSu">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="146.5"/>
@@ -563,8 +562,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="gToMainMenu:" destination="P4r-O6-u8y" eventType="touchUpInside" id="LWe-7h-VEW"/>
-                                    <segue destination="P4r-O6-u8y" kind="presentation" identifier="" id="y7I-oE-Lf6"/>
+                                    <action selector="gToMainMenu:" destination="zlz-GS-e5d" eventType="touchUpInside" id="IpZ-CH-Pke"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -629,8 +627,4 @@
         <image name="Red" width="16" height="16"/>
         <image name="Yellow" width="16" height="16"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="BNz-lh-wjy"/>
-        <segue reference="326-Jy-GuC"/>
-    </inferredMetricsTieBreakers>
 </document>
