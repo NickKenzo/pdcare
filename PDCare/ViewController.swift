@@ -6,13 +6,16 @@
 //  Created by Russell Ho on 2019-10-25.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file is the view controller for the main application
+//  This file currently only contains the option to move to the games menu
+//
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/ViewController.swift
 import UIKit
 
 class ViewController: UIViewController {
-
+    //Called when "Play" is pressed
     @IBAction func openGamesMenu(_ sender: Any) {
         performSegue(withIdentifier: "GamesMenuSegue", sender: self)
     }

@@ -6,6 +6,9 @@
 //  Created by Russell Ho on 2019-10-25.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file handles the view controller for the games menu.
+//  This file contains any segues to any of the games (just balance for now)
+//
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/GamesMenuVC.swift
