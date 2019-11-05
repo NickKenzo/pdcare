@@ -121,7 +121,6 @@
 		7E793F472363963F007B40DF /* PDCare */ = {
 			isa = PBXGroup;
 			children = (
-				2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */,
 				7E793F482363963F007B40DF /* AppDelegate.swift */,
 				7E793F4A2363963F007B40DF /* ViewController.swift */,
 				7E793F4C2363963F007B40DF /* Main.storyboard */,
@@ -139,6 +138,7 @@
 				6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */,
 				6F884C4D236CE77C003EB1C2 /* DrawingGameScene.swift */,
 				6F884C4B236CE745003EB1C2 /* DrawingGameScene.sks */,
+				2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */,
 			);
 			path = PDCare;
 			sourceTree = "<group>";

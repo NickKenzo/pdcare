@@ -56,7 +56,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenGamesMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ogi-4E-EKo"/>
+                                            <action selector="openGamesMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bjf-EH-lfr"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heW-NK-hUm">
@@ -70,7 +70,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenScores:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KGl-5S-QeM"/>
+                                            <action selector="openScores:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QPy-GN-51A"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rU-Bz-9EG">
@@ -84,7 +84,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenPlaylist:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ndx-av-Tqr"/>
+                                            <action selector="openPlaylist:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pjr-B6-7YY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -169,7 +169,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
-                                <rect key="frame" x="57.5" y="103.5" width="260" height="500"/>
+                                <rect key="frame" x="57.5" y="83.5" width="260" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-If-jSu">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="146.5"/>
@@ -179,7 +179,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenBalanceGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="GFv-YK-AbD"/>
+                                            <action selector="openBalanceGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="2kW-l1-hck"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JM2-G6-Jmm">
@@ -190,7 +190,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="OpenDrawingGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="Ebq-H9-SSR"/>
+                                            <action selector="openDrawingGame:" destination="P4r-O6-u8y" eventType="touchUpInside" id="63H-NU-g8J"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-Yo-qv9">

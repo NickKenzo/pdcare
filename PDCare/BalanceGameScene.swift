@@ -1,10 +1,23 @@
 //
 //  BalanceGameScene.swift
 //  PDCare
+//  CMPT 275 Group 14 "P.D. Caretakers"
 //
-//  Created by ksmolko on 10/28/19.
+//  Created by Kyle Smolko on 10/28/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file has all of the set up and working code for the balance game.
+//  Player, goal and wall are all sprite nodes on the BalanceGameScene and all have physics and collision detection with each other.
+//  The basic logic decrements the score the longer the game goes on and also decrements when a player makes contact with a wall.
+//  The game ends as soon as the ball makes contact with the goal.
+//
+//  Known Bugs: - Score will rarely not decrement when the ball hits the wall
+//              - When holding a collision with a portruding corner, points
+//                will rapidly sink to 0
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/BalanceGameScene.swift
 
 import SpriteKit
 import CoreMotion
@@ -62,29 +75,47 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         }
         
         if contact.bodyA.node?.name == goal[mapNum].name || contact.bodyB.node?.name == goal[mapNum].name {
-            if let view = self.view {
-                if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
-                    // Set the scale mode to scale to fit the window
-                    scene.scaleMode = .aspectFill
-                    
-                    // Present the scene
-                    view.presentScene(scene)
-                    scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode
-                    scoreDisplay.text = "Score:" + String(score)
-                    scoreDisplay.fontSize = 65
+            gameOver()
+        }
+    }
+    
+    func gameOver() {
+        if let view = self.view {
+            if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+
+                // Present the scene
+                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
+                scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode
+                if score <= 0 {
+                    scoreDisplay.text = "Score: 0"
                 }
+                else {
+                    scoreDisplay.text = "Score: " + String(score)
+                }
+                scoreDisplay.fontSize = 65
             }
         }
     }
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+        if score <= 0 {
+            gameOver()
+        }
+        
         ball.physicsBody?.contactTestBitMask = UInt32(Int(pow(2, Double(mapNum))))
         ball.physicsBody?.categoryBitMask = UInt32(pow(2, Double(mapNum)))
         ball.physicsBody?.collisionBitMask = UInt32(pow(2, Double(mapNum)))
         score -= 500
         scoreDisplay = self.childNode(withName: "scoreDisplay") as! SKLabelNode
-        scoreDisplay.text = "Score:" + String(score)
+        if score <= 0 {
+            scoreDisplay.text = "Score: 0"
+        }
+        else {
+            scoreDisplay.text = "Score: " + String(score)
+        }
         scoreDisplay.fontSize = 65;
         
         self.physicsWorld.gravity = CGVector(dx: ((manager.accelerometerData?.acceleration.x ?? 0) * 5), dy: ((manager.accelerometerData?.acceleration.y ?? 0) * 5))

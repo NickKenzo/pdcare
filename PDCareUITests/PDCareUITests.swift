@@ -5,6 +5,12 @@
 //  Created by Russell Ho on 2019-10-25.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file is our UI test. It runs through all buttons and checks UI functionality.
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/edit/Version1/PDCareUITests/PDCareUITests.swift
+//
 
 import XCTest
 
@@ -29,6 +35,17 @@ class PDCareUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        let playButton = app.buttons["Play"]
+        XCTAssertTrue(playButton.exists)
+        playButton.tap()
+        XCTAssertTrue(app.navigationBars["PDCare.GamesMenuVC"].buttons["PDCare"].exists)
+        app.navigationBars["PDCare.GamesMenuVC"].buttons["PDCare"].tap()
+        XCTAssertTrue(playButton.exists)
+        playButton.tap()
+        XCTAssertTrue(app.buttons["Balance"].exists)
+
+        XCTAssertTrue(app.buttons["DNE"].exists)
     }
 
 }

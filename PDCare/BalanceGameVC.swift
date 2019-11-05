@@ -1,10 +1,19 @@
 //
 //  BalanceGameVC.swift
 //  PDCare
+//  CMPT 275 Group 14 "P.D. Caretakers"
 //
-//  Created by ksmolko on 10/28/19.
+//  Created by Kyle Smolko on 10/28/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This is the view controller for the Balance game.
+//  This file handles things like filling the screen, rotating the screen if needed, and displaying buttons if needed.
+//
+//  Known Bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/BalanceGameVC.swift
 
 import UIKit
 import SpriteKit
