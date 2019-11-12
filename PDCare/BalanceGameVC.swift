@@ -18,16 +18,17 @@
 import UIKit
 import SpriteKit
 
-class BalanceGameVC: UIViewController {
+class BalanceGameVC: UIViewController,GameOverDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "BalanceGameScene") {
+            if let scene = BalanceGameScene(fileNamed: "BalanceGameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
+                scene.game_over=self
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -54,5 +55,8 @@ class BalanceGameVC: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    func goback() {
+        self.dismiss(animated: true)
     }
 }

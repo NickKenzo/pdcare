@@ -111,7 +111,7 @@
                     <navigationItem key="navigationItem" title="PDCare" id="XuK-iz-Ulm">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="l33-lL-IWd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KlO-Lr-NjX">
-                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <rect key="frame" x="292" y="5" width="67" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Settings"/>
@@ -145,7 +145,7 @@
                     <navigationItem key="navigationItem" title="Playlist" id="38w-T1-0ZL">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5lu-9p-uTA">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fqz-AE-qJr">
-                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <rect key="frame" x="292" y="5" width="67" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Settings"/>
@@ -176,7 +176,7 @@
                     <navigationItem key="navigationItem" title="Scores" id="eby-Z0-R3A">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="OQV-9s-8by">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7JI-sC-Due">
-                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <rect key="frame" x="292" y="5" width="67" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Settings"/>
@@ -203,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
-                                <rect key="frame" x="57.5" y="83.5" width="260" height="500"/>
+                                <rect key="frame" x="57.5" y="103.5" width="260" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-If-jSu">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="146.5"/>
@@ -271,7 +271,7 @@
                     <navigationItem key="navigationItem" id="121-Yt-Yci">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tSg-Zc-LnV">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1eW-S2-hqH">
-                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <rect key="frame" x="292" y="5" width="67" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Settings"/>
@@ -284,7 +284,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="qBo-EW-OwR" kind="show" identifier="memorySegue" id="NqF-7n-wxr"/>
-                        <segue destination="ou1-U1-jM3" kind="presentation" identifier="balanceSegue" id="dMB-bL-oet"/>
+                        <segue destination="ou1-U1-jM3" kind="showDetail" identifier="balanceSegue" id="dMB-bL-oet"/>
                         <segue destination="zlz-GS-e5d" kind="show" identifier="drawingSegue" id="Jj0-mX-23f"/>
                         <segue destination="Df5-mP-zUe" kind="show" identifier="SettingsSegue" id="4Lv-KU-Gie"/>
                     </connections>
@@ -656,7 +656,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="XKf-iO-lJv" userLabel="Navigation Item">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="vb8-NR-gsA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DW8-4f-Xeo" userLabel="Profile">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DW8-4f-Xeo" userLabel="Profile">
                                 <rect key="frame" x="302" y="5" width="57" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>

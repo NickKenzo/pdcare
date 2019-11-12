@@ -22,6 +22,11 @@
 import SpriteKit
 import CoreMotion
 
+protocol GameOverDelegate {
+    
+    func goback()
+}
+
 class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     let manager = CMMotionManager()
@@ -40,6 +45,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     var startingPos = CGPoint(x: 0, y: 0)
     var scoreDisplay = SKLabelNode()
     var mapNum = 0
+    var game_over : GameOverDelegate?
     
     override func didMove(to view: SKView) {
         
@@ -86,6 +92,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 scene.score=score
+                scene.game_over=game_over
                 // Present the scene
                 view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
                 

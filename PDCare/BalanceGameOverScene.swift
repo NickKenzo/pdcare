@@ -11,11 +11,13 @@ import Foundation
 import SpriteKit
 import CoreMotion
 
+
 class BalanceGameOverScene: SKScene{
     var quitbutton=SKSpriteNode()
     var retrybutton=SKSpriteNode()
     var scoreDisplay = SKLabelNode()
     var score=0
+    var game_over : GameOverDelegate?
     
     override func didMove(to view: SKView) {
         quitbutton=self.childNode(withName:"quitbutton") as! SKSpriteNode
@@ -31,7 +33,14 @@ class BalanceGameOverScene: SKScene{
     }
     
     func quitPressed() {
-        view?.removeFromSuperview()
+        if let scene = BalanceGameScene(fileNamed: "BalanceGameScene") {
+            // Set the scale mode to scale to fit the window
+            scene.scaleMode = .aspectFill
+            
+            // Present the scene
+            view?.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
+            game_over?.goback()
+        }
     }
     
     func retryPressed() {
