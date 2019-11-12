@@ -56,11 +56,59 @@ class DrawingGameVC: UIViewController {
     
     var lastPoint = CGPoint.zero
     var color = UIColor.black
-    var brushWidth: CGFloat = 5.0
+    var brushWidth: CGFloat = 1.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        let pi = CGFloat(Float.pi)
+        let start:CGFloat = 2.0
+        let end :CGFloat = pi
+        
+        // circlecurve
+        let path_1: UIBezierPath = UIBezierPath();
+        path_1.addArc(
+            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
+            radius: 60,
+            startAngle: start,
+            endAngle: end,
+            clockwise: true
+        )
+        let layer_1 = CAShapeLayer()
+        layer_1.fillColor = UIColor.clear.cgColor
+        layer_1.strokeColor = UIColor.black.cgColor // color
+        layer_1.path = path_1.cgPath
+        self.view.layer.addSublayer(layer_1)
+        
+        
+        
+        let path_2: UIBezierPath = UIBezierPath();
+        path_2.addArc(
+            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
+            radius: 80,
+            startAngle: start,
+            endAngle: end,
+            clockwise: true
+        )
+        let layer_2 = CAShapeLayer()
+        layer_2.fillColor = UIColor.clear.cgColor
+        layer_2.strokeColor = UIColor.black.cgColor // color
+        layer_2.path = path_2.cgPath
+        self.view.layer.addSublayer(layer_2)
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        guard let navController = segue.destination as? UINavigationController,
 //            let settingsController = navController.topViewController as? DrawingGameSettingVC else {
 //                return
@@ -76,7 +124,7 @@ class DrawingGameVC: UIViewController {
 //        settingsController.red = red
 //        settingsController.green = green
 //        settingsController.blue = blue
-    }
+//    }
     
     // MARK: - Actions
     
