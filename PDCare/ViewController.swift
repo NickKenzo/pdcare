@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "PlaylistSegue", sender: self)
     }
     
+    @IBAction func openSettings(_ sender: Any) {
+        performSegue(withIdentifier: "SettingsSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

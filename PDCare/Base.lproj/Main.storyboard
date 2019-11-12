@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tPn-Mf-PfD">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tPn-Mf-PfD">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +15,7 @@
             <objects>
                 <navigationController id="tPn-Mf-PfD" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EvN-UK-aGK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -32,16 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EdH-ek-MgZ">
-                                <rect key="frame" x="315" y="59" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Profile"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlO-Lr-NjX">
-                                <rect key="frame" x="302" y="610" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qlq-5a-9Cq">
                                 <rect key="frame" x="57" y="102" width="260" height="500"/>
                                 <subviews>
@@ -101,64 +93,88 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="PDCare" id="XuK-iz-Ulm"/>
+                    <navigationItem key="navigationItem" title="PDCare" id="XuK-iz-Ulm">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="l33-lL-IWd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KlO-Lr-NjX">
+                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="openSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lcb-bc-fFZ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="P4r-O6-u8y" kind="show" identifier="GamesMenuSegue" id="BNz-lh-wjy"/>
                         <segue destination="FjE-cb-fCJ" kind="show" identifier="ScoresSegue" id="dQH-HS-qyq"/>
                         <segue destination="74b-5j-dOD" kind="show" identifier="PlaylistSegue" id="KtJ-xz-4T2"/>
+                        <segue destination="Df5-mP-zUe" kind="show" identifier="SettingsSegue" id="brQ-AF-K2j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-154" y="17"/>
         </scene>
-        <!--PlaylistVC-->
+        <!--Playlist-->
         <scene sceneID="8HA-Ci-1bl">
             <objects>
-                <viewController id="74b-5j-dOD" customClass="PlaylistVC" customModule="PDCare" sceneMemberID="viewController">
+                <viewController id="74b-5j-dOD" customClass="PlaylistVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Sj-5H-Caa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Playlist" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fWO-Yz-b4j">
-                                <rect key="frame" x="139" y="117" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sOi-y1-5ib"/>
                     </view>
-                    <navigationItem key="navigationItem" id="38w-T1-0ZL"/>
+                    <navigationItem key="navigationItem" title="Playlist" id="38w-T1-0ZL">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="5lu-9p-uTA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Fqz-AE-qJr">
+                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="openSettings:" destination="74b-5j-dOD" eventType="touchUpInside" id="jhU-Ll-Yx5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Df5-mP-zUe" kind="show" identifier="SettingsSegue" id="xUe-9v-HkJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kM6-cx-KL0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-154" y="822"/>
+            <point key="canvasLocation" x="-959" y="822"/>
         </scene>
-        <!--ScoresVC-->
+        <!--Scores-->
         <scene sceneID="HS1-9l-LqV">
             <objects>
-                <viewController id="FjE-cb-fCJ" customClass="ScoresVC" customModule="PDCare" sceneMemberID="viewController">
+                <viewController id="FjE-cb-fCJ" customClass="ScoresVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zX0-xW-Ah7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Scores" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uVj-73-4Gg">
-                                <rect key="frame" x="139" y="88" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="M12-ll-OTd"/>
                     </view>
-                    <navigationItem key="navigationItem" id="eby-Z0-R3A"/>
+                    <navigationItem key="navigationItem" title="Scores" id="eby-Z0-R3A">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="OQV-9s-8by">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7JI-sC-Due">
+                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="openSettings:" destination="FjE-cb-fCJ" eventType="touchUpInside" id="uh5-ga-Swb"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Df5-mP-zUe" kind="show" identifier="SettingsSegue" id="crJ-G0-NTd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTz-pL-Cg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="646" y="12"/>
+            <point key="canvasLocation" x="-154" y="822"/>
         </scene>
         <!--Games MenuVC-->
         <scene sceneID="UJP-xH-IEm">
@@ -169,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
-                                <rect key="frame" x="57.5" y="83.5" width="260" height="500"/>
+                                <rect key="frame" x="57.5" y="103.5" width="260" height="500"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-If-jSu">
                                         <rect key="frame" x="0.0" y="0.0" width="260" height="146.5"/>
@@ -210,12 +226,6 @@
                                     <constraint firstAttribute="height" constant="500" id="qIk-Q7-0gO"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Games" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MPC-0q-cFK">
-                                <rect key="frame" x="139" y="45" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -225,16 +235,29 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8ax-ef-9yJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="121-Yt-Yci"/>
+                    <navigationItem key="navigationItem" id="121-Yt-Yci">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="tSg-Zc-LnV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1eW-S2-hqH">
+                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Settings"/>
+                                <connections>
+                                    <action selector="openSettings:" destination="P4r-O6-u8y" eventType="touchUpInside" id="181-wQ-6E7"/>
+                                    <action selector="openSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSP-Oc-mb5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="qBo-EW-OwR" kind="show" identifier="memorySegue" id="NqF-7n-wxr"/>
                         <segue destination="ou1-U1-jM3" kind="presentation" identifier="balanceSegue" id="dMB-bL-oet"/>
                         <segue destination="zlz-GS-e5d" kind="show" identifier="drawingSegue" id="Jj0-mX-23f"/>
+                        <segue destination="Df5-mP-zUe" kind="show" identifier="SettingsSegue" id="4Lv-KU-Gie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1O-ux-jwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="-699"/>
+            <point key="canvasLocation" x="1116" y="17"/>
         </scene>
         <!--Memory GameVC-->
         <scene sceneID="1rA-3D-cWh">
@@ -332,14 +355,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyi-4Z-13E" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1652" y="-181"/>
+            <point key="canvasLocation" x="2156" y="370"/>
         </scene>
         <!--Balance GameVC-->
         <scene sceneID="CCM-OM-H4e">
             <objects>
                 <viewController id="ou1-U1-jM3" customClass="BalanceGameVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ebN-pg-9u8" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="C4A-hk-1UA"/>
@@ -348,7 +371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57x-Xp-Yyi" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633" y="-1358"/>
+            <point key="canvasLocation" x="2156" y="-328"/>
         </scene>
         <!--Drawing GameVC-->
         <scene sceneID="2QW-Y4-6aV">
@@ -585,7 +608,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjd-T4-bBf" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2712.8000000000002" y="-771.36431784107947"/>
+            <point key="canvasLocation" x="2932" y="17"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="3aX-p8-McJ">
+            <objects>
+                <viewController id="Df5-mP-zUe" customClass="SettingsVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rQs-Ox-Xtr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="b23-cR-ynu"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="XKf-iO-lJv" userLabel="Navigation Item">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="vb8-NR-gsA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DW8-4f-Xeo" userLabel="Profile">
+                                <rect key="frame" x="302" y="7" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Profile"/>
+                                <connections>
+                                    <action selector="OpenProfile:" destination="Df5-mP-zUe" eventType="touchUpInside" id="L3m-ds-pFS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="aec-eY-3k7" kind="show" identifier="ProfileSegue" id="Afs-wy-R08"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6P-cA-JR6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="628" y="822"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="re8-OQ-OsW">
+            <objects>
+                <viewController id="aec-eY-3k7" customClass="ProfileVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dNc-sb-RX5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="feR-8O-mCj"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="9GU-so-tTb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TT9-34-NE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="822"/>
         </scene>
     </scenes>
     <resources>
@@ -601,4 +670,7 @@
         <image name="Red" width="16" height="16"/>
         <image name="Yellow" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4Lv-KU-Gie"/>
+    </inferredMetricsTieBreakers>
 </document>

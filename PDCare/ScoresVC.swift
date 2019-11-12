@@ -12,6 +12,10 @@ class ScoresVC: UIViewController {
     @IBAction func sToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
+    @IBAction func openSettings(_ sender: Any) {
+        performSegue(withIdentifier: "SettingsSegue", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

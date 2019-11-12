@@ -41,6 +41,10 @@ class GamesMenuVC: UIViewController {
         performSegue(withIdentifier: "drawingSegue", sender: self)
     }
     
+    @IBAction func openSettings(_ sender: Any) {
+        performSegue(withIdentifier: "SettingsSegue", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 

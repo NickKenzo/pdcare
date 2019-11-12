@@ -13,6 +13,10 @@ class PlaylistVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func openSettings(_ sender: Any) {
+        performSegue(withIdentifier: "SettingsSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
