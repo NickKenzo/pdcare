@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2063EDBD2363B73D0078FED5 /* MemoryGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */; };
+		3F27D58B237B5CCC009E65CD /* BalanceGameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F27D58A237B5CCC009E65CD /* BalanceGameOverScene.swift */; };
 		58100AFA2367A8E80045722B /* BalanceGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AF92367A8E80045722B /* BalanceGameVC.swift */; };
 		58100AFC2367A9030045722B /* BalanceGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AFB2367A9020045722B /* BalanceGameScene.swift */; };
 		58100AFE2367A90D0045722B /* BalanceGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 58100AFD2367A90D0045722B /* BalanceGameScene.sks */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryGameVC.swift; sourceTree = "<group>"; };
+		3F27D58A237B5CCC009E65CD /* BalanceGameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceGameOverScene.swift; sourceTree = "<group>"; };
 		58100AF92367A8E80045722B /* BalanceGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameVC.swift; sourceTree = "<group>"; };
 		58100AFB2367A9020045722B /* BalanceGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameScene.swift; sourceTree = "<group>"; };
 		58100AFD2367A90D0045722B /* BalanceGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalanceGameScene.sks; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				7E793F802363A1B6007B40DF /* PlaylistVC.swift */,
 				58100AF92367A8E80045722B /* BalanceGameVC.swift */,
 				58100AFB2367A9020045722B /* BalanceGameScene.swift */,
+				3F27D58A237B5CCC009E65CD /* BalanceGameOverScene.swift */,
 				58100AFD2367A90D0045722B /* BalanceGameScene.sks */,
 				7E6B6057236D068A003818F7 /* BalanceGameOverScene.sks */,
 				58100AFF2367A9300045722B /* BalanceGameActions.sks */,
@@ -301,6 +304,7 @@
 				6F884C4A236CE28A003EB1C2 /* DrawingGameVC.swift in Sources */,
 				6F884C4E236CE77C003EB1C2 /* DrawingGameScene.swift in Sources */,
 				58100AFC2367A9030045722B /* BalanceGameScene.swift in Sources */,
+				3F27D58B237B5CCC009E65CD /* BalanceGameOverScene.swift in Sources */,
 				7E793F7F2363A1A2007B40DF /* ScoresVC.swift in Sources */,
 				7E793F4B2363963F007B40DF /* ViewController.swift in Sources */,
 				7E793F812363A1B6007B40DF /* PlaylistVC.swift in Sources */,

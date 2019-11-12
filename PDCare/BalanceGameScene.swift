@@ -34,6 +34,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
                 SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
                 SKSpriteNode(), SKSpriteNode(), SKSpriteNode(),
                 SKSpriteNode()]
+    var quitbutton=SKSpriteNode()
     var score = 1000000
     var resetPos = false
     var startingPos = CGPoint(x: 0, y: 0)
@@ -81,23 +82,18 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     
     func gameOver() {
         if let view = self.view {
-            if let scene = SKScene(fileNamed: "BalanceGameOverScene") {
+            if let scene = BalanceGameOverScene(fileNamed: "BalanceGameOverScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-
+                scene.score=score
                 // Present the scene
                 view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
-                scoreDisplay = scene.childNode(withName: "scoreDisplay") as! SKLabelNode
-                if score <= 0 {
-                    scoreDisplay.text = "Score: 0"
-                }
-                else {
-                    scoreDisplay.text = "Score: " + String(score)
-                }
-                scoreDisplay.fontSize = 65
+                
             }
         }
     }
+    
+    
     
     override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
@@ -121,3 +117,4 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         self.physicsWorld.gravity = CGVector(dx: ((manager.accelerometerData?.acceleration.x ?? 0) * 5), dy: ((manager.accelerometerData?.acceleration.y ?? 0) * 5))
     }
 }
+
