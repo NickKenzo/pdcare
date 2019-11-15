@@ -12,17 +12,18 @@ import CoreMotion
 class DrawingGameScene: SKScene, SKPhysicsContactDelegate{
     
     let manager = CMMotionManager()
-   
+
+    var rectangle = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         
-        self.physicsWorld.contactDelegate = self
-        
-        
-        manager.startAccelerometerUpdates()
-        manager.accelerometerUpdateInterval = 0.1
-        manager.startAccelerometerUpdates(to: OperationQueue.main){
-            (data, error) in
+//        self.physicsWorld.contactDelegate = self
+//
+//
+//        manager.startAccelerometerUpdates()
+//        manager.accelerometerUpdateInterval = 0.1
+//        manager.startAccelerometerUpdates(to: OperationQueue.main){
+//            (data, error) in
             
             /**** Currently physicsWorld.gravity does not override settings in sks file and we need to figure out why ****/
             /**** Works if you set it in the func update, see below ****/
@@ -30,7 +31,7 @@ class DrawingGameScene: SKScene, SKPhysicsContactDelegate{
             //self.physicsWorld.gravity = CGVector(dx: CGFloat(0), dy: CGFloat(0))
             
         }
-    }
+//    }
     
 
     

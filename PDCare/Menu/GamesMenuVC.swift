@@ -23,11 +23,6 @@ class GamesMenuVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
     @IBAction func openMemoryGame(_ sender: Any) {
         performSegue(withIdentifier: "memorySegue", sender: self)
@@ -43,6 +38,12 @@ class GamesMenuVC: UIViewController {
     
     @IBAction func openSettings(_ sender: Any) {
         performSegue(withIdentifier: "SettingsSegue", sender: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
     
     /*
