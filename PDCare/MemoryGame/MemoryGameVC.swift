@@ -38,11 +38,7 @@ class MemoryGameVC: UIViewController {
     var gameTimer = Timer()
 
 
-
-
-    
-
-
+    //@IBOutlet weak var watchOrPlayLabel: UILabel!
     @IBOutlet weak var startCounter: UILabel!
     @IBOutlet weak var red: UIButton!
     @IBOutlet weak var blue: UIButton!
@@ -51,14 +47,71 @@ class MemoryGameVC: UIViewController {
     var buttons = [UIButton]()
     
     
+   
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        lastPressedButton = -1
+        newPress = false
+        gameTime = 5
+        buttonCount = 0
+        sequenceCount = 0
+        
+        buttons = [red, blue, green]
+        startTime = 3
+        sequence.append(Int.random(in: 0 ... 2))
+        self.disableAndHideButtons(flag: true)
+        
+        startCounter.text = String(startTime)
+        startTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.startGameTimer), userInfo: nil, repeats: true)
+        
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
+    @objc func startGameTimer() {
+        startTime -= 1
+        startCounter.text = String(startTime)
+        
+        if startTime == 0 {
+            startTimer.invalidate()
+            self.disableAndHideButtons(flag: false)
+            self.showSequence()
+            //gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
+        }
+    }
+    
+    func showSequence() {
+        //watchOrPlayLabel.text = "Watch!"
+        self.disableEnableButtons(flag: true)
+        sequenceDisplayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(MemoryGameVC.sequenceCountDown), userInfo: nil, repeats: true)
+        
+        //self.disableEnableButtons(flag: false)
+        
+    }
+    
+    @objc func sequenceCountDown() {
+        self.flashButton(myButtonTag: sequence[sequenceCount])
+        sequenceCount += 1
+        if sequenceCount == sequence.count {
+            print(sequence)
+            sequenceDisplayTimer.invalidate()
+            self.disableEnableButtons(flag: false)
+            //watchOrPlayLabel.text = "Repeat!"
+            sequenceCount = 0
+            gameTime = 5
+            gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
+        }
+    }
 
     @IBAction func redPressed(_ sender: Any) {
         self.flashButton(myButtonTag: 0)
         lastPressedButton = 0
         self.genericButtonPress()
     }
-    
 
     @IBAction func bluePressed(_ sender: Any) {
         self.flashButton(myButtonTag: 1)
@@ -73,46 +126,34 @@ class MemoryGameVC: UIViewController {
     }
     
     func genericButtonPress() {
+        gameTimer.invalidate()
         if lastPressedButton == sequence[buttonCount] {
-            gameTimer.invalidate()
             buttonCount += 1
             if buttonCount == sequence.count {
-                sequence.append(Int.random(in: 0 ..< 3))
+                sequence.append(Int.random(in: 0 ... 2))
                 self.showSequence()
                 buttonCount = 0
             }
-            gameTime = 5
-            gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
-            
+            else {
+                gameTime = 5
+                gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
+            }
         }
         else {
             print("show game over scene wrong sequence")
-            gameTimer.invalidate()
+            print("Your Score")
+            print(sequence.count - 1)
         }
-        
     }
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        lastPressedButton = -1
-        newPress = false
-        gameTime = 5
-        buttonCount = 0
-        
-        buttons = [red, blue, green]
-        startTime = 3
-        sequence.append(Int.random(in: 0 ..< 3))
-        self.disableAndHideButtons(flag: true)
-        
-        startCounter.text = String(startTime)
-        startTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.startGameTimer), userInfo: nil, repeats: true)
-
-    }
-    
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
+    @objc func playGameTimer() {
+        gameTime -= 1
+        if gameTime == 0 {
+            gameTimer.invalidate()
+            print("show game over scene time's up")
+            print("Your Score")
+            print(sequence.count - 1)
+        }
     }
     
     func disableAndHideButtons(flag: Bool) {
@@ -132,174 +173,18 @@ class MemoryGameVC: UIViewController {
         green.isEnabled = !flag
     }
     
-    @objc func startGameTimer() {
-        startTime -= 1
-        startCounter.text = String(startTime)
-        
-        if startTime == 0 {
-            startTimer.invalidate()
-            self.disableAndHideButtons(flag: false)
-            self.showSequence()
-            gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
-        }
-    }
-    
-    @objc func playGameTimer() {
-        gameTime -= 1
-        if gameTime == 0 {
-            gameTimer.invalidate()
-            print("show game over scene time's up")
-            print(sequence)
-        }
-    }
-    
-    func showSequence() {
-        self.disableEnableButtons(flag: true)
-//        for i in 0 ... (sequence.count - 1) {
-//            self.flashButton(myButtonTag: self.sequence[i], myDelay: 3)
-//        }
-        
-//        var i = 0
-//        while i < sequence.count {
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//                self.flashButton(myButtonTag: self.sequence[i])
-//                i += 1
-//            }
-//        }
-        
-        sequenceDisplayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(MemoryGameVC.sequenceCountDown), userInfo: nil, repeats: true)
-        
-        
-        
-        
-        
-        self.disableEnableButtons(flag: false)
-
-    }
-    
-    @objc func sequenceCountDown() {
-        if sequenceCount == sequence.count {
-            sequenceDisplayTimer.invalidate()
-            sequenceCount = 0
-        }
-        self.flashButton(myButtonTag: sequence[sequenceCount])
-        sequenceCount += 1
-        
-        
-    }
-    
-
-    
     func flashButton(myButtonTag: Int) {
         let viewToAnimate = buttons[myButtonTag]
-        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
             
             viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
             
         }) { (_) in
-            UIView.animate(withDuration: 0.15, delay: 0.5, usingSpringWithDamping: 0.3, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.15, delay: 0.5, usingSpringWithDamping: 0.2, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
                 
                 viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
                 
             }, completion: nil)
         }
     }
-    
-    func playerTurn() {
-//        var currentPos = 0
-//        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
-//        while currentPos < sequence.count {
-//            if newPress {
-//                if sequence[currentPos] == lastPressedButton {
-//                    gameTime = 3
-//                    newPress = false
-//                    currentPos += 1
-//                }
-//                else {
-//                    gameOver = true
-//                    break
-//                }
-//            }
-//        }
-    }
-    
-    func playing() {
-        while !gameOver {
-            self.showSequence()
-            self.playerTurn()
-            gameOver = true
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-//    func setTitle(_ title: String){
-//        print(title)
-//    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    var isWatching = true{
-//        didSet{
-//            if isWatching{
-//                setTitle("Watch!")
-//            }
-//            else{
-//                setTitle("Repeat!")
-//            }
-//        }
-//    }
-//    var sequence = [UIButton]()
-//    var sequenceIndex = 0
-//    func playNextButton(){
-//        guard sequenceIndex < sequence.count else{
-//            isWatching = false
-//            sequenceIndex = 0
-//            return
-//        }
-//        let button = sequence[sequenceIndex]
-//        sequenceIndex += 1
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-//            self?.touchdown(button)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                self?.touchdown(button)
-//                self?.playNextButton()
-//            }
-//        }
-//    }
-}
+} // End of MemoryGameVC
