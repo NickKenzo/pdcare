@@ -482,13 +482,16 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a1-AP-OdU">
-                                <rect key="frame" x="239.5" y="102" width="77.5" height="20.5"/>
+                                <rect key="frame" x="239.5" y="92" width="77.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="OK7-KH-jPm">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="OK7-KH-jPm">
                                 <rect key="frame" x="231" y="122.5" width="94" height="32"/>
+                                <connections>
+                                    <action selector="GameVolumeChanged:" destination="Df5-mP-zUe" eventType="valueChanged" id="aUI-0f-PVZ"/>
+                                </connections>
                             </stepper>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F35-bG-FSx">
                                 <rect key="frame" x="253.5" y="181.5" width="51" height="31"/>
@@ -500,7 +503,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OK7-KH-jPm" firstAttribute="centerY" secondItem="1HN-kT-W0u" secondAttribute="centerY" constant="10" id="CxB-OH-ncd"/>
-                            <constraint firstItem="8a1-AP-OdU" firstAttribute="bottom" secondItem="OK7-KH-jPm" secondAttribute="top" id="Hiq-2O-LB1"/>
+                            <constraint firstItem="8a1-AP-OdU" firstAttribute="bottom" secondItem="OK7-KH-jPm" secondAttribute="top" constant="-10" id="Hiq-2O-LB1"/>
                             <constraint firstItem="b23-cR-ynu" firstAttribute="trailing" secondItem="icB-40-Njq" secondAttribute="trailing" constant="50" id="K3c-We-D3V"/>
                             <constraint firstItem="8a1-AP-OdU" firstAttribute="centerX" secondItem="OK7-KH-jPm" secondAttribute="centerX" id="MCc-C4-8uP"/>
                             <constraint firstItem="Tft-VF-ERy" firstAttribute="centerY" secondItem="KNG-cy-WG7" secondAttribute="centerY" id="aDI-k0-M1d"/>
@@ -527,6 +530,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="GameVolumeLabel" destination="8a1-AP-OdU" id="qX6-d7-6Lx"/>
+                        <outlet property="Stepper" destination="OK7-KH-jPm" id="jGN-gH-AJ3"/>
+                        <outlet property="Switch1" destination="F35-bG-FSx" id="IFd-QZ-aTC"/>
+                        <outlet property="Switch2" destination="KNG-cy-WG7" id="KK7-dr-ahJ"/>
                         <segue destination="aec-eY-3k7" kind="show" identifier="ProfileSegue" id="Afs-wy-R08"/>
                     </connections>
                 </viewController>
