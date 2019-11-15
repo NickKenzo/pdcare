@@ -70,23 +70,23 @@ class DrawingGameVC: UIViewController{
 //        layer_2.path = path_2.cgPath
 //        self.view.layer.addSublayer(layer_2)
         
-//        if let view = self.view as! SKView? {
-//            // Load the SKScene from 'DrawingGameScene.sks'
-//            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                //scene.game_over=self
-//
-//                // Present the scene
-//                view.presentScene(scene)
-//            }
-//
-//            view.ignoresSiblingOrder = true
-//
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
-//
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'DrawingGameScene.sks'
+            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                //scene.game_over=self
+
+                // Present the scene
+                view.presentScene(scene)
+            }
+
+            view.ignoresSiblingOrder = true
+
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
