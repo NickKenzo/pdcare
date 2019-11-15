@@ -9,47 +9,16 @@
 import UIKit
 import SpriteKit
 
-class DrawingGameVC: UIViewController {
+
+
+
+class DrawingGameVC: UIViewController{
     
     @IBAction func gToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        if let view = self.view as! SKView? {
-//            // Load the SKScene from 'GameScene.sks'
-//            if let scene = SKScene(fileNamed: "DrawingGameScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//
-//                // Present the scene
-//                view.presentScene(scene)
-//            }
-//
-//            view.ignoresSiblingOrder = true
-//
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
-//    }
-//
-//    override var shouldAutorotate: Bool {
-//        return true
-//    }
-//
-//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        if UIDevice.current.userInterfaceIdiom == .phone {
-//            return .allButUpsideDown
-//        } else {
-//            return .all
-//        }
-//    }
-    
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
+
     
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
@@ -64,43 +33,60 @@ class DrawingGameVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+
+//
+//        let pi = CGFloat(Float.pi)
+//        let start:CGFloat = 2.0
+//        let end :CGFloat = pi
+//
+//        // circlecurve
+//        let path_1: UIBezierPath = UIBezierPath();
+//        path_1.addArc(
+//            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
+//            radius: 60,
+//            startAngle: start,
+//            endAngle: end,
+//            clockwise: true
+//        )
+//        let layer_1 = CAShapeLayer()
+//        layer_1.fillColor = UIColor.clear.cgColor
+//        layer_1.strokeColor = UIColor.black.cgColor // color
+//        layer_1.path = path_1.cgPath
+//        self.view.layer.addSublayer(layer_1)
+//
+//
+//
+//        let path_2: UIBezierPath = UIBezierPath();
+//        path_2.addArc(
+//            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
+//            radius: 80,
+//            startAngle: start,
+//            endAngle: end,
+//            clockwise: true
+//        )
+//        let layer_2 = CAShapeLayer()
+//        layer_2.fillColor = UIColor.clear.cgColor
+//        layer_2.strokeColor = UIColor.black.cgColor // color
+//        layer_2.path = path_2.cgPath
+//        self.view.layer.addSublayer(layer_2)
         
-        
-        let pi = CGFloat(Float.pi)
-        let start:CGFloat = 2.0
-        let end :CGFloat = pi
-        
-        // circlecurve
-        let path_1: UIBezierPath = UIBezierPath();
-        path_1.addArc(
-            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
-            radius: 60,
-            startAngle: start,
-            endAngle: end,
-            clockwise: true
-        )
-        let layer_1 = CAShapeLayer()
-        layer_1.fillColor = UIColor.clear.cgColor
-        layer_1.strokeColor = UIColor.black.cgColor // color
-        layer_1.path = path_1.cgPath
-        self.view.layer.addSublayer(layer_1)
-        
-        
-        
-        let path_2: UIBezierPath = UIBezierPath();
-        path_2.addArc(
-            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
-            radius: 80,
-            startAngle: start,
-            endAngle: end,
-            clockwise: true
-        )
-        let layer_2 = CAShapeLayer()
-        layer_2.fillColor = UIColor.clear.cgColor
-        layer_2.strokeColor = UIColor.black.cgColor // color
-        layer_2.path = path_2.cgPath
-        self.view.layer.addSublayer(layer_2)
-        
+//        if let view = self.view as! SKView? {
+//            // Load the SKScene from 'DrawingGameScene.sks'
+//            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//                //scene.game_over=self
+//
+//                // Present the scene
+//                view.presentScene(scene)
+//            }
+//
+//            view.ignoresSiblingOrder = true
+//
+//            view.showsFPS = true
+//            view.showsNodeCount = true
+//        }
+//
     }
     
     override func didReceiveMemoryWarning() {
