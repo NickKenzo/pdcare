@@ -41,6 +41,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qd0-T3-TTw" userLabel="audioSwitch">
                                                     <rect key="frame" x="263" y="49.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="audioSwitch:" destination="3sv-It-plc" eventType="valueChanged" id="t0x-nu-JNN"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -67,6 +70,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F35-bG-FSx" userLabel="notificationSwitch">
                                                     <rect key="frame" x="263" y="49.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="notificationSwitch:" destination="3sv-It-plc" eventType="valueChanged" id="XRv-Sq-vRM"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -93,6 +99,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KNG-cy-WG7" userLabel="offlineSwitch">
                                                     <rect key="frame" x="263" y="49.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="offlineSwitch:" destination="3sv-It-plc" eventType="valueChanged" id="ihN-uf-R76"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -126,11 +135,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="audioLabel" destination="1HN-kT-W0u" id="J0W-qZ-nD9"/>
                         <outlet property="audioSwitch" destination="Qd0-T3-TTw" id="d4o-72-XnF"/>
-                        <outlet property="notificationLabel" destination="aNx-8q-sDY" id="B4T-Wd-RrP"/>
                         <outlet property="notificationSwitch" destination="F35-bG-FSx" id="PIr-SW-ZZn"/>
-                        <outlet property="offlineLabel" destination="Tft-VF-ERy" id="Mer-bm-t9O"/>
                         <outlet property="offlineSwitch" destination="KNG-cy-WG7" id="mXK-Bo-GhT"/>
                         <segue destination="10l-W9-3AC" kind="show" identifier="ProfileSegue" id="4p5-wW-0JZ"/>
                     </connections>
