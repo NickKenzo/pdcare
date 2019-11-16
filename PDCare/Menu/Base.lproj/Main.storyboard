@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tPn-Mf-PfD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tPn-Mf-PfD">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,14 +32,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qlq-5a-9Cq">
-                                <rect key="frame" x="50" y="94" width="275" height="523"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainmenu_background" id="0To-TS-6hJ">
+                                <rect key="frame" x="0.0" y="44" width="375" height="624"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Qlq-5a-9Cq">
+                                <rect key="frame" x="95" y="149" width="255" height="473"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQk-nC-02W">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="154.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="137.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <state key="normal" title="Play">
+                                        <state key="normal" title="Play" backgroundImage="buttonplay">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -52,10 +56,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heW-NK-hUm">
-                                        <rect key="frame" x="0.0" y="184.5" width="275" height="154"/>
+                                        <rect key="frame" x="0.0" y="167.5" width="255" height="138"/>
                                         <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <state key="normal" title="View Scores">
+                                        <state key="normal" title="View Scores" backgroundImage="buttonscore">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -68,10 +72,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rU-Bz-9EG">
-                                        <rect key="frame" x="0.0" y="368.5" width="275" height="154.5"/>
+                                        <rect key="frame" x="0.0" y="335.5" width="255" height="137.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <state key="normal" title="View Playlist">
+                                        <state key="normal" title="View Playlist" backgroundImage="buttonplaylist">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -88,10 +92,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Qlq-5a-9Cq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Djk-S3-ha9"/>
+                            <constraint firstItem="Qlq-5a-9Cq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="Djk-S3-ha9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qlq-5a-9Cq" secondAttribute="bottom" constant="50" id="E0s-b1-siu"/>
-                            <constraint firstItem="Qlq-5a-9Cq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="V89-1s-vBh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qlq-5a-9Cq" secondAttribute="trailing" constant="50" id="kDZ-qw-5Yn"/>
+                            <constraint firstItem="Qlq-5a-9Cq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="V89-1s-vBh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qlq-5a-9Cq" secondAttribute="trailing" constant="60" id="kDZ-qw-5Yn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -117,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-154" y="17"/>
+            <point key="canvasLocation" x="-154.40000000000001" y="16.641679160419791"/>
         </scene>
         <!--Settings-->
         <scene sceneID="1FA-jN-HC2">
@@ -160,4 +164,10 @@
             <point key="canvasLocation" x="655" y="16"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="buttonplay" width="275" height="154"/>
+        <image name="buttonplaylist" width="275" height="154"/>
+        <image name="buttonscore" width="275" height="154"/>
+        <image name="mainmenu_background" width="375" height="624"/>
+    </resources>
 </document>
