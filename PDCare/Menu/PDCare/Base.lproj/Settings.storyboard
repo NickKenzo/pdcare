@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--SettingsVC-->
+        <!--Settings-->
         <scene sceneID="JQu-T4-M2D">
             <objects>
                 <tableViewController id="3sv-It-plc" customClass="SettingsVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,6 +112,19 @@
                             <outlet property="delegate" destination="3sv-It-plc" id="neR-Ze-NnS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="tMX-0F-kms">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="0MD-tD-oLj">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xvw-Nm-em9">
+                                <rect key="frame" x="292" y="5" width="67" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Profile"/>
+                                <connections>
+                                    <action selector="openProfile:" destination="3sv-It-plc" eventType="touchUpInside" id="sy7-qW-PBh"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="audioLabel" destination="1HN-kT-W0u" id="J0W-qZ-nD9"/>
                         <outlet property="audioSwitch" destination="Qd0-T3-TTw" id="d4o-72-XnF"/>
