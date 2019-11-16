@@ -39,11 +39,15 @@ class MemoryGameVC: UIViewController {
     var startTimer = Timer()
     
     // Used as a time limit between button presses of the player
-    var gameTime = 3
+    var gameTime = 4
     var gameTimer = Timer()
     
     // Used to wait some time to change button color
     var buttonColorTimer = Timer()
+    
+    // Game over label outlets
+    @IBOutlet weak var gameOverOutlet: UILabel!
+    @IBOutlet weak var scoreOutlet: UILabel!
     
     //@IBOutlet weak var watchOrPlayLabel: UILabel!
     @IBOutlet weak var startCounter: UILabel!
@@ -53,11 +57,14 @@ class MemoryGameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        
+        self.view.backgroundColor = UIColor.white
+        self.setUpGame()
+    }
+    
+    func setUpGame() {
         // Disable and hide buttons initially
         self.disableAndHideButtons(flag: true)
-        //self.hideUnhideGameOver(flag: true)
+        self.hideGameOverLables()
         
         red.backgroundColor = UIColor(red: CGFloat(colours[0][0])/255.0, green: CGFloat(colours[0][1])/255.0, blue: CGFloat(colours[0][2])/255.0, alpha: 0.5)
         blue.backgroundColor = UIColor(red: CGFloat(colours[1][0])/255.0, green: CGFloat(colours[1][1])/255.0, blue: CGFloat(colours[1][2])/255.0, alpha: 0.5)
@@ -71,7 +78,7 @@ class MemoryGameVC: UIViewController {
         sequence.append(Int.random(in: 0 ... 2))
         
         lastPressedButton = -1 // No button is pressed
-        gameTime = 3
+        gameTime = 4
         buttonCount = 0
         sequenceCount = 0
         
@@ -79,6 +86,7 @@ class MemoryGameVC: UIViewController {
         startCounter.text = String(startTime)
         startTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.startGameTimer), userInfo: nil, repeats: true)
     }
+    
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -158,7 +166,7 @@ class MemoryGameVC: UIViewController {
     }
     
     func resetGameTimer() {
-        gameTime = 3
+        gameTime = 4
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.playGameTimer), userInfo: nil, repeats: true)
     }
     
@@ -212,11 +220,6 @@ class MemoryGameVC: UIViewController {
         animateButtonTag = myButtonTag
         buttonColorTimer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(MemoryGameVC.buttonAnimationTimer), userInfo: nil, repeats: true)
         
-        print(myButtonTag + 3)
-        print(colours[myButtonTag + 3][0])
-        print(colours[myButtonTag + 3][1])
-        print(colours[myButtonTag + 3][2])
-        
         viewToAnimate.backgroundColor = UIColor(red: CGFloat(colours[myButtonTag + 3][0])/255.0, green: CGFloat(colours[myButtonTag + 3][1])/255.0, blue: CGFloat(colours[myButtonTag + 3][2])/255.0, alpha: 0.5)
         
         UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
@@ -233,9 +236,22 @@ class MemoryGameVC: UIViewController {
     }
        
     func gameOver() {
-        var scoreText = "Score: " + String(sequence.count - 1)
         self.hideAndDisableButtons()
-        //self.hideUnhideGameOver(flag: false)
+    }
+    
+    func generateGameOverInfo() {
+        self.showGameOverLables()
+    }
+    
+    func showGameOverLables() {
+        gameOverOutlet.isHidden = false
+        scoreOutlet.text = "Score: " + String(sequence.count - 1)
+        scoreOutlet.isHidden = false
+    }
+    
+    func hideGameOverLables() {
+        gameOverOutlet.isHidden = true
+        scoreOutlet.isHidden = true
     }
     
 } // End of MemoryGameVC
