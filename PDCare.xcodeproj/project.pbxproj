@@ -63,7 +63,7 @@
 		52112BD8237EF1EC00B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/Scores.storyboard; sourceTree = "<group>"; };
 		52112BDB237EF20500B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/Playlist.storyboard; sourceTree = "<group>"; };
 		52112BE0237EF2B100B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/BalanceGame.storyboard; sourceTree = "<group>"; };
-		52112BE2237EF2E300B3515A /* MemoryGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MemoryGame.storyboard; path = PDCare/Base.lproj/MemoryGame.storyboard; sourceTree = "<group>"; };
+		52112BE2237EF2E300B3515A /* MemoryGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemoryGame.storyboard; sourceTree = "<group>"; };
 		52112BE5237EF32800B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/DrawingGame.storyboard; sourceTree = "<group>"; };
 		52112BE8237EF37900B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/GamesMenu.storyboard; sourceTree = "<group>"; };
 		58100AF92367A8E80045722B /* BalanceGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameVC.swift; sourceTree = "<group>"; };
@@ -121,6 +121,7 @@
 		6F2A0EBB237E30DF008E3BCC /* BalanceGame */ = {
 			isa = PBXGroup;
 			children = (
+				52112BDF237EF2B100B3515A /* BalanceGame.storyboard */,
 				58100AF92367A8E80045722B /* BalanceGameVC.swift */,
 				58100AFB2367A9020045722B /* BalanceGameScene.swift */,
 				3F27D58A237B5CCC009E65CD /* BalanceGameOverScene.swift */,
@@ -133,6 +134,7 @@
 		6F2A0EBC237E3106008E3BCC /* DrawingGame */ = {
 			isa = PBXGroup;
 			children = (
+				52112BE4237EF32800B3515A /* DrawingGame.storyboard */,
 				6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */,
 				6F884C4D236CE77C003EB1C2 /* DrawingGameScene.swift */,
 				6F884C4B236CE745003EB1C2 /* DrawingGameScene.sks */,
@@ -143,6 +145,7 @@
 		6F2A0EBD237E3108008E3BCC /* MemoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				52112BE2237EF2E300B3515A /* MemoryGame.storyboard */,
 				2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */,
 			);
 			path = MemoryGame;
@@ -151,7 +154,12 @@
 		6F2A0EBE237E3145008E3BCC /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				7E793F482363963F007B40DF /* AppDelegate.swift */,
+				7E793F4C2363963F007B40DF /* Main.storyboard */,
+				52112BE7237EF37900B3515A /* GamesMenu.storyboard */,
+				52112BD7237EF1EB00B3515A /* Scores.storyboard */,
+				52112BDA237EF20500B3515A /* Playlist.storyboard */,
+				52112BD4237EF18E00B3515A /* Settings.storyboard */,
+				52112BD1237EF15C00B3515A /* Profile.storyboard */,
 				7E793F4A2363963F007B40DF /* ViewController.swift */,
 				7E793F7C2363A182007B40DF /* GamesMenuVC.swift */,
 				7E793F7E2363A1A2007B40DF /* ScoresVC.swift */,
@@ -165,14 +173,6 @@
 		7E793F3C2363963F007B40DF = {
 			isa = PBXGroup;
 			children = (
-				52112BE7237EF37900B3515A /* GamesMenu.storyboard */,
-				52112BE4237EF32800B3515A /* DrawingGame.storyboard */,
-				52112BE2237EF2E300B3515A /* MemoryGame.storyboard */,
-				52112BDF237EF2B100B3515A /* BalanceGame.storyboard */,
-				52112BDA237EF20500B3515A /* Playlist.storyboard */,
-				52112BD7237EF1EB00B3515A /* Scores.storyboard */,
-				52112BD4237EF18E00B3515A /* Settings.storyboard */,
-				52112BD1237EF15C00B3515A /* Profile.storyboard */,
 				7E793F472363963F007B40DF /* PDCare */,
 				7E793F5C23639641007B40DF /* PDCareTests */,
 				7E793F6723639641007B40DF /* PDCareUITests */,
@@ -193,13 +193,13 @@
 		7E793F472363963F007B40DF /* PDCare */ = {
 			isa = PBXGroup;
 			children = (
-				7E793F4C2363963F007B40DF /* Main.storyboard */,
 				6F2A0EBE237E3145008E3BCC /* Menu */,
 				6F2A0EBB237E30DF008E3BCC /* BalanceGame */,
 				6F2A0EBC237E3106008E3BCC /* DrawingGame */,
 				6F2A0EBD237E3108008E3BCC /* MemoryGame */,
 				7E793F4F23639641007B40DF /* Assets.xcassets */,
 				7E793F5123639641007B40DF /* LaunchScreen.storyboard */,
+				7E793F482363963F007B40DF /* AppDelegate.swift */,
 				7E793F5423639641007B40DF /* Info.plist */,
 			);
 			path = PDCare;
