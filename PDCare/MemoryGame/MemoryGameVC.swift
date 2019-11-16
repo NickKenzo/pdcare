@@ -53,16 +53,21 @@ class MemoryGameVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         
         // Disable and hide buttons initially
         self.disableAndHideButtons(flag: true)
-        // Populate pressable buttons array
+        //self.hideUnhideGameOver(flag: true)
         
         red.backgroundColor = UIColor(red: CGFloat(colours[0][0])/255.0, green: CGFloat(colours[0][1])/255.0, blue: CGFloat(colours[0][2])/255.0, alpha: 0.5)
         blue.backgroundColor = UIColor(red: CGFloat(colours[1][0])/255.0, green: CGFloat(colours[1][1])/255.0, blue: CGFloat(colours[1][2])/255.0, alpha: 0.5)
         green.backgroundColor = UIColor(red: CGFloat(colours[2][0])/255.0, green: CGFloat(colours[2][1])/255.0, blue: CGFloat(colours[2][2])/255.0, alpha: 0.5)
+        
+        // Populate pressable buttons array
         buttons = [red, blue, green]
+        
         // Add the first button to sequence
+        sequence = []
         sequence.append(Int.random(in: 0 ... 2))
         
         lastPressedButton = -1 // No button is pressed
@@ -95,7 +100,7 @@ class MemoryGameVC: UIViewController {
     // This function will be used to cycle through the sequence of buttons to be pressed and visually animate them to the player
     func showSequence() {
         self.disableEnableButtons(flag: true)
-        sequenceDisplayTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(MemoryGameVC.sequenceCountDown), userInfo: nil, repeats: true)
+        sequenceDisplayTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.sequenceCountDown), userInfo: nil, repeats: true)
     }
     
     // When this function is entered, the next button to display will be animated
@@ -148,6 +153,7 @@ class MemoryGameVC: UIViewController {
             print("show game over scene wrong sequence")
             print("Your Score")
             print(sequence.count - 1)
+            self.gameOver()
         }
     }
     
@@ -163,6 +169,7 @@ class MemoryGameVC: UIViewController {
             print("show game over scene time's up")
             print("Your Score")
             print(sequence.count - 1)
+            self.gameOver()
         }
     }
     
@@ -183,6 +190,15 @@ class MemoryGameVC: UIViewController {
         red.isEnabled = !flag
         blue.isEnabled = !flag
         green.isEnabled = !flag
+    }
+    
+    func hideAndDisableButtons() {
+        red.isHidden = true
+        blue.isHidden = true
+        green.isHidden = true
+        red.isEnabled = false
+        blue.isEnabled = false
+        green.isEnabled = false
     }
     
     @objc func buttonAnimationTimer() {
@@ -215,19 +231,11 @@ class MemoryGameVC: UIViewController {
             }, completion: nil)
         }
     }
-    
-//    func gameOver() {
-//        if let view = self.view {
-//            if let scene = BalanceGameOverScene(fileNamed: "MemoryGameOverScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                scene.score = (sequence.count - 1)
-//                //scene.game_over=game_over
-//                // Present the scene
-//                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
-//                
-//            }
-//        }
-//    }
+       
+    func gameOver() {
+        var scoreText = "Score: " + String(sequence.count - 1)
+        self.hideAndDisableButtons()
+        //self.hideUnhideGameOver(flag: false)
+    }
     
 } // End of MemoryGameVC
