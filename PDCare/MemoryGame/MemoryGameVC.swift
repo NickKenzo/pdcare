@@ -17,6 +17,9 @@ class MemoryGameVC: UIViewController {
     // Holds references to pressable buttons
     var buttons = [UIButton]()
     
+    // Holds buttons for game over event
+    var gameOverButtons = [UIButton]()
+    
     var animateButtonTag = 0
     var colours = [[179.0, 0.0, 0.0], [0.0, 163.0, 204.0],
                    [0.0, 204.0, 102.0], [255.0, 0.0, 0.0],
@@ -72,6 +75,8 @@ class MemoryGameVC: UIViewController {
         
         // Populate pressable buttons array
         buttons = [red, blue, green]
+        
+        gameOverButtons = []
         
         // Add the first button to sequence
         sequence = []
@@ -237,10 +242,41 @@ class MemoryGameVC: UIViewController {
        
     func gameOver() {
         self.hideAndDisableButtons()
+        self.showGameOverLables()
+        self.generateGameOverButtons()
     }
     
-    func generateGameOverInfo() {
-        self.showGameOverLables()
+    func generateGameOverButtons() {
+        // Try again button
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 400, width: 100, height: 50))
+        tryAgainButton.backgroundColor = UIColor.red
+        tryAgainButton.setTitle("Try Again", for: .normal)
+        tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
+        tryAgainButton.tag = 11
+        self.view.addSubview(tryAgainButton)
+        
+        gameOverButtons.append(tryAgainButton)
+        
+        // Quit button
+        let quitButton: UIButton = UIButton(frame: CGRect(x: 210, y: 400, width: 100, height: 50))
+        quitButton.backgroundColor = UIColor.red
+        quitButton.setTitle("Quit", for: .normal)
+        quitButton.addTarget(self, action: #selector(quitAction), for: .touchUpInside)
+        quitButton.tag = 12
+        self.view.addSubview(quitButton)
+        
+        gameOverButtons.append(quitButton)
+    }
+    
+    @objc func tryAgainAction(sender: UIButton!) {
+        while gameOverButtons.count > 0 {
+            gameOverButtons.popLast()?.removeFromSuperview()
+        }
+        self.setUpGame()
+    }
+    
+    @objc func quitAction(sender: UIButton!) {
+        dismiss(animated: true, completion: nil)
     }
     
     func showGameOverLables() {
