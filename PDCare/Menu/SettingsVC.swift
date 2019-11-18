@@ -46,7 +46,7 @@ class SettingsVC: UITableViewController{
             // Create notification content
             let content = UNMutableNotificationContent()
             content.title = NSString.localizedUserNotificationString(forKey: "Play more games!", arguments: nil)
-            content.body = NSString.localizedUserNotificationString(forKey: "You haven't played all three of your PDCare games yet today! Playing more often will help mitigate the symptoms of Parkinsons disease.", arguments: nil)
+            content.body = NSString.localizedUserNotificationString(forKey: "You can do it! Playing more often will help mitigate the symptoms of Parkinsons disease.", arguments: nil)
             
             // Create notification trigger
             var date = DateComponents()
