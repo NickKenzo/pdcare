@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HNn-Nr-Tff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="HNn-Nr-Tff">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,8 +93,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="9lg-2G-Yim">
-                                <rect key="frame" x="92.5" y="145" width="190" height="128"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="9lg-2G-Yim">
+                                <rect key="frame" x="92.5" y="119.5" width="190" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXJ-Fu-meV">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="55"/>
@@ -118,6 +118,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YfG-hT-xMf" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" id="2qH-SI-nLd"/>
+                            <constraint firstItem="9lg-2G-Yim" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" constant="-150" id="Fcj-wK-5ou"/>
                             <constraint firstItem="9lg-2G-Yim" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="HFn-Xa-RcW"/>
                             <constraint firstItem="TpD-1b-Xav" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="Wbr-jM-psh"/>
                             <constraint firstItem="TpD-1b-Xav" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" id="gbV-mR-FP6"/>
