@@ -248,7 +248,7 @@ class MemoryGameVC: UIViewController {
     
     func generateGameOverButtons() {
         // Try again button
-        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 400, width: 100, height: 50))
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 200, height: 150))
         tryAgainButton.backgroundColor = UIColor.red
         tryAgainButton.setTitle("Try Again", for: .normal)
         tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
@@ -258,7 +258,7 @@ class MemoryGameVC: UIViewController {
         gameOverButtons.append(tryAgainButton)
         
         // Quit button
-        let quitButton: UIButton = UIButton(frame: CGRect(x: 210, y: 400, width: 100, height: 50))
+        let quitButton: UIButton = UIButton(frame: CGRect(x: 100, y: 600, width: 200, height: 150))
         quitButton.backgroundColor = UIColor.red
         quitButton.setTitle("Quit", for: .normal)
         quitButton.addTarget(self, action: #selector(quitAction), for: .touchUpInside)
