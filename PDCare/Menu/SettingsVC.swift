@@ -20,15 +20,53 @@ class SettingsVC: UITableViewController{
     @IBOutlet weak var offlineSwitch: UISwitch!
     
     
+    // Set persistent user settings
     let defaults = UserDefaults.standard
        
-    @IBAction func audioSwitch(_ sender: UISwitch) {
+    @IBAction func changeAudioSetting(_ sender: UISwitch) {
         defaults.set(audioSwitch.isOn, forKey: "audio")
     }
-    @IBAction func notificationSwitch(_ sender: UISwitch) {
+    
+    @IBAction func changeNotificationSetting(_ sender: UISwitch) {
         defaults.set(notificationSwitch.isOn, forKey: "notification")
+        let center = UNUserNotificationCenter.current()
+        guard notificationSwitch.isOn else {
+            center.removeAllPendingNotificationRequests()
+            return
+        }
+        center.getNotificationSettings { settings in
+            guard settings.authorizationStatus == .authorized else {
+                center.removeAllPendingNotificationRequests()
+                return
+            }
+            guard settings.alertSetting == .enabled else {
+                return
+            }
+            
+            // Create notification content
+            let content = UNMutableNotificationContent()
+            content.title = NSString.localizedUserNotificationString(forKey: "Play more games!", arguments: nil)
+            content.body = NSString.localizedUserNotificationString(forKey: "You haven't played all three of your PDCare games yet today! Playing more often will help mitigate the symptoms of Parkinsons disease.", arguments: nil)
+            
+            // Create notification trigger
+            var date = DateComponents()
+            date.hour = 2
+            date.minute = 18
+            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
+            
+            // Create the request object
+            let request = UNNotificationRequest(identifier: "GameReminder", content: content, trigger: trigger)
+            
+            // Send the notification request to the OS
+            center.add(request) { (error : Error?) in
+                if let theError = error {
+                    print(theError.localizedDescription)
+                }
+            }
+        }
     }
-    @IBAction func offlineSwitch(_ sender: UISwitch) {
+    
+    @IBAction func changeOfflineSetting(_ sender: UISwitch) {
         defaults.set(offlineSwitch.isOn, forKey: "offline")
     }
     
@@ -42,14 +80,12 @@ class SettingsVC: UITableViewController{
         
         if !(exist(key: "audio")){
             defaults.set(true, forKey: "audio")
-            defaults.set(true, forKey: "notification")
+            defaults.set(false, forKey: "notification")
             defaults.set(false, forKey: "offline")
         }
         audioSwitch.isOn = defaults.bool(forKey: "audio")
         notificationSwitch.isOn = defaults.bool(forKey: "notification")
         offlineSwitch.isOn = defaults.bool(forKey: "offline")
-        
-        
     }
 }
 
