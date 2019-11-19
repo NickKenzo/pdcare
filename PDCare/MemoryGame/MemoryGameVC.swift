@@ -1,10 +1,18 @@
 //
 //  MemoryGameController.swift
 //  SimonSays
+//  CMPT 275 Group 14 "P.D. Caretakers"
 //
 //  Created by nskinner on 10/25/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file handles the view controller for the memory game
+//
+//  Known Bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/MemoryGameVC.swift
 
 import UIKit
 import SpriteKit
