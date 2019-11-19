@@ -5,6 +5,13 @@
 //  Created by ksmolko on 10/28/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This view handles the drawing game view controller. It is currently a placeholder for version 3
+//
+//  Known Bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/DrawingGameVC.swift
 
 import UIKit
 import SpriteKit
@@ -70,23 +77,23 @@ class DrawingGameVC: UIViewController{
 //        layer_2.path = path_2.cgPath
 //        self.view.layer.addSublayer(layer_2)
         
-//        if let view = self.view as! SKView? {
-//            // Load the SKScene from 'DrawingGameScene.sks'
-//            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                //scene.game_over=self
-//
-//                // Present the scene
-//                view.presentScene(scene)
-//            }
-//
-//            view.ignoresSiblingOrder = true
-//
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
-//
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'DrawingGameScene.sks'
+            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                //scene.game_over=self
+
+                // Present the scene
+                view.presentScene(scene)
+            }
+
+            view.ignoresSiblingOrder = true
+
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
