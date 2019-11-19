@@ -5,6 +5,13 @@
 //  Created by ksmolko on 10/28/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This view handles the drawing game view controller. It is currently a placeholder for version 3
+//
+//  Known Bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/DrawingGameVC.swift
 
 import UIKit
 import SpriteKit
