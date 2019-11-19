@@ -5,6 +5,11 @@
 //  Created by Tianhao Li on 11/12/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  Known Bugs: Once the user hits retry, they will be unable to quit the game after
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/BalanceGameOverScene.swift
 
 import Foundation
 

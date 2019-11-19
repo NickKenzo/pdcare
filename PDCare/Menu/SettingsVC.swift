@@ -5,6 +5,13 @@
 //  Created by Daniel Wan on 11/3/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This view contains the settings for our app
+//
+//  Known bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/SettingsVC.swift
 
 import UIKit
 import Foundation
