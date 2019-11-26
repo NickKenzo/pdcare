@@ -1,15 +1,10 @@
 //
-//  BalanceGameOverScene.swift
+//  DrawingGameOverScene.swift
 //  PDCare
 //
-//  Created by Tianhao Li on 11/12/19.
+//  Created by Jacky Lin on 11/18/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
-//  Known Bugs: Once the user hits retry, they will be unable to quit the game after
-//
-//  Change history and authors who worked on this file can
-//  be found in the Git history here:
-//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/BalanceGameOverScene.swift
 
 import Foundation
 
@@ -17,7 +12,7 @@ import SpriteKit
 import CoreMotion
 
 
-class BalanceGameOverScene: SKScene{
+class DrawingGameOverScene: SKScene{
     var quitbutton=SKSpriteNode()
     var retrybutton=SKSpriteNode()
     var scoreDisplay = SKLabelNode()
@@ -38,7 +33,7 @@ class BalanceGameOverScene: SKScene{
     }
     
     func quitPressed() {
-        if let scene = BalanceGameScene(fileNamed: "BalanceGameScene") {
+        if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             
@@ -49,7 +44,7 @@ class BalanceGameOverScene: SKScene{
     }
     
     func retryPressed() {
-        if let scene = BalanceGameScene(fileNamed: "BalanceGameScene") {
+        if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
             

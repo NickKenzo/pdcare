@@ -12,7 +12,11 @@ import SpriteKit
 
 
 
-class DrawingGameVC: UIViewController{
+class DrawingGameVC: UIViewController,GameOverDelegate{
+    func goback() {
+        self.dismiss(animated: true)
+    }
+    
     
     @IBAction func gToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -28,6 +32,8 @@ class DrawingGameVC: UIViewController{
     var brushWidth: CGFloat = 1.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
+    
+    var game_over : GameOverDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,23 +76,23 @@ class DrawingGameVC: UIViewController{
 //        layer_2.path = path_2.cgPath
 //        self.view.layer.addSublayer(layer_2)
         
-//        if let view = self.view as! SKView? {
-//            // Load the SKScene from 'DrawingGameScene.sks'
-//            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                //scene.game_over=self
-//
-//                // Present the scene
-//                view.presentScene(scene)
-//            }
-//
-//            view.ignoresSiblingOrder = true
-//
-//            view.showsFPS = true
-//            view.showsNodeCount = true
-//        }
-//
+        if let view = self.view as! SKView? {
+            // Load the SKScene from 'DrawingGameScene.sks'
+            if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                //scene.game_over=self
+
+                // Present the scene
+                view.presentScene(scene)
+            }
+
+            view.ignoresSiblingOrder = true
+
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,7 +120,7 @@ class DrawingGameVC: UIViewController{
     
     // MARK: - Actions
     
-    @IBAction func resetPressed(_ sender: Any) {
+    @IBAction func resetPressed(_ sender: Any) { //Reset button
         mainImageView.image = nil
     }
     
@@ -176,12 +182,16 @@ class DrawingGameVC: UIViewController{
         drawLine(from: lastPoint, to: currentPoint)
         
         lastPoint = currentPoint
+        //print(currentPoint)
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !swiped {
             // draw a single point
             drawLine(from: lastPoint, to: lastPoint)
+            //gameOver()
+            
         }
         
         // Merge tempImageView into mainImageView
@@ -193,6 +203,20 @@ class DrawingGameVC: UIViewController{
         
         tempImageView.image = nil
     }
+    
+//    func gameOver() {
+//        if let view = self.view {
+//            if let scene = DrawingGame(fileNamed: "DrawingGameVC") {
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//                //scene.score=score
+//                scene.game_over=game_over
+//                // Present the scene
+//                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
+//
+//            }
+//        }
+//    }
 }
 
 // MARK: - SettingsViewControllerDelegate
