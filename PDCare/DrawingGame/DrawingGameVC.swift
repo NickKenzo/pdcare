@@ -5,13 +5,6 @@
 //  Created by ksmolko on 10/28/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
-//  This view handles the drawing game view controller. It is currently a placeholder for version 3
-//
-//  Known Bugs: None
-//
-//  Change history and authors who worked on this file can
-//  be found in the Git history here:
-//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/DrawingGameVC.swift
 
 import UIKit
 import SpriteKit
@@ -19,7 +12,11 @@ import SpriteKit
 
 
 
-class DrawingGameVC: UIViewController{
+class DrawingGameVC: UIViewController,GameOverDelegate{
+    func goback() {
+        self.dismiss(animated: true)
+    }
+    
     
     @IBAction func gToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -35,6 +32,8 @@ class DrawingGameVC: UIViewController{
     var brushWidth: CGFloat = 1.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
+    
+    var game_over : GameOverDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +120,7 @@ class DrawingGameVC: UIViewController{
     
     // MARK: - Actions
     
-    @IBAction func resetPressed(_ sender: Any) {
+    @IBAction func resetPressed(_ sender: Any) { //Reset button
         mainImageView.image = nil
     }
     
@@ -183,12 +182,16 @@ class DrawingGameVC: UIViewController{
         drawLine(from: lastPoint, to: currentPoint)
         
         lastPoint = currentPoint
+        //print(currentPoint)
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !swiped {
             // draw a single point
             drawLine(from: lastPoint, to: lastPoint)
+            //gameOver()
+            
         }
         
         // Merge tempImageView into mainImageView
@@ -200,6 +203,20 @@ class DrawingGameVC: UIViewController{
         
         tempImageView.image = nil
     }
+    
+//    func gameOver() {
+//        if let view = self.view {
+//            if let scene = DrawingGame(fileNamed: "DrawingGameVC") {
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//                //scene.score=score
+//                scene.game_over=game_over
+//                // Present the scene
+//                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
+//
+//            }
+//        }
+//    }
 }
 
 // MARK: - SettingsViewControllerDelegate
