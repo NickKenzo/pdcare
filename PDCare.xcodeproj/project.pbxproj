@@ -20,6 +20,8 @@
 		58100AFA2367A8E80045722B /* BalanceGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AF92367A8E80045722B /* BalanceGameVC.swift */; };
 		58100AFC2367A9030045722B /* BalanceGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AFB2367A9020045722B /* BalanceGameScene.swift */; };
 		58100AFE2367A90D0045722B /* BalanceGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 58100AFD2367A90D0045722B /* BalanceGameScene.sks */; };
+		6F2F72822390A4E200DE10A8 /* Login-SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F2F72812390A4E200DE10A8 /* Login-SignUp.storyboard */; };
+		6F2F72842390A8DD00DE10A8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F72832390A8DD00DE10A8 /* LoginVC.swift */; };
 		6F36A8EC237B3935004D2CFC /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F36A8EA237B3934004D2CFC /* ProfileVC.swift */; };
 		6F36A8ED237B3935004D2CFC /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F36A8EB237B3935004D2CFC /* SettingsVC.swift */; };
 		6F884C4A236CE28A003EB1C2 /* DrawingGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */; };
@@ -71,6 +73,8 @@
 		58100AF92367A8E80045722B /* BalanceGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameVC.swift; sourceTree = "<group>"; };
 		58100AFB2367A9020045722B /* BalanceGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameScene.swift; sourceTree = "<group>"; };
 		58100AFD2367A90D0045722B /* BalanceGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalanceGameScene.sks; sourceTree = "<group>"; };
+		6F2F72812390A4E200DE10A8 /* Login-SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Login-SignUp.storyboard"; sourceTree = "<group>"; };
+		6F2F72832390A8DD00DE10A8 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		6F36A8EA237B3934004D2CFC /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		6F36A8EB237B3935004D2CFC /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		6F884C49236CE28A003EB1C2 /* DrawingGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingGameVC.swift; sourceTree = "<group>"; };
@@ -160,12 +164,14 @@
 		6F2A0EBE237E3145008E3BCC /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				6F2F72812390A4E200DE10A8 /* Login-SignUp.storyboard */,
 				7E793F4C2363963F007B40DF /* Main.storyboard */,
 				52112BE7237EF37900B3515A /* GamesMenu.storyboard */,
 				52112BD7237EF1EB00B3515A /* Scores.storyboard */,
 				52112BDA237EF20500B3515A /* Playlist.storyboard */,
 				52112BD4237EF18E00B3515A /* Settings.storyboard */,
 				52112BD1237EF15C00B3515A /* Profile.storyboard */,
+				6F2F72832390A8DD00DE10A8 /* LoginVC.swift */,
 				7E793F4A2363963F007B40DF /* ViewController.swift */,
 				7E793F7C2363A182007B40DF /* GamesMenuVC.swift */,
 				7E793F7E2363A1A2007B40DF /* ScoresVC.swift */,
@@ -343,6 +349,7 @@
 				52112BE6237EF32800B3515A /* DrawingGame.storyboard in Resources */,
 				7E793F5023639641007B40DF /* Assets.xcassets in Resources */,
 				52112BD3237EF15C00B3515A /* Profile.storyboard in Resources */,
+				6F2F72822390A4E200DE10A8 /* Login-SignUp.storyboard in Resources */,
 				52112BD9237EF1EC00B3515A /* Scores.storyboard in Resources */,
 				6F8EFAF6238CA23300191AAF /* DrawingGameOverScene.sks in Resources */,
 				52112BE9237EF37900B3515A /* GamesMenu.storyboard in Resources */,
@@ -386,6 +393,7 @@
 				6F8EFAF8238CA24000191AAF /* DrawingGameOverScene.swift in Sources */,
 				6F36A8EC237B3935004D2CFC /* ProfileVC.swift in Sources */,
 				7E793F492363963F007B40DF /* AppDelegate.swift in Sources */,
+				6F2F72842390A8DD00DE10A8 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
