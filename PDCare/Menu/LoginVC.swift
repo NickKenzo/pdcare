@@ -27,21 +27,27 @@ class LoginVC: UIViewController {
         performSegue(withIdentifier: "MainMenuSegue", sender: self)     
     }
     
-    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var LoginTitleLabel: UILabel!
+    @IBOutlet weak var LoginSubTitleLabel: UILabel!
+    @IBOutlet weak var SignUpTitleLabel: UILabel!
+    @IBOutlet weak var SignUpSubTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
         
-        let strokeTextAttributes = [
-            NSAttributedString.Key.strokeColor : UIColor.red,
-            NSAttributedString.Key.foregroundColor : UIColor.white,
-            NSAttributedString.Key.strokeWidth : -4.0,
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
-            as [NSAttributedString.Key : Any]
-        //Making outline here
-        TitleLabel.attributedText = NSMutableAttributedString(string: "Welcome to P.D. Care", attributes: strokeTextAttributes)
+        //set color outline
+//        let strokeTextAttributes = [
+//            NSAttributedString.Key.strokeColor : UIColor.white,
+//            NSAttributedString.Key.foregroundColor : UIColor(red: 0, green: 0.78, blue: 1, alpha: 1),
+//            NSAttributedString.Key.strokeWidth : -5,
+//            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
+//            as [NSAttributedString.Key : Any]
+//        LoginTitleLabel?.attributedText = NSMutableAttributedString(string: "Welcome to P.D. Care", attributes: strokeTextAttributes)
+//        LoginSubTitleLabel?.attributedText = NSMutableAttributedString(string: "Sign In", attributes: strokeTextAttributes)
+//        SignUpTitleLabel?.attributedText = NSMutableAttributedString(string: "Lets Get Started", attributes: strokeTextAttributes)
+//        SignUpSubTitleLabel?.attributedText = NSMutableAttributedString(string: "Sign Up Now!", attributes: strokeTextAttributes)
         
         
         
