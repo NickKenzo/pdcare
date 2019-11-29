@@ -78,8 +78,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="openMainMenu:" destination="UJR-JL-DCd" eventType="touchUpInside" id="oWf-9R-Qnr"/>
-                                            <segue destination="Lc7-1h-ia8" kind="show" identifier="MainMenuSegue" id="3Nn-ys-laG"/>
+                                            <action selector="openMainMenuLogin:" destination="UJR-JL-DCd" eventType="touchUpInside" id="u5x-oP-W2b"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRK-S4-lGp">
@@ -102,7 +101,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="a6n-RB-1fF" kind="show" identifier="LoginScreenSegue" id="PEG-UZ-jDC"/>
+                                            <action selector="openSignUpScreen:" destination="UJR-JL-DCd" eventType="touchUpInside" id="EhH-4M-rpb"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -127,8 +126,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="Paw-0P-RqV"/>
                     <connections>
-                        <outlet property="LoginSubTitleLabel" destination="MwQ-JY-SvY" id="Nyj-ez-VYk"/>
-                        <outlet property="LoginTitleLabel" destination="UkU-BX-xd9" id="F3x-6v-VSp"/>
+                        <outlet property="LoginPassword" destination="gEn-cV-onm" id="IIV-Xj-Bx6"/>
+                        <outlet property="LoginUsername" destination="3Vc-zJ-OYA" id="REk-9d-7nX"/>
+                        <segue destination="a6n-RB-1fF" kind="show" identifier="LoginScreenSegue" id="gek-US-mmC"/>
+                        <segue destination="Lc7-1h-ia8" kind="show" identifier="MainMenuSegue" id="GK7-Cc-x2v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPT-hz-xs9" sceneMemberID="firstResponder"/>
@@ -208,8 +209,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="openMainMenu:" destination="a6n-RB-1fF" eventType="touchUpInside" id="aX3-6Q-edm"/>
-                                            <segue destination="Lc7-1h-ia8" kind="show" identifier="MainMenuSegue" id="QNu-bT-tFK"/>
+                                            <action selector="openMainMenuSignUp:" destination="a6n-RB-1fF" eventType="touchUpInside" id="han-lK-8cN"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -235,13 +235,16 @@
                         <viewLayoutGuide key="safeArea" id="6eB-FL-8Ac"/>
                     </view>
                     <connections>
-                        <outlet property="SignUpSubTitleLabel" destination="T6l-oi-YJw" id="vGp-UG-SCY"/>
-                        <outlet property="SignUpTitleLabel" destination="3RD-di-EOc" id="vqK-Fe-tWd"/>
+                        <outlet property="SignUpEmail" destination="KbJ-cZ-4Ko" id="RJh-SZ-p3f"/>
+                        <outlet property="SignUpFirstName" destination="DXr-lq-n6U" id="g4z-eB-eyP"/>
+                        <outlet property="SignUpPassword" destination="mTG-qF-MrG" id="32b-eo-XTs"/>
+                        <outlet property="SignUpUsername" destination="Nji-Xz-IiD" id="qSM-j0-uaA"/>
+                        <segue destination="Lc7-1h-ia8" kind="show" identifier="MainMenuSegue" id="K49-Y1-hFu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y84-0E-76j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="690" y="17"/>
+            <point key="canvasLocation" x="682" y="17"/>
         </scene>
         <!--MainMenu-->
         <scene sceneID="4hg-YA-ovJ">
@@ -249,7 +252,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="Lc7-1h-ia8" userLabel="MainMenu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mm7-sK-sMp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244" y="-45"/>
+            <point key="canvasLocation" x="1241" y="-109"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QOS-V3-fLx">
@@ -272,6 +275,6 @@
         <image name="mainmenu_background" width="375" height="624"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QNu-bT-tFK"/>
+        <segue reference="K49-Y1-hFu"/>
     </inferredMetricsTieBreakers>
 </document>

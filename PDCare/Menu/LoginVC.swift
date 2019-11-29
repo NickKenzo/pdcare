@@ -23,31 +23,32 @@ class LoginVC: UIViewController {
         performSegue(withIdentifier: "LoginScreenSegue", sender: self)
     }
     
-    @IBAction func openMainMenu(_ sender: Any) {
+    @IBAction func openMainMenuLogin(_ sender: Any) {
+        var textLoginUsername = LoginUsername.text
+        var textLoginPassword = LoginPassword.text
         performSegue(withIdentifier: "MainMenuSegue", sender: self)     
     }
     
-    @IBOutlet weak var LoginTitleLabel: UILabel!
-    @IBOutlet weak var LoginSubTitleLabel: UILabel!
-    @IBOutlet weak var SignUpTitleLabel: UILabel!
-    @IBOutlet weak var SignUpSubTitleLabel: UILabel!
+    @IBAction func openMainMenuSignUp(_ sender: Any) {
+        var textSignUpEmail = SignUpEmail.text
+        var textSignUpFirstName = SignUpFirstName.text
+        var textSignUpUsername = SignUpUsername.text
+        var textSignUpPassword = SignUpPassword.text
+        performSegue(withIdentifier: "MainMenuSegue", sender: self)
+    }
+
+    @IBOutlet weak var LoginUsername: UITextField!
+    @IBOutlet weak var LoginPassword: UITextField!
+    @IBOutlet weak var SignUpEmail: UITextField!
+    @IBOutlet weak var SignUpFirstName: UITextField!
+    @IBOutlet weak var SignUpUsername: UITextField!
+    @IBOutlet weak var SignUpPassword: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
-        
-        //set color outline
-//        let strokeTextAttributes = [
-//            NSAttributedString.Key.strokeColor : UIColor.white,
-//            NSAttributedString.Key.foregroundColor : UIColor(red: 0, green: 0.78, blue: 1, alpha: 1),
-//            NSAttributedString.Key.strokeWidth : -5,
-//            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 30)]
-//            as [NSAttributedString.Key : Any]
-//        LoginTitleLabel?.attributedText = NSMutableAttributedString(string: "Welcome to P.D. Care", attributes: strokeTextAttributes)
-//        LoginSubTitleLabel?.attributedText = NSMutableAttributedString(string: "Sign In", attributes: strokeTextAttributes)
-//        SignUpTitleLabel?.attributedText = NSMutableAttributedString(string: "Lets Get Started", attributes: strokeTextAttributes)
-//        SignUpSubTitleLabel?.attributedText = NSMutableAttributedString(string: "Sign Up Now!", attributes: strokeTextAttributes)
         
         
         
