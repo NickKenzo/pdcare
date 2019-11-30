@@ -27,62 +27,33 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
     
+    
+    
+    @IBOutlet weak var doneOutlet: UILabel!
+    @IBOutlet weak var scoreOutlet: UILabel!
+    
     var lastPoint = CGPoint.zero
     var color = UIColor.black
     var brushWidth: CGFloat = 1.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
     
-    var game_over : GameOverDelegate?
+    //var game_over : GameOverDelegate?
+    
+    var gameOverButtons = [UIButton]()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-
-//
-//        let pi = CGFloat(Float.pi)
-//        let start:CGFloat = 2.0
-//        let end :CGFloat = pi
-//
-//        // circlecurve
-//        let path_1: UIBezierPath = UIBezierPath();
-//        path_1.addArc(
-//            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
-//            radius: 60,
-//            startAngle: start,
-//            endAngle: end,
-//            clockwise: true
-//        )
-//        let layer_1 = CAShapeLayer()
-//        layer_1.fillColor = UIColor.clear.cgColor
-//        layer_1.strokeColor = UIColor.black.cgColor // color
-//        layer_1.path = path_1.cgPath
-//        self.view.layer.addSublayer(layer_1)
-//
-//
-//
-//        let path_2: UIBezierPath = UIBezierPath();
-//        path_2.addArc(
-//            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
-//            radius: 80,
-//            startAngle: start,
-//            endAngle: end,
-//            clockwise: true
-//        )
-//        let layer_2 = CAShapeLayer()
-//        layer_2.fillColor = UIColor.clear.cgColor
-//        layer_2.strokeColor = UIColor.black.cgColor // color
-//        layer_2.path = path_2.cgPath
-//        self.view.layer.addSublayer(layer_2)
-        
+              
         if let view = self.view as! SKView? {
+            self.hideGameOverLables()
             // Load the SKScene from 'DrawingGameScene.sks'
             if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                //scene.game_over=self
-
+                
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -94,29 +65,19 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         }
 
     }
+    func setUpGame() {
+        // Disable and hide buttons initially
+        //self.disableAndHideButtons(flag: true)
+        mainImageView.image = nil
+        self.hideGameOverLables()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let navController = segue.destination as? UINavigationController,
-//            let settingsController = navController.topViewController as? DrawingGameSettingVC else {
-//                return
-//        }
-//        settingsController.delegate = self
-//        settingsController.brush = brushWidth
-//        settingsController.opacity = opacity
-//
-//        var red: CGFloat = 0
-//        var green: CGFloat = 0
-//        var blue: CGFloat = 0
-//        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-//        settingsController.red = red
-//        settingsController.green = green
-//        settingsController.blue = blue
-//    }
+
     
     // MARK: - Actions
     
@@ -124,23 +85,7 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         mainImageView.image = nil
     }
     
-//    @IBAction func sharePressed(_ sender: Any) { //for share function
-//        guard let image = mainImageView.image else {
-//            return
-//        }
-//        let activity = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-//        present(activity, animated: true)
-//    }
-    
-//    @IBAction func pencilPressed(_ sender: UIButton) {
-//        guard let pencil = DrawingGamePencil(tag: sender.tag) else {
-//            return
-//        }
-//        color = pencil.color
-//        if pencil == .eraser {
-//            opacity = 1.0
-//        }
-//    }
+
     
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -187,12 +132,12 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !swiped {
+       // if !swiped {
             // draw a single point
             drawLine(from: lastPoint, to: lastPoint)
-            //gameOver()
+            gameOver()
             
-        }
+       // }
         
         // Merge tempImageView into mainImageView
         UIGraphicsBeginImageContext(mainImageView.frame.size)
@@ -204,32 +149,62 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         tempImageView.image = nil
     }
     
-//    func gameOver() {
-//        if let view = self.view {
-//            if let scene = DrawingGame(fileNamed: "DrawingGameVC") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                //scene.score=score
-//                scene.game_over=game_over
-//                // Present the scene
-//                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
+    func gameOver() {
+        //self.hideAndDisableButtons()
+//        if let view = self.view as! SKView? {
+//            let scene =
+//            view.presentScene(scene)
 //
-//            }
 //        }
-//    }
+        self.showGameOverLables()
+        self.generateGameOverButtons()
+        
+    }
+    
+    func generateGameOverButtons() {
+        // Try again button
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 500, width: 100, height: 50))
+        tryAgainButton.backgroundColor = UIColor.red
+        tryAgainButton.setTitle("Try Again", for: .normal)
+        tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
+        tryAgainButton.tag = 11
+        self.view.addSubview(tryAgainButton)
+        
+        gameOverButtons.append(tryAgainButton)
+        
+        // Quit button
+        let quitButton: UIButton = UIButton(frame: CGRect(x: 210, y: 500, width: 100, height: 50))
+        quitButton.backgroundColor = UIColor.red
+        quitButton.setTitle("Quit", for: .normal)
+        quitButton.addTarget(self, action: #selector(quitAction), for: .touchUpInside)
+        quitButton.tag = 12
+        self.view.addSubview(quitButton)
+        
+        gameOverButtons.append(quitButton)
+    }
+    
+    @objc func tryAgainAction(sender: UIButton!) {
+        while gameOverButtons.count > 0 {
+            gameOverButtons.popLast()?.removeFromSuperview()
+        }
+        self.setUpGame()
+    }
+    
+    @objc func quitAction(sender: UIButton!) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func showGameOverLables() {
+        doneOutlet.isHidden = false
+        //scoreOutlet.text = "Score: " + String(sequence.count - 1)
+        scoreOutlet.isHidden = false
+    }
+    
+    func hideGameOverLables() {
+        doneOutlet.isHidden = true
+        scoreOutlet.isHidden = true
+    }
 }
 
-// MARK: - SettingsViewControllerDelegate
 
-//extension DrawingGameVC: SettingsViewControllerDelegate {
-//    func settingsViewControllerFinished(_ settingsViewController: DrawingGameSettingVC) {
-//        brushWidth = settingsViewController.brush
-//        opacity = settingsViewController.opacity
-//        color = UIColor(red: settingsViewController.red,
-//                        green: settingsViewController.green,
-//                        blue: settingsViewController.blue,
-//                        alpha: opacity)
-//        dismiss(animated: true)
-//    }
-    //
 
