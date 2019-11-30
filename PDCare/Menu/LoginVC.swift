@@ -16,6 +16,7 @@
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/LoginVC.swift
 
 import UIKit
+import Foundation
 
 class LoginVC: UIViewController {
 
@@ -24,17 +25,27 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func openMainMenuLogin(_ sender: Any) {
-        var textLoginUsername = LoginUsername.text
-        var textLoginPassword = LoginPassword.text
-        performSegue(withIdentifier: "MainMenuSegue", sender: self)     
+        
+        guard var textLoginUsername = LoginUsername.text else { return }
+        guard var textLoginPassword = LoginPassword.text else { return }
+        
+        if(callLogin(username: textLoginUsername, password: textLoginPassword)){
+            
+            performSegue(withIdentifier: "MainMenuSegue", sender: self)
+        }
     }
     
     @IBAction func openMainMenuSignUp(_ sender: Any) {
-        var textSignUpEmail = SignUpEmail.text
-        var textSignUpFirstName = SignUpFirstName.text
-        var textSignUpUsername = SignUpUsername.text
-        var textSignUpPassword = SignUpPassword.text
-        performSegue(withIdentifier: "MainMenuSegue", sender: self)
+        
+        guard var textSignUpEmail = SignUpEmail.text else { return }
+        guard var textSignUpFirstName = SignUpFirstName.text else { return }
+        guard var textSignUpUsername = SignUpUsername.text else { return }
+        guard var textSignUpPassword = SignUpPassword.text else { return }
+           
+        if(callSignUp(email: textSignUpEmail, firstname: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
+            
+            performSegue(withIdentifier: "MainMenuSegue", sender: self)
+        }
     }
 
     @IBOutlet weak var LoginUsername: UITextField!
@@ -57,8 +68,49 @@ class LoginVC: UIViewController {
     
 }
 
-//Adds UI button color, width, radius attributes to storyboard editor
 
+func callLogin(username: String, password: String) -> Bool {
+        
+    var Success = false
+    let initURL = "http://pdcare14.com/api/login.php?username=pdcareon_admin&password=pdcareadmin&uname=\(username)&upwd=\(password)"
+    let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+
+    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        
+        guard let data = data else { return }
+        
+        //Validating login
+        if String(data: data, encoding: .utf8)!.contains("{") {
+            Success = true
+        }
+    }
+    task.resume()
+    sleep(1) //to make the http request happen before returning
+    return Success
+}
+
+func callSignUp(email: String, firstname: String, username: String, password: String) -> Bool {
+        
+    var Success = false
+    let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstname)&email=\(email)&uname=\(username)&upwd=\(password)"
+    let url = URL(string: initURL)!
+
+    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        
+        guard let data = data else { return }
+        
+        //Validating login
+        if String(data: data, encoding: .utf8)!.contains("There is already a user with that email or username.") == false {
+            Success = true
+        }
+    }
+    task.resume()
+    sleep(1) //to make the http request happen before returning
+    return Success
+}
+
+
+//Adds UI button color, width, radius attributes to storyboard editor
 @IBDesignable extension UIButton {
     
     @IBInspectable var borderWidth: CGFloat {
@@ -92,7 +144,6 @@ class LoginVC: UIViewController {
 }
 
 //dismiss keyboard when tapping anywhere
-
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -104,5 +155,7 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+
 
 
