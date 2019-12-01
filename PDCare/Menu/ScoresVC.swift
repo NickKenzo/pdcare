@@ -14,8 +14,16 @@
 //  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/ScoresVC.swift
 
 import UIKit
+import Charts
 
 class ScoresVC: UIViewController {
+    
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var graphView: LineChartView!
+    
+    // Placeholder values for chart for now
+    var numbers = [0, 0.5, 1, 0.5, 0, 0.5, 1]
+    
     @IBAction func sToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -26,19 +34,25 @@ class ScoresVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateGraph()
     }
     
+    func updateGraph(){
+        var lineChartEntry = [ChartDataEntry]()
+        
+        for i in 0..<numbers.count {
 
-    /*
-    // MARK: - Navigation
+            let value = ChartDataEntry(x: Double(i), y: numbers[i])
+            lineChartEntry.append(value)
+        }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let line1 = LineChartDataSet(entries: lineChartEntry, label: "Game 1")
+        line1.colors = [NSUIColor.blue]
+
+        let data = LineChartData()
+        data.addDataSet(line1)
+
+        graphView.data = data
     }
-    */
 
 }

@@ -12,12 +12,21 @@
         <scene sceneID="HS1-9l-LqV">
             <objects>
                 <viewController id="FjE-cb-fCJ" customClass="ScoresVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zX0-xW-Ah7">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="AE1-Dn-rRO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-1F-qTG" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="459"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="M12-ll-OTd"/>
-                    </view>
+                        <viewLayoutGuide key="safeArea" id="OBC-nQ-OGa"/>
+                        <viewLayoutGuide key="contentLayoutGuide" id="5Nt-lZ-bme"/>
+                        <viewLayoutGuide key="frameLayoutGuide" id="FF6-T7-XzS"/>
+                    </scrollView>
                     <navigationItem key="navigationItem" title="Scores" id="eby-Z0-R3A">
                         <barButtonItem key="rightBarButtonItem" style="done" id="OQV-9s-8by">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7JI-sC-Due">
@@ -32,12 +41,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="graphView" destination="9VE-1F-qTG" id="cD6-Zz-ylJ"/>
+                        <outlet property="scrollView" destination="AE1-Dn-rRO" id="THw-Hf-2xn"/>
                         <segue destination="2Ym-gT-fep" kind="show" identifier="SettingsSegue" id="crJ-G0-NTd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTz-pL-Cg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-154" y="822"/>
+            <point key="canvasLocation" x="-154.40000000000001" y="821.73913043478262"/>
         </scene>
         <!--Settings-->
         <scene sceneID="1FA-jN-HC2">
