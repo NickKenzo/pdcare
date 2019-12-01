@@ -47,12 +47,39 @@ class ScoresVC: UIViewController {
         }
 
         let line1 = LineChartDataSet(entries: lineChartEntry, label: "Game 1")
-        line1.colors = [NSUIColor.blue]
+        line1.lineWidth = 2
+        line1.circleRadius = 5
+        line1.fillAlpha = 1
+        line1.drawFilledEnabled = true
+        line1.fillColor = UIColor(red: 50/255, green: 200/255, blue: 244/255, alpha: 0.25)
+        line1.drawCircleHoleEnabled = false
+        line1.fillFormatter = DefaultFillFormatter { _,_  -> CGFloat in
+            return CGFloat(self.graphView.leftAxis.axisMinimum)
+        }
 
         let data = LineChartData()
         data.addDataSet(line1)
 
         graphView.data = data
+        graphView.drawBordersEnabled = false
+        graphView.pinchZoomEnabled = false
+        
+        let xAxis = graphView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
+        xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
+        xAxis.drawAxisLineEnabled = false
+        xAxis.drawGridLinesEnabled = true
+        xAxis.centerAxisLabelsEnabled = true
+        xAxis.granularity = 3600
+        
+        let yAxis = graphView.leftAxis
+        yAxis.labelPosition = .outsideChart
+        yAxis.labelFont = .systemFont(ofSize: 12, weight: .light)
+        yAxis.drawGridLinesEnabled = true
+        yAxis.granularityEnabled = true
+        yAxis.yOffset = -9
+        yAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
     }
 
 }
