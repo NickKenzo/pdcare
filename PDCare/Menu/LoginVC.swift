@@ -23,7 +23,20 @@ let defaults = UserDefaults.standard
 
 class LoginVC: UIViewController {
     
+    
+    @IBOutlet weak var LoginUsername: UITextField!
+    @IBOutlet weak var LoginPassword: UITextField!
+    @IBOutlet weak var SignUpEmail: UITextField!
+    @IBOutlet weak var SignUpFirstName: UITextField!
+    @IBOutlet weak var SignUpUsername: UITextField!
+    @IBOutlet weak var SignUpPassword: UITextField!
+    @IBOutlet weak var SaveCredentials: UISwitch?
+    
 
+    @IBAction func changeSaveCredentials(_ sender: UISwitch) {
+        defaults.set(SaveCredentials!.isOn, forKey: "saveCredentials")
+    }
+    
     @IBAction func openSignUpScreen(_ sender: Any) {
         performSegue(withIdentifier: "LoginScreenSegue", sender: self)
     }
@@ -51,24 +64,33 @@ class LoginVC: UIViewController {
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
-
-    @IBOutlet weak var LoginUsername: UITextField!
-    @IBOutlet weak var LoginPassword: UITextField!
-    @IBOutlet weak var SignUpEmail: UITextField!
-    @IBOutlet weak var SignUpFirstName: UITextField!
-    @IBOutlet weak var SignUpUsername: UITextField!
-    @IBOutlet weak var SignUpPassword: UITextField!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.hideKeyboardWhenTappedAround()
         
+        SaveCredentials?.transform = CGAffineTransform(scaleX: 2, y: 2)
+        
+        if !(exist(key: "saveCredentials")){
+            defaults.set(false, forKey: "saveCredentials")
+        }
+        SaveCredentials?.isOn = defaults.bool(forKey: "saveCredentials")
         
         
-    }    
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if ((SaveCredentials?.isOn ?? false) && exist(key: "username") && exist(key: "password")){
+            
+            if(callLogin(username: defaults.string(forKey: "username")!, password: defaults.string(forKey: "password")!)){
+
+                performSegue(withIdentifier: "MainMenuSegue", sender: self)
+            }
+        }        
+    }
     
     
 }
