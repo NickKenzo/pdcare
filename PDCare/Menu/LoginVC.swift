@@ -18,10 +18,11 @@
 import UIKit
 import Foundation
 
+// Set persistent user settings
+let defaults = UserDefaults.standard
+
 class LoginVC: UIViewController {
     
-    // Set persistent user settings
-    let defaults = UserDefaults.standard
 
     @IBAction func openSignUpScreen(_ sender: Any) {
         performSegue(withIdentifier: "LoginScreenSegue", sender: self)
@@ -34,7 +35,6 @@ class LoginVC: UIViewController {
         
         if(callLogin(username: textLoginUsername, password: textLoginPassword)){
 
-            defaults.set(textLoginUsername, forKey: "username")
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
@@ -46,9 +46,8 @@ class LoginVC: UIViewController {
         guard let textSignUpUsername = SignUpUsername.text else { return }
         guard let textSignUpPassword = SignUpPassword.text else { return }
            
-        if(callSignUp(email: textSignUpEmail, firstname: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
+        if(callSignUp(email: textSignUpEmail, firstName: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
             
-            defaults.set(textSignUpUsername, forKey: "username")
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
@@ -61,10 +60,11 @@ class LoginVC: UIViewController {
     @IBOutlet weak var SignUpPassword: UITextField!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
         
         
         
@@ -74,6 +74,7 @@ class LoginVC: UIViewController {
 }
 
 
+//API call for Logging in
 func callLogin(username: String, password: String) -> Bool {
         
     var Success = false
@@ -83,9 +84,17 @@ func callLogin(username: String, password: String) -> Bool {
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         
         guard let data = data else { return }
+        let APIdata = String(data: data, encoding: .utf8)!
         
         //Validating login
-        if String(data: data, encoding: .utf8)!.contains("{") {
+        if APIdata.contains("{") {
+            
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"uid\":\"(.+)\",\"name"), forKey: "userID")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"uname\":\"(.+)\",\"upwd"), forKey: "username")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"upwd\":\"(.+)\",\"create"), forKey: "password")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"email\":\"(.+)\",\"uname"), forKey: "email")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"name\":\"(.+)\",\"email"), forKey: "firstName")
+                
             Success = true
         }
     }
@@ -94,10 +103,11 @@ func callLogin(username: String, password: String) -> Bool {
     return Success
 }
 
-func callSignUp(email: String, firstname: String, username: String, password: String) -> Bool {
+//API call for Signing in
+func callSignUp(email: String, firstName: String, username: String, password: String) -> Bool {
         
     var Success = false
-    let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstname)&email=\(email)&uname=\(username)&upwd=\(password)"
+    let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstName)&email=\(email)&uname=\(username)&upwd=\(password)"
     let url = URL(string: initURL)!
 
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
@@ -106,12 +116,28 @@ func callSignUp(email: String, firstname: String, username: String, password: St
         
         //Validating login
         if String(data: data, encoding: .utf8)!.contains("There is already a user with that email or username.") == false {
+            
+            defaults.set(username, forKey: "username")
+            defaults.set(password, forKey: "password")
+            defaults.set(email, forKey: "email")
+            defaults.set(firstName, forKey: "firstName")
+            
             Success = true
         }
     }
     task.resume()
     sleep(1) //to make the http request happen before returning
     return Success
+}
+
+//String Parse
+func GrabUserData(userData: String, inputRegex: String) -> String {
+
+    let regex = try! NSRegularExpression(pattern: inputRegex)
+    let result = regex.matches(in:userData, range:NSMakeRange(0, userData.utf16.count))
+    let range = result[0].range(at: 1)
+    let output = (userData as NSString).substring(with: range)
+    return output
 }
 
 
@@ -148,26 +174,18 @@ func callSignUp(email: String, firstname: String, username: String, password: St
     }
 }
 
-//extension String
-//{
-//    func hashtags() -> [String]
-//    {
-//          
-//    }
-//}
-
 //dismiss keyboard when tapping anywhere
-//extension UIViewController {
-//    func hideKeyboardWhenTappedAround() {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
-//    }
-//
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-//}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 
 
