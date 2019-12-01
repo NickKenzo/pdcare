@@ -17,8 +17,6 @@
 		52112BE3237EF2E300B3515A /* MemoryGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52112BE2237EF2E300B3515A /* MemoryGame.storyboard */; };
 		52112BE6237EF32800B3515A /* DrawingGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52112BE4237EF32800B3515A /* DrawingGame.storyboard */; };
 		52112BE9237EF37900B3515A /* GamesMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52112BE7237EF37900B3515A /* GamesMenu.storyboard */; };
-		52112C062391F5AD00B3515A /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52112C022391F5A500B3515A /* ResearchKit.framework */; };
-		52112C072391F5AD00B3515A /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 52112C022391F5A500B3515A /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58100AFA2367A8E80045722B /* BalanceGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AF92367A8E80045722B /* BalanceGameVC.swift */; };
 		58100AFC2367A9030045722B /* BalanceGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58100AFB2367A9020045722B /* BalanceGameScene.swift */; };
 		58100AFE2367A90D0045722B /* BalanceGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 58100AFD2367A90D0045722B /* BalanceGameScene.sks */; };
@@ -45,20 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		52112C012391F5A500B3515A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52112BFB2391F5A500B3515A /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		52112C032391F5A500B3515A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 52112BFB2391F5A500B3515A /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
 		7E793F5A23639641007B40DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E793F3D2363963F007B40DF /* Project object */;
@@ -75,20 +59,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		52112C082391F5AE00B3515A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				52112C072391F5AD00B3515A /* ResearchKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		2063EDBC2363B73D0078FED5 /* MemoryGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryGameVC.swift; sourceTree = "<group>"; };
 		3F27D58A237B5CCC009E65CD /* BalanceGameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceGameOverScene.swift; sourceTree = "<group>"; };
@@ -100,7 +70,6 @@
 		52112BE2237EF2E300B3515A /* MemoryGame.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemoryGame.storyboard; sourceTree = "<group>"; };
 		52112BE5237EF32800B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/DrawingGame.storyboard; sourceTree = "<group>"; };
 		52112BE8237EF37900B3515A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = PDCare/Base.lproj/GamesMenu.storyboard; sourceTree = "<group>"; };
-		52112BFB2391F5A500B3515A /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../Downloads/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		58100AF92367A8E80045722B /* BalanceGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameVC.swift; sourceTree = "<group>"; };
 		58100AFB2367A9020045722B /* BalanceGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceGameScene.swift; sourceTree = "<group>"; };
 		58100AFD2367A90D0045722B /* BalanceGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BalanceGameScene.sks; sourceTree = "<group>"; };
@@ -137,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52112C062391F5AD00B3515A /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,22 +126,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		52112BFC2391F5A500B3515A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				52112C022391F5A500B3515A /* ResearchKit.framework */,
-				52112C042391F5A500B3515A /* ResearchKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		52112C052391F5AD00B3515A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		6F2A0EBB237E30DF008E3BCC /* BalanceGame */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,12 +185,10 @@
 		7E793F3C2363963F007B40DF = {
 			isa = PBXGroup;
 			children = (
-				52112BFB2391F5A500B3515A /* ResearchKit.xcodeproj */,
 				7E793F472363963F007B40DF /* PDCare */,
 				7E793F5C23639641007B40DF /* PDCareTests */,
 				7E793F6723639641007B40DF /* PDCareUITests */,
 				7E793F462363963F007B40DF /* Products */,
-				52112C052391F5AD00B3515A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,7 +245,6 @@
 				7E793F412363963F007B40DF /* Sources */,
 				7E793F422363963F007B40DF /* Frameworks */,
 				7E793F432363963F007B40DF /* Resources */,
-				52112C082391F5AE00B3515A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -376,12 +325,6 @@
 			mainGroup = 7E793F3C2363963F007B40DF;
 			productRefGroup = 7E793F462363963F007B40DF /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 52112BFC2391F5A500B3515A /* Products */;
-					ProjectRef = 52112BFB2391F5A500B3515A /* ResearchKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				7E793F442363963F007B40DF /* PDCare */,
@@ -390,23 +333,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		52112C022391F5A500B3515A /* ResearchKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ResearchKit.framework;
-			remoteRef = 52112C012391F5A500B3515A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		52112C042391F5A500B3515A /* ResearchKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ResearchKitTests.xctest;
-			remoteRef = 52112C032391F5A500B3515A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7E793F432363963F007B40DF /* Resources */ = {
