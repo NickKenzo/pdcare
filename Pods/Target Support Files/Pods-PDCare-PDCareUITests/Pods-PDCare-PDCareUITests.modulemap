@@ -1,0 +1,6 @@
+framework module Pods_PDCare_PDCareUITests {
+  umbrella header "Pods-PDCare-PDCareUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
