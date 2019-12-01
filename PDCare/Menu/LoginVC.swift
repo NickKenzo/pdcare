@@ -19,6 +19,9 @@ import UIKit
 import Foundation
 
 class LoginVC: UIViewController {
+    
+    // Set persistent user settings
+    let defaults = UserDefaults.standard
 
     @IBAction func openSignUpScreen(_ sender: Any) {
         performSegue(withIdentifier: "LoginScreenSegue", sender: self)
@@ -26,24 +29,26 @@ class LoginVC: UIViewController {
     
     @IBAction func openMainMenuLogin(_ sender: Any) {
         
-        guard var textLoginUsername = LoginUsername.text else { return }
-        guard var textLoginPassword = LoginPassword.text else { return }
+        guard let textLoginUsername = LoginUsername.text else { return }
+        guard let textLoginPassword = LoginPassword.text else { return }
         
         if(callLogin(username: textLoginUsername, password: textLoginPassword)){
-            
+
+            defaults.set(textLoginUsername, forKey: "username")
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
     
     @IBAction func openMainMenuSignUp(_ sender: Any) {
         
-        guard var textSignUpEmail = SignUpEmail.text else { return }
-        guard var textSignUpFirstName = SignUpFirstName.text else { return }
-        guard var textSignUpUsername = SignUpUsername.text else { return }
-        guard var textSignUpPassword = SignUpPassword.text else { return }
+        guard let textSignUpEmail = SignUpEmail.text else { return }
+        guard let textSignUpFirstName = SignUpFirstName.text else { return }
+        guard let textSignUpUsername = SignUpUsername.text else { return }
+        guard let textSignUpPassword = SignUpPassword.text else { return }
            
         if(callSignUp(email: textSignUpEmail, firstname: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
             
+            defaults.set(textSignUpUsername, forKey: "username")
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
@@ -59,7 +64,7 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboardWhenTappedAround()
+//        self.hideKeyboardWhenTappedAround()
         
         
         
@@ -143,18 +148,26 @@ func callSignUp(email: String, firstname: String, username: String, password: St
     }
 }
 
+//extension String
+//{
+//    func hashtags() -> [String]
+//    {
+//          
+//    }
+//}
+
 //dismiss keyboard when tapping anywhere
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
+//extension UIViewController {
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//}
 
 
 
