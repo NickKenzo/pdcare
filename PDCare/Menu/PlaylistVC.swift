@@ -25,8 +25,38 @@ class PlaylistVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mainPlaylistFunc()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    func mainPlaylistFunc() {
+        let session = URLSession.shared
+        let urlGame1 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=russel&game=1")!
+        let urlGame2 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=russel&game=2")!
+        let urlGame3 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=russel&game=3")!
+        let games = [urlGame1, urlGame2, urlGame3]
+        
+        var scoreArr = [[Int]]()
+        var tmpArr = [Int]()
+        
+        let task = session.dataTask(with: urlGame1, completionHandler: { data, response, error in
+                do {
+                    let jsonArr = try JSONSerialization.jsonObject(with: data!, options: []) as! [[String: Any]]
+                    for dic in jsonArr {
+                        for (key, val) in dic {
+                            if key == "score" {
+                                tmpArr.append((val as! NSString).integerValue)
+                            }
+                        }
+                    }
+                    print(tmpArr)
+
+
+                } catch {
+                    print("JSON error: \(error.localizedDescription)")
+                }
+        })
+        task.resume()
     }
     
 
