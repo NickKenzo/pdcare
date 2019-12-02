@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aec-eY-3k7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aec-eY-3k7">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,14 +15,110 @@
                     <view key="view" contentMode="scaleToFill" id="dNc-sb-RX5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4bj-mE-LnC">
+                                <rect key="frame" x="50" y="20" width="275" height="513.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p3A-1N-h2L">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fNC-bP-fzH">
+                                        <rect key="frame" x="0.0" y="58" width="275" height="72"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="mdb-c7-3sT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6b-1o-Bde">
+                                        <rect key="frame" x="0.0" y="140" width="275" height="71.5"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Update Password Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Th1-hl-Gbo">
+                                        <rect key="frame" x="0.0" y="221.5" width="275" height="72"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba2-Bz-dCf">
+                                        <rect key="frame" x="0.0" y="303.5" width="275" height="100"/>
+                                        <color key="backgroundColor" red="0.0" green="0.77293729782104492" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="yoh-Di-hdX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Save Edits">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="SaveEdit:" destination="aec-eY-3k7" eventType="touchUpInside" id="Lev-4P-pWl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ij7-g8-7ZP">
+                                        <rect key="frame" x="0.0" y="413.5" width="275" height="100"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Sign out">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="SignOut:" destination="aec-eY-3k7" eventType="touchUpInside" id="5aZ-Xz-NAA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ij7-g8-7ZP" firstAttribute="height" secondItem="ba2-Bz-dCf" secondAttribute="height" id="7uw-Xl-zTf"/>
+                                    <constraint firstItem="Th1-hl-Gbo" firstAttribute="height" secondItem="fNC-bP-fzH" secondAttribute="height" id="Q21-nZ-wzv"/>
+                                    <constraint firstItem="L6b-1o-Bde" firstAttribute="height" secondItem="fNC-bP-fzH" secondAttribute="height" id="hUe-Qm-yPI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="feR-8O-mCj" firstAttribute="trailing" secondItem="4bj-mE-LnC" secondAttribute="trailing" constant="50" id="RRh-Dv-vo6"/>
+                            <constraint firstItem="4bj-mE-LnC" firstAttribute="bottom" secondItem="feR-8O-mCj" secondAttribute="centerY" constant="200" id="eP0-cw-kon"/>
+                            <constraint firstItem="4bj-mE-LnC" firstAttribute="top" secondItem="feR-8O-mCj" secondAttribute="top" constant="20" id="mA7-ps-s7j"/>
+                            <constraint firstItem="4bj-mE-LnC" firstAttribute="leading" secondItem="feR-8O-mCj" secondAttribute="leading" constant="50" id="vRN-it-Wzg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="feR-8O-mCj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="9GU-so-tTb"/>
+                    <connections>
+                        <outlet property="UpdateEmail" destination="fNC-bP-fzH" id="zQt-5Y-6dh"/>
+                        <outlet property="UpdatePassword" destination="Th1-hl-Gbo" id="AR3-QX-4Yi"/>
+                        <outlet property="UpdateUsername" destination="L6b-1o-Bde" id="94r-Or-qaE"/>
+                        <segue destination="xyv-N3-oLb" kind="show" identifier="returnToLogin" id="NgH-WD-pHA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TT9-34-NE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1423" y="822"/>
+        </scene>
+        <!--Login-SignUp-->
+        <scene sceneID="3IC-Nz-Ak6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login-SignUp" id="xyv-N3-oLb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="u9T-e9-sCK"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Psx-Gh-u1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2118" y="821"/>
         </scene>
     </scenes>
 </document>
