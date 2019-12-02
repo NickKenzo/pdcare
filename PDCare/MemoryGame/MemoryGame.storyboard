@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hD8-xg-9B0" userLabel="memorybackground">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="TpD-1b-Xav">
                                 <rect key="frame" x="127.5" y="103.5" width="120" height="460"/>
                                 <subviews>
@@ -97,8 +100,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YfG-hT-xMf" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" id="2qH-SI-nLd"/>
+                            <constraint firstItem="hD8-xg-9B0" firstAttribute="bottom" secondItem="51i-g6-YHp" secondAttribute="bottom" id="Plw-XP-twQ"/>
+                            <constraint firstItem="hD8-xg-9B0" firstAttribute="trailing" secondItem="51i-g6-YHp" secondAttribute="trailing" id="Qhg-Es-0AJ"/>
                             <constraint firstItem="TpD-1b-Xav" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="Wbr-jM-psh"/>
                             <constraint firstItem="TpD-1b-Xav" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" id="gbV-mR-FP6"/>
+                            <constraint firstItem="hD8-xg-9B0" firstAttribute="leading" secondItem="51i-g6-YHp" secondAttribute="leading" id="kWu-ZN-wmS"/>
+                            <constraint firstItem="hD8-xg-9B0" firstAttribute="top" secondItem="51i-g6-YHp" secondAttribute="top" id="yl6-1P-mC7"/>
                             <constraint firstItem="YfG-hT-xMf" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="yo9-pl-ebw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="51i-g6-YHp"/>
@@ -108,6 +115,7 @@
                         <outlet property="StartCounter" destination="YfG-hT-xMf" id="WSc-8d-qtM"/>
                         <outlet property="blue" destination="hpc-kF-LOW" id="tf5-6V-UoN"/>
                         <outlet property="green" destination="FLC-Ok-j7y" id="Ls9-SD-Fip"/>
+                        <outlet property="memorybackgroundUIView" destination="hD8-xg-9B0" id="C6q-hd-pFZ"/>
                         <outlet property="red" destination="Vt3-m8-tXL" id="z8j-S6-GYm"/>
                     </connections>
                 </viewController>
