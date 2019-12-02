@@ -15,20 +15,22 @@
 import UIKit
 
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIViewController, UITextFieldDelegate {
+    
     @IBAction func sToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBOutlet weak var UpdateEmail: UITextField!
     @IBOutlet weak var UpdateUsername: UITextField!
-    @IBOutlet weak var UpdatePassword: UITextField!
-    
+    @IBOutlet weak var UpdatePassword: UITextField!    
+    @IBOutlet weak var UpdateSuccessful: UILabel!
     
     @IBAction func SaveEdit(_ sender: UIButton) {
         
         guard let textPassword = UpdatePassword.text else { return }
         
+        UpdateSuccessful.isHidden = false
         updateUserDetails(userID: defaults.string(forKey: "userID")!, email: defaults.string(forKey: "email")!, username: defaults.string(forKey: "username")!, password: textPassword)
     }
     
@@ -41,8 +43,27 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         
         setUserID(username: defaults.string(forKey: "username")!, password: defaults.string(forKey: "password")!)
+        UpdateEmail.text = defaults.string(forKey: "email")!
+        UpdateUsername.text = defaults.string(forKey: "username")!
+        UpdateSuccessful.isHidden = true
+        
+        self.hideKeyboardWhenTappedAround()
+        self.UpdatePassword?.delegate = self
         
         // Do any additional setup after loading the view.
+    }
+    
+    //Set allowed characters for textfields
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.-_")
+        return allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+    
+    //Closes keyboard when return is tapped
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 
