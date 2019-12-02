@@ -15,6 +15,7 @@
 
 import UIKit
 import Foundation
+import UserNotifications
 
 class SettingsVC: UITableViewController{
     
