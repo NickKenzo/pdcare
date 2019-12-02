@@ -58,6 +58,18 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
         goal[0] = self.childNode(withName: "goal0") as! SKSpriteNode
         map[1] = self.childNode(withName: "map1") as! SKSpriteNode
         goal[1] = self.childNode(withName: "goal1") as! SKSpriteNode
+        map[2] = self.childNode(withName: "map2") as! SKSpriteNode
+        goal[2] = self.childNode(withName: "goal2") as! SKSpriteNode
+        map[3] = self.childNode(withName: "map3") as! SKSpriteNode
+        goal[3] = self.childNode(withName: "goal3") as! SKSpriteNode
+        map[4] = self.childNode(withName: "map4") as! SKSpriteNode
+        goal[4] = self.childNode(withName: "goal4") as! SKSpriteNode
+        map[5] = self.childNode(withName: "map5") as! SKSpriteNode
+        goal[5] = self.childNode(withName: "goal5") as! SKSpriteNode
+        map[6] = self.childNode(withName: "map6") as! SKSpriteNode
+        goal[6] = self.childNode(withName: "goal6") as! SKSpriteNode
+        map[7] = self.childNode(withName: "map7") as! SKSpriteNode
+        goal[7] = self.childNode(withName: "goal7") as! SKSpriteNode
         
         for i in 1...map.count {
             if i != mapNum + 1 {
