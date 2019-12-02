@@ -12,86 +12,79 @@ import SpriteKit
 
 
 
-class DrawingGameVC: UIViewController,GameOverDelegate{
-    func goback() {
-        self.dismiss(animated: true)
-    }
+class DrawingGameVC: UIViewController{
+//    func goback() {
+//        self.dismiss(animated: true)
+//    }
     
     
-    @IBAction func gToMainMenu(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func gToMainMenu(_ sender: Any) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
 
+    @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    
+    
+    @IBOutlet weak var doneOutlet: UILabel!
+    @IBOutlet weak var scoreOutlet: UILabel!
     
     var lastPoint = CGPoint.zero
     var color = UIColor.black
-    var brushWidth: CGFloat = 1.0   //thickness of the drawn lines
+    var brushWidth: CGFloat = 20.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
+    var stoped = false
+    var score:CGFloat = 0.0
+    var map = 0
+    var nextMap = 0
+    //var mapNum = 0
     
-    var game_over : GameOverDelegate?
+    var gameOverButtons = [UIButton]()
+    
+//    var tryAgain = false
+//    var nextGame = false
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
-//
-//        let pi = CGFloat(Float.pi)
-//        let start:CGFloat = 2.0
-//        let end :CGFloat = pi
-//
-//        // circlecurve
-//        let path_1: UIBezierPath = UIBezierPath();
-//        path_1.addArc(
-//            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
-//            radius: 60,
-//            startAngle: start,
-//            endAngle: end,
-//            clockwise: true
-//        )
-//        let layer_1 = CAShapeLayer()
-//        layer_1.fillColor = UIColor.clear.cgColor
-//        layer_1.strokeColor = UIColor.black.cgColor // color
-//        layer_1.path = path_1.cgPath
-//        self.view.layer.addSublayer(layer_1)
-//
-//
-//
-//        let path_2: UIBezierPath = UIBezierPath();
-//        path_2.addArc(
-//            withCenter: CGPoint(x:self.view.frame.width/2, y:self.view.frame.height/2),//centre of screen
-//            radius: 80,
-//            startAngle: start,
-//            endAngle: end,
-//            clockwise: true
-//        )
-//        let layer_2 = CAShapeLayer()
-//        layer_2.fillColor = UIColor.clear.cgColor
-//        layer_2.strokeColor = UIColor.black.cgColor // color
-//        layer_2.path = path_2.cgPath
-//        self.view.layer.addSublayer(layer_2)
-        
+        mainImageView.image = nil
+        backgroundImageView.image=UIImage(named:"drawgamebackground.png")
+        stoped=false
+              
         if let view = self.view as! SKView? {
+            self.hideGameOverLables()
             // Load the SKScene from 'DrawingGameScene.sks'
             if let scene = DrawingGameScene(fileNamed: "DrawingGameScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                //scene.game_over=self
-
+                
                 // Present the scene
                 view.presentScene(scene)
-            }
 
+         
+            }
+//            tryAgain = false
+//            nextGame = false
             view.ignoresSiblingOrder = true
 
             view.showsFPS = true
             view.showsNodeCount = true
         }
+
+    }
+    func setUpGame() {
+        stoped=false
+        self.hideGameOverLables()
+        self.viewDidLoad()
+        self.score = 0.0
 
     }
     
@@ -100,23 +93,7 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let navController = segue.destination as? UINavigationController,
-//            let settingsController = navController.topViewController as? DrawingGameSettingVC else {
-//                return
-//        }
-//        settingsController.delegate = self
-//        settingsController.brush = brushWidth
-//        settingsController.opacity = opacity
-//
-//        var red: CGFloat = 0
-//        var green: CGFloat = 0
-//        var blue: CGFloat = 0
-//        color.getRed(&red, green: &green, blue: &blue, alpha: nil)
-//        settingsController.red = red
-//        settingsController.green = green
-//        settingsController.blue = blue
-//    }
+
     
     // MARK: - Actions
     
@@ -124,23 +101,7 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         mainImageView.image = nil
     }
     
-//    @IBAction func sharePressed(_ sender: Any) { //for share function
-//        guard let image = mainImageView.image else {
-//            return
-//        }
-//        let activity = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-//        present(activity, animated: true)
-//    }
-    
-//    @IBAction func pencilPressed(_ sender: UIButton) {
-//        guard let pencil = DrawingGamePencil(tag: sender.tag) else {
-//            return
-//        }
-//        color = pencil.color
-//        if pencil == .eraser {
-//            opacity = 1.0
-//        }
-//    }
+
     
     func drawLine(from fromPoint: CGPoint, to toPoint: CGPoint) {
         UIGraphicsBeginImageContext(view.frame.size)
@@ -166,6 +127,9 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if stoped{
+            return
+            }
         guard let touch = touches.first else {
             return
         }
@@ -174,6 +138,9 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if stoped{
+            return
+        }
         guard let touch = touches.first else {
             return
         }
@@ -182,17 +149,49 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         drawLine(from: lastPoint, to: currentPoint)
         
         lastPoint = currentPoint
-        //print(currentPoint)
+        
+        
+        if self.map == 0 {
+            for i in 0...(mapZeroXValue.count-1){
+                //print(expectedXValue[i])
+                if Double(currentPoint.x) == mapZeroXValue[i]{
+                    if Double(currentPoint.y) == mapZeroYValue[i]{
+                        self.score += 10
+                    }
+                    self.score += 5
+                
+                }
+            }
+        //score = score / 2280
+        
+        }
+        if self.map == 1 {
+            for i in 0...(mapOneXValue.count-1){
+                //print(expectedXValue[i])
+                if Double(currentPoint.x) == mapOneXValue[i]{
+                    if Double(currentPoint.y) == mapOneYValue[i]{
+                        self.score += 10
+                    }
+                    self.score += 5
+
+                }
+            }
+        }
+        
+        
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !swiped {
+       // if !swiped {
+        if stoped{
+               return
+        }
             // draw a single point
             drawLine(from: lastPoint, to: lastPoint)
-            //gameOver()
+            gameOver()
             
-        }
+       // }
         
         // Merge tempImageView into mainImageView
         UIGraphicsBeginImageContext(mainImageView.frame.size)
@@ -204,32 +203,69 @@ class DrawingGameVC: UIViewController,GameOverDelegate{
         tempImageView.image = nil
     }
     
-//    func gameOver() {
-//        if let view = self.view {
-//            if let scene = DrawingGame(fileNamed: "DrawingGameVC") {
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                //scene.score=score
-//                scene.game_over=game_over
-//                // Present the scene
-//                view.presentScene(scene, transition: SKTransition.crossFade(withDuration: 1))
-//
-//            }
-//        }
-//    }
+    func gameOver() {
+
+        self.showGameOverLables()
+        self.generateGameOverButtons()
+        //containerView.isHidden = false
+        drawingMap[0].isHidden = true
+        drawingMap[1].isHidden = true
+        tempImageView.image = nil
+        backgroundImageView.image=nil
+        stoped=true
+        
+    }
+    
+    func generateGameOverButtons() {
+        
+        // Next button
+        let nextButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 120))
+        //nextButton.backgroundColor = UIColor.red
+        nextButton.setImage(UIImage(named:"nextbutton.png"), for: .normal)
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
+        nextButton.tag = 12
+        self.view.addSubview(nextButton)
+        
+        gameOverButtons.append(nextButton)
+    }
+    
+    @objc func tryAgainAction(sender: UIButton!) {
+        while gameOverButtons.count > 0 {
+            gameOverButtons.popLast()?.removeFromSuperview()
+        }
+        //tryAgain = true
+        self.setUpGame()
+    }
+    
+    @objc func nextAction(sender: UIButton!) {
+
+        while gameOverButtons.count > 0 {
+            gameOverButtons.popLast()?.removeFromSuperview()
+        }
+        //nextGame = true
+        self.setUpGame()
+    }
+    
+    func showGameOverLables() {
+        doneOutlet.isHidden = false
+        scoreOutlet.text = "Score: " + String(Int(score))
+        scoreOutlet.isHidden = false
+    }
+    
+    func hideGameOverLables() {
+        doneOutlet.isHidden = true
+        scoreOutlet.isHidden = true
+    }
 }
 
-// MARK: - SettingsViewControllerDelegate
+//map 0
+var mapZeroXValue = [209.0, 206.3333282470703, 205.66665649414062, 204.66665649414062, 204.3333282470703, 203.0, 202.66665649414062, 202.0, 201.0, 200.3333282470703, 199.0, 199.0, 198.0, 197.0, 196.66665649414062, 196.0, 195.0, 194.3333282470703, 194.0, 193.3333282470703, 192.66665649414062, 192.66665649414062, 192.3333282470703, 191.66665649414062, 191.66665649414062, 191.0, 191.0, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.66665649414062, 191.3333282470703, 191.3333282470703, 191.3333282470703, 191.66665649414062, 191.66665649414062, 192.3333282470703, 192.3333282470703, 192.66665649414062, 192.66665649414062, 193.3333282470703, 194.0, 194.66665649414062, 194.66665649414062, 195.0, 195.66665649414062, 195.66665649414062, 195.66665649414062, 196.0, 196.66665649414062, 197.0, 197.66665649414062, 198.3333282470703, 199.3333282470703, 200.3333282470703, 200.66665649414062, 202.0, 202.3333282470703, 203.3333282470703, 204.3333282470703, 205.0, 205.66665649414062, 206.0, 206.66665649414062, 207.0, 208.0, 208.66665649414062, 209.3333282470703, 210.3333282470703, 210.66665649414062, 211.3333282470703, 212.3333282470703, 213.0, 213.3333282470703, 214.0, 214.0, 215.0, 215.0, 216.0, 216.66665649414062, 217.3333282470703, 218.0, 218.66665649414062, 220.0, 221.0, 221.0, 221.3333282470703, 222.0, 222.0, 222.3333282470703, 223.0, 223.66665649414062, 223.66665649414062, 224.0, 224.0, 224.66665649414062, 225.0, 225.0, 225.0, 225.66665649414062, 225.66665649414062, 226.0, 226.0, 226.0, 226.0, 226.0, 226.0, 226.0, 226.0, 226.0, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.0, 224.3333282470703, 223.66665649414062, 222.3333282470703, 221.66665649414062, 219.66665649414062, 218.3333282470703, 217.0, 215.66665649414062, 215.66665649414062, 214.0, 213.3333282470703, 213.0, 212.3333282470703, 211.3333282470703, 210.3333282470703, 208.66665649414062, 207.66665649414062, 207.0, 205.66665649414062, 204.3333282470703, 203.3333282470703, 203.0, 202.3333282470703, 201.66665649414062, 201.66665649414062, 201.3333282470703]
 
-//extension DrawingGameVC: SettingsViewControllerDelegate {
-//    func settingsViewControllerFinished(_ settingsViewController: DrawingGameSettingVC) {
-//        brushWidth = settingsViewController.brush
-//        opacity = settingsViewController.opacity
-//        color = UIColor(red: settingsViewController.red,
-//                        green: settingsViewController.green,
-//                        blue: settingsViewController.blue,
-//                        alpha: opacity)
-//        dismiss(animated: true)
-//    }
-    //
+var mapZeroYValue = [357.6666564941406, 359.6666564941406, 360.0, 360.6666564941406, 361.3333282470703, 362.6666564941406, 363.6666564941406, 364.3333282470703, 366.0, 367.0, 369.6666564941406, 371.0, 372.6666564941406, 374.0, 375.6666564941406, 377.6666564941406, 380.0, 381.0, 382.6666564941406, 383.6666564941406, 385.0, 386.3333282470703, 387.6666564941406, 389.6666564941406, 390.6666564941406, 392.3333282470703, 393.3333282470703, 394.6666564941406, 396.0, 397.0, 398.0, 399.0, 400.0, 401.0, 403.0, 404.6666564941406, 406.0, 407.0, 408.6666564941406, 410.0, 411.0, 413.3333282470703, 415.3333282470703, 418.6666564941406, 419.6666564941406, 420.6666564941406, 423.0, 424.0, 425.6666564941406, 426.6666564941406, 427.6666564941406, 430.0, 432.0, 433.6666564941406, 435.3333282470703, 436.3333282470703, 437.6666564941406, 438.0, 438.6666564941406, 439.0, 439.6666564941406, 440.0, 440.6666564941406, 441.6666564941406, 442.6666564941406, 444.3333282470703, 444.6666564941406, 446.0, 446.3333282470703, 448.0, 449.0, 450.0, 451.0, 452.0, 452.6666564941406, 453.6666564941406, 454.6666564941406, 455.6666564941406, 456.3333282470703, 458.0, 459.0, 460.0, 461.6666564941406, 462.6666564941406, 463.0, 464.3333282470703, 464.6666564941406, 465.6666564941406, 466.6666564941406, 469.3333282470703, 470.3333282470703, 473.0, 475.6666564941406, 479.6666564941406, 482.3333282470703, 484.6666564941406, 485.6666564941406, 487.3333282470703, 487.6666564941406, 489.0, 490.0, 490.3333282470703, 491.3333282470703, 492.6666564941406, 494.0, 495.0, 496.6666564941406, 497.6666564941406, 498.6666564941406, 499.6666564941406, 501.0, 502.6666564941406, 504.3333282470703, 505.0, 506.3333282470703, 507.0, 508.0, 510.3333282470703, 513.0, 514.6666564941406, 515.6666564941406, 518.0, 521.3333282470703, 523.0, 525.6666564941406, 527.6666564941406, 530.6666564941406, 532.6666564941406, 536.0, 539.6666564941406, 543.6666564941406, 547.3333282470703, 550.0, 551.6666564941406, 552.6666564941406, 555.3333282470703, 556.0, 557.0, 557.3333282470703, 557.3333282470703, 558.6666564941406, 559.6666564941406, 560.6666564941406, 561.0, 562.3333282470703, 563.3333282470703, 563.6666564941406, 564.6666564941406, 565.3333282470703, 565.3333282470703, 566.0, 566.3333282470703]
 
+
+//map 1
+var mapOneXValue = [193.3333282470703, 193.0, 192.3333282470703, 191.66665649414062, 191.3333282470703, 190.66665649414062, 190.66665649414062, 190.66665649414062, 190.3333282470703, 189.0, 189.0, 188.66665649414062, 188.0, 188.0, 188.0, 187.66665649414062, 187.0, 187.0, 186.66665649414062, 186.0, 186.0, 186.0, 185.3333282470703, 185.3333282470703, 185.0, 185.0, 185.0, 185.0, 185.0, 184.3333282470703, 184.3333282470703, 184.3333282470703, 184.0, 184.0, 183.3333282470703, 183.3333282470703, 183.3333282470703, 183.3333282470703, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 182.66665649414062, 183.3333282470703, 183.3333282470703, 183.3333282470703, 183.3333282470703, 184.0, 184.0, 184.0, 184.0, 184.3333282470703, 184.3333282470703, 184.3333282470703, 184.3333282470703, 185.0, 185.0, 185.0, 185.0, 185.3333282470703, 185.3333282470703, 186.0, 186.0, 186.0, 186.0, 186.3333282470703, 186.3333282470703, 187.0, 187.0, 187.0, 187.66665649414062, 187.66665649414062, 187.66665649414062, 187.66665649414062, 188.0, 188.0, 188.0, 188.66665649414062, 188.66665649414062, 189.0, 189.0, 189.66665649414062, 189.66665649414062, 190.0, 190.0, 190.66665649414062, 190.66665649414062, 191.3333282470703, 191.3333282470703, 191.66665649414062, 192.3333282470703, 192.66665649414062, 193.3333282470703, 193.66665649414062, 193.66665649414062, 195.0, 195.0, 195.66665649414062, 196.0, 196.66665649414062, 197.0, 197.66665649414062, 198.66665649414062, 199.66665649414062, 200.3333282470703, 200.66665649414062, 201.66665649414062, 203.3333282470703, 205.0, 206.0, 206.66665649414062, 207.66665649414062, 208.0, 209.0, 210.3333282470703, 212.66665649414062, 213.66665649414062, 214.0, 214.66665649414062, 215.3333282470703, 215.66665649414062, 216.3333282470703, 217.66665649414062, 218.3333282470703, 219.0, 219.3333282470703, 220.0, 220.3333282470703, 221.0, 222.0, 222.66665649414062, 223.0, 223.0, 223.66665649414062, 224.0, 224.66665649414062, 224.66665649414062, 225.0, 225.0, 225.0, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.66665649414062, 225.0, 225.0, 224.3333282470703, 224.3333282470703, 224.3333282470703, 224.0, 224.0, 223.3333282470703, 223.3333282470703, 222.66665649414062, 222.66665649414062, 222.3333282470703, 222.3333282470703, 221.66665649414062, 221.0, 220.3333282470703, 220.0, 219.3333282470703, 219.3333282470703, 219.0, 218.3333282470703, 218.0, 217.3333282470703, 216.66665649414062, 216.0, 215.66665649414062, 215.0, 215.0, 214.0, 213.3333282470703, 213.0, 212.3333282470703, 211.3333282470703, 211.0, 209.66665649414062, 209.3333282470703, 209.3333282470703, 209.3333282470703, 208.66665649414062, 208.3333282470703, 207.66665649414062, 207.0, 207.0, 206.66665649414062, 206.66665649414062, 206.0, 205.66665649414062, 205.66665649414062, 205.0, 204.66665649414062, 204.0, 204.0, 203.3333282470703, 203.3333282470703, 203.0, 203.0, 203.0, 203.0]
+
+var mapOneYValue = [355.6666564941406, 356.6666564941406, 357.0, 357.6666564941406, 358.3333282470703, 358.3333282470703, 358.6666564941406, 359.3333282470703, 359.6666564941406, 360.3333282470703, 361.3333282470703, 362.0, 362.3333282470703, 363.0, 363.3333282470703, 364.3333282470703, 365.0, 366.0, 367.0, 368.6666564941406, 369.6666564941406, 370.6666564941406, 371.3333282470703, 372.3333282470703, 373.0, 374.0, 374.3333282470703, 375.0, 375.3333282470703, 376.6666564941406, 377.6666564941406, 378.6666564941406, 379.6666564941406, 380.6666564941406, 382.6666564941406, 383.6666564941406, 384.6666564941406, 385.6666564941406, 387.3333282470703, 389.0, 390.3333282470703, 391.3333282470703, 392.3333282470703, 392.6666564941406, 393.3333282470703, 394.3333282470703, 395.0, 396.0, 396.3333282470703, 397.6666564941406, 398.6666564941406, 399.6666564941406, 400.6666564941406, 401.6666564941406, 403.3333282470703, 404.3333282470703, 406.0, 407.0, 407.3333282470703, 409.0, 410.0, 411.0, 412.6666564941406, 413.6666564941406, 414.6666564941406, 416.0, 417.0, 418.0, 419.0, 420.0, 420.6666564941406, 421.6666564941406, 423.3333282470703, 423.6666564941406, 424.6666564941406, 425.6666564941406, 427.0, 429.3333282470703, 430.3333282470703, 431.3333282470703, 432.3333282470703, 433.3333282470703, 434.3333282470703, 435.0, 436.0, 437.0, 437.6666564941406, 439.0, 439.6666564941406, 441.3333282470703, 442.3333282470703, 444.0, 445.0, 446.0, 447.0, 447.6666564941406, 448.6666564941406, 449.0, 450.0, 450.6666564941406, 451.3333282470703, 452.6666564941406, 453.6666564941406, 455.3333282470703, 456.3333282470703, 457.3333282470703, 460.0, 460.3333282470703, 461.3333282470703, 462.0, 463.6666564941406, 464.6666564941406, 465.6666564941406, 466.6666564941406, 468.3333282470703, 469.3333282470703, 471.0, 472.0, 473.3333282470703, 475.0, 476.0, 476.6666564941406, 478.3333282470703, 478.6666564941406, 480.3333282470703, 481.3333282470703, 483.6666564941406, 484.6666564941406, 485.3333282470703, 485.6666564941406, 486.3333282470703, 487.3333282470703, 488.3333282470703, 490.0, 491.0, 492.0, 492.6666564941406, 493.0, 494.3333282470703, 495.3333282470703, 496.6666564941406, 498.0, 499.0, 499.3333282470703, 501.0, 502.0, 503.6666564941406, 504.6666564941406, 505.6666564941406, 507.3333282470703, 507.6666564941406, 508.6666564941406, 510.0, 511.3333282470703, 512.3333282470703, 513.6666564941406, 515.0, 516.0, 518.6666564941406, 521.0, 522.0, 524.3333282470703, 526.3333282470703, 527.3333282470703, 528.6666564941406, 530.0, 531.6666564941406, 532.6666564941406, 534.3333282470703, 535.3333282470703, 537.3333282470703, 538.3333282470703, 540.0, 541.6666564941406, 543.3333282470703, 543.6666564941406, 545.3333282470703, 546.0, 547.0, 547.3333282470703, 549.0, 549.6666564941406, 552.0, 553.0, 554.0, 554.6666564941406, 555.6666564941406, 556.6666564941406, 557.3333282470703, 558.3333282470703, 558.6666564941406, 559.6666564941406, 560.3333282470703, 561.3333282470703, 562.0, 562.3333282470703, 563.0, 564.0, 565.0, 565.6666564941406, 566.6666564941406, 567.0, 567.0, 568.3333282470703, 568.6666564941406, 568.6666564941406, 569.3333282470703, 569.3333282470703, 569.6666564941406, 570.6666564941406, 571.3333282470703, 571.3333282470703, 572.0, 572.0, 571.3333282470703, 570.6666564941406, 570.3333282470703]
