@@ -22,7 +22,7 @@ class ScoresVC: UIViewController {
     @IBOutlet var graphView: LineChartView!
     
     // Placeholder values for chart for now
-    var numbers = [0, 0.5, 1, 0.5, 0, 0.5, 1]
+    var numbers = [0, 0.5, 1, 0.5, 0, 0.5, 1, 0.5, 0, 0.5]
     
     @IBAction func sToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -47,11 +47,17 @@ class ScoresVC: UIViewController {
         }
 
         let line1 = LineChartDataSet(entries: lineChartEntry, label: "Game 1")
+        line1.drawValuesEnabled = false
         line1.lineWidth = 2
         line1.circleRadius = 5
         line1.fillAlpha = 1
+        line1.setColor(.black)
+        line1.setCircleColor(.black)
         line1.drawFilledEnabled = true
-        line1.fillColor = UIColor(red: 50/255, green: 200/255, blue: 244/255, alpha: 0.25)
+        let gradientColors = [ChartColorTemplates.colorFromString("#00ff0000").cgColor,
+                              ChartColorTemplates.colorFromString("#ffff0000").cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+        line1.fill = Fill(linearGradient: gradient, angle: 90)
         line1.drawCircleHoleEnabled = false
         line1.fillFormatter = DefaultFillFormatter { _,_  -> CGFloat in
             return CGFloat(self.graphView.leftAxis.axisMinimum)
@@ -61,12 +67,11 @@ class ScoresVC: UIViewController {
         data.addDataSet(line1)
 
         graphView.data = data
-        graphView.drawBordersEnabled = false
-        graphView.pinchZoomEnabled = false
         
         let xAxis = graphView.xAxis
+        xAxis.enabled = true
         xAxis.labelPosition = .bottom
-        xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
+        xAxis.labelFont = .systemFont(ofSize: 12, weight: .light)
         xAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
         xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = true
@@ -74,12 +79,9 @@ class ScoresVC: UIViewController {
         xAxis.granularity = 3600
         
         let yAxis = graphView.leftAxis
-        yAxis.labelPosition = .outsideChart
-        yAxis.labelFont = .systemFont(ofSize: 12, weight: .light)
-        yAxis.drawGridLinesEnabled = true
-        yAxis.granularityEnabled = true
-        yAxis.yOffset = -9
-        yAxis.labelTextColor = UIColor(red: 255/255, green: 192/255, blue: 56/255, alpha: 1)
+        yAxis.enabled = true
+        yAxis.labelFont = .systemFont(ofSize: 16)
+        
+        graphView.rightAxis.enabled = false
     }
-
 }
