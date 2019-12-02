@@ -26,18 +26,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ETe-GB-KXj" userLabel="TempImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oaq-iY-Glj" userLabel="BakcgroundImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="ryM-Z6-OTW">
                                 <rect key="frame" x="92.5" y="169.5" width="190" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Done !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwg-ak-vxm" userLabel="Done">
-                                        <rect key="frame" x="0.0" y="0.0" width="190" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="55"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p00-MV-r7l" userLabel="TempImageView2">
-                                        <rect key="frame" x="0.0" y="55" width="190" height="0.0"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score: 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdk-Ta-4W5">
                                         <rect key="frame" x="0.0" y="84" width="190" height="44"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="32"/>
@@ -54,8 +54,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ryM-Z6-OTW" firstAttribute="centerX" secondItem="HyZ-df-QdB" secondAttribute="centerX" id="2P1-GD-Mg5"/>
+                            <constraint firstItem="Bgl-wd-ai1" firstAttribute="bottom" secondItem="Oaq-iY-Glj" secondAttribute="bottom" id="9qh-Lz-0uy"/>
                             <constraint firstAttribute="bottom" secondItem="c1U-KR-L48" secondAttribute="bottom" id="Azu-U5-FMS"/>
                             <constraint firstItem="c1U-KR-L48" firstAttribute="top" secondItem="HyZ-df-QdB" secondAttribute="top" id="EmL-Zl-3sB"/>
+                            <constraint firstItem="Oaq-iY-Glj" firstAttribute="trailing" secondItem="Bgl-wd-ai1" secondAttribute="trailing" id="Eog-2I-Yfj"/>
                             <constraint firstItem="ETe-GB-KXj" firstAttribute="leading" secondItem="c1U-KR-L48" secondAttribute="leading" id="JwJ-Fe-ek7"/>
                             <constraint firstItem="c1U-KR-L48" firstAttribute="leading" secondItem="HyZ-df-QdB" secondAttribute="leading" id="K5C-Z1-3bF"/>
                             <constraint firstItem="ryM-Z6-OTW" firstAttribute="centerY" secondItem="HyZ-df-QdB" secondAttribute="centerY" constant="-100" id="OFj-U7-7g1"/>
@@ -63,17 +65,19 @@
                             <constraint firstAttribute="trailing" secondItem="c1U-KR-L48" secondAttribute="trailing" id="c7A-0U-L3N"/>
                             <constraint firstItem="ETe-GB-KXj" firstAttribute="top" secondItem="c1U-KR-L48" secondAttribute="top" id="cCf-hK-EqV"/>
                             <constraint firstAttribute="leading" secondItem="c1U-KR-L48" secondAttribute="leading" id="cdQ-gQ-jCm"/>
+                            <constraint firstItem="Oaq-iY-Glj" firstAttribute="top" secondItem="Bgl-wd-ai1" secondAttribute="top" id="fIC-6m-dB7"/>
                             <constraint firstItem="ETe-GB-KXj" firstAttribute="trailing" secondItem="c1U-KR-L48" secondAttribute="trailing" id="otz-zL-ld4"/>
+                            <constraint firstItem="Oaq-iY-Glj" firstAttribute="leading" secondItem="Bgl-wd-ai1" secondAttribute="leading" id="pOT-IC-a4L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bgl-wd-ai1"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rae-Yc-Fo2"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="Oaq-iY-Glj" id="a5F-Xc-ew7"/>
                         <outlet property="doneOutlet" destination="Jwg-ak-vxm" id="8rh-Jz-k9l"/>
                         <outlet property="mainImageView" destination="c1U-KR-L48" id="eX8-Bv-q0c"/>
                         <outlet property="scoreOutlet" destination="Gdk-Ta-4W5" id="Jek-vY-43y"/>
                         <outlet property="tempImageView" destination="ETe-GB-KXj" id="CHk-ED-nJv"/>
-                        <outlet property="tempImageView2" destination="p00-MV-r7l" id="qiq-lc-uZm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjd-T4-bBf" sceneMemberID="firstResponder"/>

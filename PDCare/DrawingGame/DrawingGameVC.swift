@@ -27,7 +27,7 @@ class DrawingGameVC: UIViewController{
     
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
-    @IBOutlet weak var tempImageView2: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     
     
@@ -39,6 +39,7 @@ class DrawingGameVC: UIViewController{
     var brushWidth: CGFloat = 20.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
+    var stoped = false
     var score:CGFloat = 0.0
     var map = 0
     var nextMap = 0
@@ -55,6 +56,8 @@ class DrawingGameVC: UIViewController{
         // Do any additional setup after loading the view, typically from a nib.
         
         mainImageView.image = nil
+        backgroundImageView.image=UIImage(named:"drawgamebackground.png")
+        stoped=false
               
         if let view = self.view as! SKView? {
             self.hideGameOverLables()
@@ -78,7 +81,7 @@ class DrawingGameVC: UIViewController{
 
     }
     func setUpGame() {
-
+        stoped=false
         self.hideGameOverLables()
         self.viewDidLoad()
         self.score = 0.0
@@ -124,6 +127,9 @@ class DrawingGameVC: UIViewController{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if stoped{
+            return
+            }
         guard let touch = touches.first else {
             return
         }
@@ -132,6 +138,9 @@ class DrawingGameVC: UIViewController{
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if stoped{
+            return
+        }
         guard let touch = touches.first else {
             return
         }
@@ -175,6 +184,9 @@ class DrawingGameVC: UIViewController{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
        // if !swiped {
+        if stoped{
+               return
+        }
             // draw a single point
             drawLine(from: lastPoint, to: lastPoint)
             gameOver()
@@ -199,13 +211,16 @@ class DrawingGameVC: UIViewController{
         drawingMap[0].isHidden = true
         drawingMap[1].isHidden = true
         tempImageView.image = nil
+        backgroundImageView.image=nil
+        stoped=true
         
     }
     
     func generateGameOverButtons() {
         // Try again button
-        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 500, width: 100, height: 50))
-        tryAgainButton.backgroundColor = UIColor.red
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 500, width: 100, height: 60))
+        //tryAgainButton.backgroundColor = UIColor.red
+        tryAgainButton.setImage(UIImage(named:"retrybutton.png"), for: .normal)
         tryAgainButton.setTitle("Try Again", for: .normal)
         tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
         tryAgainButton.tag = 11
@@ -214,8 +229,9 @@ class DrawingGameVC: UIViewController{
         gameOverButtons.append(tryAgainButton)
         
         // Next button
-        let nextButton: UIButton = UIButton(frame: CGRect(x: 210, y: 500, width: 100, height: 50))
-        nextButton.backgroundColor = UIColor.red
+        let nextButton: UIButton = UIButton(frame: CGRect(x: 210, y: 500, width: 100, height: 60))
+        //nextButton.backgroundColor = UIColor.red
+        nextButton.setImage(UIImage(named:"nextbutton.png"), for: .normal)
         nextButton.setTitle("Next", for: .normal)
         nextButton.addTarget(self, action: #selector(nextAction), for: .touchUpInside)
         nextButton.tag = 12
