@@ -93,33 +93,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="9lg-2G-Yim">
-                                <rect key="frame" x="92.5" y="119.5" width="190" height="128"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXJ-Fu-meV">
-                                        <rect key="frame" x="0.0" y="0.0" width="190" height="55"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Score: 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSa-FA-ayU">
-                                        <rect key="frame" x="0.0" y="84" width="190" height="44"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="K5h-SJ-bh0"/>
-                                    <constraint firstAttribute="width" constant="190" id="Z1L-QI-Brk"/>
-                                </constraints>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YfG-hT-xMf" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" id="2qH-SI-nLd"/>
-                            <constraint firstItem="9lg-2G-Yim" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" constant="-150" id="Fcj-wK-5ou"/>
-                            <constraint firstItem="9lg-2G-Yim" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="HFn-Xa-RcW"/>
                             <constraint firstItem="TpD-1b-Xav" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="Wbr-jM-psh"/>
                             <constraint firstItem="TpD-1b-Xav" firstAttribute="centerY" secondItem="9s9-fu-8hP" secondAttribute="centerY" id="gbV-mR-FP6"/>
                             <constraint firstItem="YfG-hT-xMf" firstAttribute="centerX" secondItem="9s9-fu-8hP" secondAttribute="centerX" id="yo9-pl-ebw"/>
@@ -130,10 +107,8 @@
                     <connections>
                         <outlet property="StartCounter" destination="YfG-hT-xMf" id="WSc-8d-qtM"/>
                         <outlet property="blue" destination="hpc-kF-LOW" id="tf5-6V-UoN"/>
-                        <outlet property="gameOverOutlet" destination="aXJ-Fu-meV" id="TzC-OW-8xd"/>
                         <outlet property="green" destination="FLC-Ok-j7y" id="Ls9-SD-Fip"/>
                         <outlet property="red" destination="Vt3-m8-tXL" id="z8j-S6-GYm"/>
-                        <outlet property="scoreOutlet" destination="MSa-FA-ayU" id="Vwz-jV-yTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uy5-ny-QrO" sceneMemberID="firstResponder"/>
