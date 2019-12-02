@@ -273,7 +273,7 @@
         <!--Navigation Controller-->
         <scene sceneID="QOS-V3-fLx">
             <objects>
-                <navigationController id="YOW-v0-8xI" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="YOW-v0-8xI" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xAN-vD-3Os">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
