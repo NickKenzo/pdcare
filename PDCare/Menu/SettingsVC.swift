@@ -5,9 +5,17 @@
 //  Created by Daniel Wan on 11/3/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This view contains the settings for our app
+//
+//  Known bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/SettingsVC.swift
 
 import UIKit
 import Foundation
+import UserNotifications
 
 class SettingsVC: UITableViewController{
     
@@ -46,7 +54,7 @@ class SettingsVC: UITableViewController{
             // Create notification content
             let content = UNMutableNotificationContent()
             content.title = NSString.localizedUserNotificationString(forKey: "Play more games!", arguments: nil)
-            content.body = NSString.localizedUserNotificationString(forKey: "You haven't played all three of your PDCare games yet today! Playing more often will help mitigate the symptoms of Parkinsons disease.", arguments: nil)
+            content.body = NSString.localizedUserNotificationString(forKey: "You can do it! Playing more often will help mitigate the symptoms of Parkinsons disease.", arguments: nil)
             
             // Create notification trigger
             var date = DateComponents()

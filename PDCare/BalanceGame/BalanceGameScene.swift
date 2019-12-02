@@ -17,7 +17,7 @@
 //
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
-//  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/BalanceGameScene.swift
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/BalanceGameScene.swift
 
 import SpriteKit
 import CoreMotion
