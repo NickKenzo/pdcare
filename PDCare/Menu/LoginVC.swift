@@ -114,7 +114,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     //Set allowed characters for textfields
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=.?")
+        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.-_")
         return allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string))
     }
     

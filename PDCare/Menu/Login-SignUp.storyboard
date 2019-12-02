@@ -23,7 +23,7 @@
                                 <rect key="frame" x="50" y="64" width="275" height="553"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkU-BX-xd9">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="76"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="76.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Welcome to P.D. Care">
                                                 <attributes>
@@ -37,7 +37,7 @@
                                         <size key="shadowOffset" width="5" height="3"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MwQ-JY-SvY">
-                                        <rect key="frame" x="0.0" y="86" width="275" height="30"/>
+                                        <rect key="frame" x="0.0" y="86.5" width="275" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Bwu-ux-Hy6"/>
                                         </constraints>
@@ -46,7 +46,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Vc-zJ-OYA">
-                                        <rect key="frame" x="0.0" y="126" width="275" height="50"/>
+                                        <rect key="frame" x="0.0" y="126.5" width="275" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Q1C-pJ-jkm"/>
                                         </constraints>
@@ -54,9 +54,9 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEn-cV-onm">
-                                        <rect key="frame" x="0.0" y="186" width="275" height="50.5"/>
+                                        <rect key="frame" x="0.0" y="186.5" width="275" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="150" verticalHuggingPriority="150" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Save Login Credentials" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEB-dl-q6t">
                                         <rect key="frame" x="0.0" y="246.5" width="275" height="60"/>
@@ -68,7 +68,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trp-gz-drf">
-                                        <rect key="frame" x="0.0" y="316.5" width="275" height="113.5"/>
+                                        <rect key="frame" x="0.0" y="316.5" width="275" height="100"/>
                                         <color key="backgroundColor" red="0.0" green="0.77723479270935059" blue="0.99836617708206177" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="MSp-lT-enO"/>
@@ -87,8 +87,17 @@
                                             <action selector="openMainMenuLogin:" destination="UJR-JL-DCd" eventType="touchUpInside" id="u5x-oP-W2b"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't Have an Account? Sign Up Now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Wy-7S-wYz">
+                                        <rect key="frame" x="0.0" y="426.5" width="275" height="16.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="pZ2-mD-f5u"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRK-S4-lGp">
-                                        <rect key="frame" x="0.0" y="440" width="275" height="113"/>
+                                        <rect key="frame" x="0.0" y="453" width="275" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <inset key="contentEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -204,7 +213,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTG-qF-MrG">
                                         <rect key="frame" x="0.0" y="337.5" width="275" height="62.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISX-bV-Q4Q">
                                         <rect key="frame" x="0.0" y="410" width="275" height="143"/>
@@ -291,6 +300,6 @@
         <image name="mainmenu_background" width="375" height="624"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GK7-Cc-x2v"/>
+        <segue reference="K49-Y1-hFu"/>
     </inferredMetricsTieBreakers>
 </document>
