@@ -23,11 +23,6 @@ class ScoresVC: UIViewController {
     @IBOutlet var drawingGraphView: LineChartView!
     @IBOutlet var memoryGraphView: LineChartView!
     
-    // Placeholder values for chart for now
-    var balanceNumbers = [0, 0.5, 1, 0.5, 0, 0.5, 1, 0.5, 0, 0.5]
-    var drawingNumbers = [0, 0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2]
-    var memoryNumbers = [1, 0.9, 0.8, 0.5, 0.8, 0.6, 0.7, 0.4, 0.2, 0.8]
-    
     @IBAction func sToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -39,6 +34,11 @@ class ScoresVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        let balanceNumbers = grabUserData(username: defaults.string(forKey:"username")!, gameID: 1)
+        let drawingNumbers = grabUserData(username: defaults.string(forKey:"username")!, gameID: 2)
+        let memoryNumbers = grabUserData(username: defaults.string(forKey:"username")!, gameID: 3)
+        
         scrollView.addSubview(balanceGraphView)
         scrollView.addSubview(drawingGraphView)
         scrollView.addSubview(memoryGraphView)
@@ -49,12 +49,12 @@ class ScoresVC: UIViewController {
         scrollView.contentSize = CGSize(width: balanceGraphView.frame.size.width, height: 1000)
     }
     
-    func updateGraph(graphView: LineChartView!, numbers: [Double]){
+    func updateGraph(graphView: LineChartView!, numbers: [Int]){
         var lineChartEntry = [ChartDataEntry]()
         
         for i in 0..<numbers.count {
 
-            let value = ChartDataEntry(x: Double(i), y: numbers[i])
+            let value = ChartDataEntry(x: Double(i), y: Double(numbers[i]))
             lineChartEntry.append(value)
         }
 
@@ -97,4 +97,42 @@ class ScoresVC: UIViewController {
         
         graphView.rightAxis.enabled = false
     }
+    
+    func grabUserData(username: String, gameID: Int) -> [Int] {
+        
+        var scores: [Int] = []
+        
+        let initURL = "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname="+username+"&game="+String(gameID)
+        let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+            
+            guard let data = data else { return }
+            let APIdata = String(data: data, encoding: .utf8)!
+            
+            scores = self.processUserData(userData: APIdata, inputRegex: "score\":\"(\\d+)\"")
+        }
+        task.resume()
+        sleep(1) //to make the http request happen before returning
+        return scores
+    }
+
+    func processUserData(userData: String, inputRegex: String) -> [Int] {
+
+        let regex = try! NSRegularExpression(pattern: inputRegex)
+        let result = regex.matches(in:userData, range:NSMakeRange(0, userData.utf16.count))
+        var array: [Int] = []
+
+        guard result.count != 0 else {
+            return array
+        }
+        for i in 0...result.count - 1 {
+            let range = result[i].range(at: 1)
+            let output = (userData as NSString).substring(with: range)
+            array.append((output as NSString).integerValue)
+        }
+        
+        return array
+    }
+    
 }
