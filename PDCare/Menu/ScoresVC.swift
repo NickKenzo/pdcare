@@ -19,10 +19,14 @@ import Charts
 class ScoresVC: UIViewController {
     
     @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var graphView: LineChartView!
+    @IBOutlet var balanceGraphView: LineChartView!
+    @IBOutlet var drawingGraphView: LineChartView!
+    @IBOutlet var memoryGraphView: LineChartView!
     
     // Placeholder values for chart for now
-    var numbers = [0, 0.5, 1, 0.5, 0, 0.5, 1, 0.5, 0, 0.5]
+    var balanceNumbers = [0, 0.5, 1, 0.5, 0, 0.5, 1, 0.5, 0, 0.5]
+    var drawingNumbers = [0, 0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2]
+    var memoryNumbers = [1, 0.9, 0.8, 0.5, 0.8, 0.6, 0.7, 0.4, 0.2, 0.8]
     
     @IBAction func sToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -34,10 +38,18 @@ class ScoresVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateGraph()
+        
+        scrollView.addSubview(balanceGraphView)
+        scrollView.addSubview(drawingGraphView)
+        scrollView.addSubview(memoryGraphView)
+        updateGraph(graphView: balanceGraphView, numbers: balanceNumbers)
+        updateGraph(graphView: drawingGraphView, numbers: drawingNumbers)
+        updateGraph(graphView: memoryGraphView, numbers: memoryNumbers)
+        
+        scrollView.contentSize = CGSize(width: balanceGraphView.frame.size.width, height: 1000)
     }
     
-    func updateGraph(){
+    func updateGraph(graphView: LineChartView!, numbers: [Double]){
         var lineChartEntry = [ChartDataEntry]()
         
         for i in 0..<numbers.count {
@@ -60,13 +72,14 @@ class ScoresVC: UIViewController {
         line1.fill = Fill(linearGradient: gradient, angle: 90)
         line1.drawCircleHoleEnabled = false
         line1.fillFormatter = DefaultFillFormatter { _,_  -> CGFloat in
-            return CGFloat(self.graphView.leftAxis.axisMinimum)
+            return CGFloat(graphView.leftAxis.axisMinimum)
         }
 
         let data = LineChartData()
         data.addDataSet(line1)
 
         graphView.data = data
+        graphView.legend.enabled = false
         
         let xAxis = graphView.xAxis
         xAxis.enabled = true

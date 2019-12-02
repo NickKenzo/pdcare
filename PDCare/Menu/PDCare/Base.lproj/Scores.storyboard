@@ -13,11 +13,21 @@
             <objects>
                 <viewController id="FjE-cb-fCJ" customClass="ScoresVC" customModule="PDCare" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="AE1-Dn-rRO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9VE-1F-qTG" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="459"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="321"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lhW-FK-u0T" userLabel="Graph View 2" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="329" width="375" height="321"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fX4-HR-CMw" userLabel="Graph View 3" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="658" width="375" height="321"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
@@ -40,15 +50,18 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
-                        <outlet property="graphView" destination="9VE-1F-qTG" id="cD6-Zz-ylJ"/>
+                        <outlet property="balanceGraphView" destination="9VE-1F-qTG" id="jOX-r1-lrt"/>
+                        <outlet property="drawingGraphView" destination="lhW-FK-u0T" id="Drp-ol-jSX"/>
+                        <outlet property="memoryGraphView" destination="fX4-HR-CMw" id="Bwa-sU-33g"/>
                         <outlet property="scrollView" destination="AE1-Dn-rRO" id="THw-Hf-2xn"/>
                         <segue destination="2Ym-gT-fep" kind="show" identifier="SettingsSegue" id="crJ-G0-NTd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WTz-pL-Cg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-388" y="820"/>
+            <point key="canvasLocation" x="-388" y="819.49025487256381"/>
         </scene>
         <!--Settings-->
         <scene sceneID="1FA-jN-HC2">
