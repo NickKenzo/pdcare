@@ -34,7 +34,8 @@ class PlaylistVC: UIViewController {
     
     func mainPlaylistFunc() {
         
-        let userName = "russel"
+        let defaults = UserDefaults.standard
+        let userName = defaults.string(forKey:"username")!
         let urlGame1 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=" + userName + "&game=1")!
         let urlGame2 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=" + userName + "&game=2")!
         let urlGame3 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=" + userName + "&game=3")!
@@ -101,16 +102,4 @@ class PlaylistVC: UIViewController {
         task.resume()
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
