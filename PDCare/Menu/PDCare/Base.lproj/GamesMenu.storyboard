@@ -16,9 +16,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamemenubackground" translatesAutoresizingMaskIntoConstraints="NO" id="XIf-BK-bpM" userLabel="gamemenubackground">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
                                 <rect key="frame" x="50" y="50" width="275" height="567"/>
                                 <subviews>
@@ -75,12 +72,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XIf-BK-bpM" firstAttribute="top" secondItem="8ax-ef-9yJ" secondAttribute="top" id="7GU-8h-PyD"/>
                             <constraint firstItem="RZD-lX-Q5I" firstAttribute="leading" secondItem="8ax-ef-9yJ" secondAttribute="leading" constant="50" id="iwH-WG-isn"/>
-                            <constraint firstItem="8ax-ef-9yJ" firstAttribute="bottom" secondItem="XIf-BK-bpM" secondAttribute="bottom" id="jze-B6-og3"/>
                             <constraint firstItem="8ax-ef-9yJ" firstAttribute="bottom" secondItem="RZD-lX-Q5I" secondAttribute="bottom" constant="50" id="ktT-qz-3oU"/>
-                            <constraint firstItem="XIf-BK-bpM" firstAttribute="leading" secondItem="8ax-ef-9yJ" secondAttribute="leading" id="lKV-Fx-j5J"/>
-                            <constraint firstItem="8ax-ef-9yJ" firstAttribute="trailing" secondItem="XIf-BK-bpM" secondAttribute="trailing" id="nRk-lq-CbX"/>
                             <constraint firstItem="RZD-lX-Q5I" firstAttribute="top" secondItem="8ax-ef-9yJ" secondAttribute="top" constant="50" id="uv9-FX-aM7"/>
                             <constraint firstItem="8ax-ef-9yJ" firstAttribute="trailing" secondItem="RZD-lX-Q5I" secondAttribute="trailing" constant="50" id="v38-sQ-tMg"/>
                         </constraints>
@@ -153,6 +146,5 @@
         <image name="buttonbalance" width="275" height="169"/>
         <image name="buttondraw" width="275" height="169"/>
         <image name="buttonmemory" width="275" height="169"/>
-        <image name="gamemenubackground" width="4429" height="7878"/>
     </resources>
 </document>
