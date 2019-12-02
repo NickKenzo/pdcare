@@ -18,11 +18,25 @@
 import UIKit
 import Foundation
 
-class LoginVC: UIViewController {
-    
-    // Set persistent user settings
-    let defaults = UserDefaults.standard
+// Set persistent user settings
+let defaults = UserDefaults.standard
 
+class LoginVC: UIViewController, UITextFieldDelegate {
+    
+    //Declartion for UI elements
+    @IBOutlet weak var LoginUsername: UITextField!
+    @IBOutlet weak var LoginPassword: UITextField!
+    @IBOutlet weak var SignUpEmail: UITextField!
+    @IBOutlet weak var SignUpFirstName: UITextField!
+    @IBOutlet weak var SignUpUsername: UITextField!
+    @IBOutlet weak var SignUpPassword: UITextField!
+    @IBOutlet weak var SaveCredentials: UISwitch?
+    
+
+    @IBAction func changeSaveCredentials(_ sender: UISwitch) {
+        defaults.set(SaveCredentials!.isOn, forKey: "saveCredentials")
+    }
+    
     @IBAction func openSignUpScreen(_ sender: Any) {
         performSegue(withIdentifier: "LoginScreenSegue", sender: self)
     }
@@ -32,9 +46,14 @@ class LoginVC: UIViewController {
         guard let textLoginUsername = LoginUsername.text else { return }
         guard let textLoginPassword = LoginPassword.text else { return }
         
+        //Check for empty Strings
+        if ((textLoginUsername).isEmpty || (textLoginPassword).isEmpty) {
+            return
+        }
+        
+        //Try Login and Segue if success
         if(callLogin(username: textLoginUsername, password: textLoginPassword)){
 
-            defaults.set(textLoginUsername, forKey: "username")
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
@@ -45,35 +64,73 @@ class LoginVC: UIViewController {
         guard let textSignUpFirstName = SignUpFirstName.text else { return }
         guard let textSignUpUsername = SignUpUsername.text else { return }
         guard let textSignUpPassword = SignUpPassword.text else { return }
+        
+        //Check for empty Strings
+        if ((textSignUpEmail).isEmpty || (textSignUpFirstName).isEmpty || (textSignUpUsername).isEmpty || (textSignUpPassword).isEmpty) {
+            return
+        }
            
-        if(callSignUp(email: textSignUpEmail, firstname: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
+        //Try Sign Up and Segue if success
+        if(callSignUp(email: textSignUpEmail, firstName: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
             
-            defaults.set(textSignUpUsername, forKey: "username")
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
         }
     }
-
-    @IBOutlet weak var LoginUsername: UITextField!
-    @IBOutlet weak var LoginPassword: UITextField!
-    @IBOutlet weak var SignUpEmail: UITextField!
-    @IBOutlet weak var SignUpFirstName: UITextField!
-    @IBOutlet weak var SignUpUsername: UITextField!
-    @IBOutlet weak var SignUpPassword: UITextField!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
         
+        SaveCredentials?.transform = CGAffineTransform(scaleX: 2, y: 2)
         
+        //Set SaveCredentials true or false
+        if !(exist(key: "saveCredentials")){
+            defaults.set(false, forKey: "saveCredentials")
+        }
+        SaveCredentials?.isOn = defaults.bool(forKey: "saveCredentials")
         
-    }    
+        self.LoginUsername?.delegate = self
+        self.LoginPassword?.delegate = self
+        self.SignUpEmail?.delegate = self
+        self.SignUpFirstName?.delegate = self
+        self.SignUpUsername?.delegate = self
+        self.SignUpPassword?.delegate = self
+        
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if ((SaveCredentials?.isOn ?? false) && exist(key: "username") && exist(key: "password")){
+            
+            //Go to next page if SaveCredentials is true
+            if(callLogin(username: defaults.string(forKey: "username")!, password: defaults.string(forKey: "password")!)){
+
+                performSegue(withIdentifier: "MainMenuSegue", sender: self)
+            }
+        }        
+    }
     
+    //Set allowed characters for textfields
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=.?")
+        return allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+    
+    //Closes keyboard when return is tapped
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 }
 
 
+
+
+
+
+//API call for Logging in
 func callLogin(username: String, password: String) -> Bool {
         
     var Success = false
@@ -83,9 +140,18 @@ func callLogin(username: String, password: String) -> Bool {
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         
         guard let data = data else { return }
+        let APIdata = String(data: data, encoding: .utf8)!
         
         //Validating login
-        if String(data: data, encoding: .utf8)!.contains("{") {
+        if APIdata.contains("{") {
+            
+            //Storing User Information
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"uid\":\"(.+)\",\"name"), forKey: "userID")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"uname\":\"(.+)\",\"upwd"), forKey: "username")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"upwd\":\"(.+)\",\"create"), forKey: "password")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"email\":\"(.+)\",\"uname"), forKey: "email")
+            defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"name\":\"(.+)\",\"email"), forKey: "firstName")
+                
             Success = true
         }
     }
@@ -94,11 +160,12 @@ func callLogin(username: String, password: String) -> Bool {
     return Success
 }
 
-func callSignUp(email: String, firstname: String, username: String, password: String) -> Bool {
+//API call for Signing in
+func callSignUp(email: String, firstName: String, username: String, password: String) -> Bool {
         
     var Success = false
-    let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstname)&email=\(email)&uname=\(username)&upwd=\(password)"
-    let url = URL(string: initURL)!
+    let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstName)&email=\(email)&uname=\(username)&upwd=\(password)"
+    let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
 
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         
@@ -106,12 +173,29 @@ func callSignUp(email: String, firstname: String, username: String, password: St
         
         //Validating login
         if String(data: data, encoding: .utf8)!.contains("There is already a user with that email or username.") == false {
+            
+            //Storing User Information
+            defaults.set(username, forKey: "username")
+            defaults.set(password, forKey: "password")
+            defaults.set(email, forKey: "email")
+            defaults.set(firstName, forKey: "firstName")
+            
             Success = true
         }
     }
     task.resume()
     sleep(1) //to make the http request happen before returning
     return Success
+}
+
+//String Parse
+func GrabUserData(userData: String, inputRegex: String) -> String {
+
+    let regex = try! NSRegularExpression(pattern: inputRegex)
+    let result = regex.matches(in:userData, range:NSMakeRange(0, userData.utf16.count))
+    let range = result[0].range(at: 1)
+    let output = (userData as NSString).substring(with: range)
+    return output
 }
 
 
@@ -148,26 +232,18 @@ func callSignUp(email: String, firstname: String, username: String, password: St
     }
 }
 
-//extension String
-//{
-//    func hashtags() -> [String]
-//    {
-//          
-//    }
-//}
-
 //dismiss keyboard when tapping anywhere
-//extension UIViewController {
-//    func hideKeyboardWhenTappedAround() {
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
-//    }
-//
-//    @objc func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-//}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 
 
