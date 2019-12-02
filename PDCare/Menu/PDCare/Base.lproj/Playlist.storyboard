@@ -138,9 +138,9 @@
                         <outlet property="label2" destination="dlb-rn-f0v" id="hcZ-Cv-YI6"/>
                         <outlet property="label3" destination="Xr7-b9-2a1" id="qpE-PW-T1q"/>
                         <segue destination="2Ym-gT-fep" kind="show" destinationCreationSelector="openSettings:" id="U3Z-bA-8PF"/>
-                        <segue destination="8pG-eI-e2d" kind="show" identifier="balanceSegue" id="Ktr-AH-jgs"/>
+                        <segue destination="8pG-eI-e2d" kind="presentation" identifier="balanceSegue" id="Ktr-AH-jgs"/>
                         <segue destination="YhL-Xz-k6D" kind="show" identifier="drawingSegue" id="N7r-Qs-8fu"/>
-                        <segue destination="ThN-l4-Fcn" kind="show" identifier="memorySegue" id="bWN-Na-TAo"/>
+                        <segue destination="ThN-l4-Fcn" kind="presentation" identifier="memorySegue" id="bWN-Na-TAo"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfM-8g-MFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
