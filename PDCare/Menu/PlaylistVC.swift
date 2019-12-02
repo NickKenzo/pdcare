@@ -14,9 +14,26 @@
 
 import UIKit
 
-class PlaylistVC: UIViewController {
+class PlaylistVC: UITableViewController {
     var scoreArr = [[Int](), [Int](), [Int]()]
     var games = [URL]()
+    var gameArr:[(score:Int, name:String)] = []
+    
+    // Label outlets
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    
+    // Button outlets
+    @IBAction func b1(_ sender: UIButton) {
+        self.buttonAction(gameToPlay: self.gameArr[0].name)
+    }
+    @IBAction func b2(_ sender: UIButton) {
+        self.buttonAction(gameToPlay: self.gameArr[1].name)
+    }
+    @IBAction func b3(_ sender: UIButton) {
+        self.buttonAction(gameToPlay: self.gameArr[2].name)
+    }
     
     @IBAction func pToMainMenu(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -28,12 +45,27 @@ class PlaylistVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+             self.label1.text = ""
+             self.label2.text = ""
+             self.label3.text = ""
+         }
         self.mainPlaylistFunc()
-
+    }
+    
+    func buttonAction(gameToPlay: String){
+        if gameToPlay == "Memory" {
+            performSegue(withIdentifier: "memorySegue", sender: self)
+        }
+        else if gameToPlay == "Balance" {
+            performSegue(withIdentifier: "balanceSegue", sender: self)
+        }
+        else {
+            performSegue(withIdentifier: "drawingSegue", sender: self)
+        }
     }
     
     func mainPlaylistFunc() {
-        
         let defaults = UserDefaults.standard
         let userName = defaults.string(forKey:"username")!
         let urlGame1 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=" + userName + "&game=1")!
@@ -43,9 +75,15 @@ class PlaylistVC: UIViewController {
         self.games.append(urlGame2)
         self.games.append(urlGame3)
         
-        
-        
         self.writeScoreArr(gameUrl: self.games[0], index: 0)
+    }
+    
+    func populateTableView() {
+        DispatchQueue.main.async {
+            self.label1.text = self.gameArr[0].name
+            self.label2.text = self.gameArr[1].name
+            self.label3.text = self.gameArr[2].name
+        }
     }
     
     func resumePullingScores() {
@@ -54,15 +92,19 @@ class PlaylistVC: UIViewController {
 //        let memoryGame = (score: self.getImprovement(arr: self.scoreArr[1]), name: "Memory")
 //        let drawingGame = (score: self.getImprovement(arr: self.scoreArr[2]), name: "Drawing")
         
-        var gameArr:[(score:Int, name:String)] = [(self.getImprovement(arr: self.scoreArr[0]), "Balance"),
+        self.gameArr = [(self.getImprovement(arr: self.scoreArr[0]), "Balance"),
                                                   (self.getImprovement(arr: self.scoreArr[1]), "Memory"),
                                                   (self.getImprovement(arr: self.scoreArr[2]), "Drawing")]
-        gameArr.sort(by: {$0.score < $1.score})
-        print(gameArr)
+        self.gameArr.sort(by: {$0.score < $1.score})
+        print(self.gameArr)
+        self.populateTableView()
     }
     
     func getImprovement(arr: [Int]) -> Int {
-        if arr.isEmpty {
+        if arr.count <= 1 {
+            if arr.count == 1 {
+                return arr[0]
+            }
             return -1
         }
         var curImprovement = 0
