@@ -46,30 +46,32 @@ class PlaylistVC: UIViewController {
         
         
         self.writeScoreArr(gameUrl: self.games[0], index: 0)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        let serialQueue = DispatchQueue(label: "serialQueue")
-//        for i in 0...2 {
-//            serialQueue.sync {
-//                self.writeScoreArr(gameUrl: games[i], index: i)
-//            }
-//
-//        }
-//        serialQueue.sync {
-//            self.resumePullingScores()
-//        }
     }
     
     func resumePullingScores() {
         print(self.scoreArr)
+//        let balanceGame = (score: self.getImprovement(arr: self.scoreArr[0]), name: "Balance")
+//        let memoryGame = (score: self.getImprovement(arr: self.scoreArr[1]), name: "Memory")
+//        let drawingGame = (score: self.getImprovement(arr: self.scoreArr[2]), name: "Drawing")
+        
+        var gameArr:[(score:Int, name:String)] = [(self.getImprovement(arr: self.scoreArr[0]), "Balance"),
+                                                  (self.getImprovement(arr: self.scoreArr[1]), "Memory"),
+                                                  (self.getImprovement(arr: self.scoreArr[2]), "Drawing")]
+        gameArr.sort(by: {$0.score < $1.score})
+        print(gameArr)
+    }
+    
+    func getImprovement(arr: [Int]) -> Int {
+        if arr.isEmpty {
+            return -1
+        }
+        var curImprovement = 0
+        var diff = 0
+        for i in 1...(arr.count - 1) {
+            diff = arr[i] - arr[i-1]
+            curImprovement += diff
+        }
+        return curImprovement
     }
     
     func writeScoreArr(gameUrl: URL, index: Int) {
