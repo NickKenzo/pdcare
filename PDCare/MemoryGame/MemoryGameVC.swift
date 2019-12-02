@@ -32,6 +32,9 @@ class MemoryGameVC: UIViewController {
     // Holds buttons for game over event
     var gameOverButtons = [UIButton]()
     
+    // Holds labels for game over event
+    var gameOverLabels = [UILabel]()
+    
     var animateButtonTag = 0
     var colours = [[179.0, 0.0, 0.0], [0.0, 163.0, 204.0],
                    [0.0, 204.0, 102.0], [255.0, 0.0, 0.0],
@@ -291,6 +294,9 @@ class MemoryGameVC: UIViewController {
         while gameOverButtons.count > 0 {
             gameOverButtons.popLast()?.removeFromSuperview()
         }
+        while gameOverLabels.count > 0 {
+            gameOverLabels.popLast()?.removeFromSuperview()
+        }
         self.setUpGame()
     }
     
@@ -305,10 +311,14 @@ class MemoryGameVC: UIViewController {
         label1.font = label1.font.withSize(32)
         self.view.addSubview(label1)
         
+        gameOverLabels.append(label1)
+        
         let label2 = UILabel(frame: CGRect(x: 100, y: 210, width: 200, height: 32))
         label2.textAlignment = .center
         label2.text = "Score: " + String(sequence.count - 1)
         label2.font = label2.font.withSize(32)
         self.view.addSubview(label2)
+        
+        gameOverLabels.append(label2)
     }
 } // End of MemoryGameVC
