@@ -167,6 +167,7 @@ func callSignUp(email: String, firstName: String, username: String, password: St
     let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstName)&email=\(email)&uname=\(username)&upwd=\(password)"
     let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
 
+    let semaphore = DispatchSemaphore(value: 0)
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         
         guard let data = data else { return }
@@ -181,10 +182,11 @@ func callSignUp(email: String, firstName: String, username: String, password: St
             defaults.set(firstName, forKey: "firstName")
             
             Success = true
+            semaphore.signal()
         }
     }
     task.resume()
-    sleep(1) //to make the http request happen before returning
+    _ = semaphore.wait(wallTimeout: .distantFuture)
     return Success
 }
 
