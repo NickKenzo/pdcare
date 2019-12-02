@@ -23,6 +23,8 @@ class PlaylistVC: UITableViewController {
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     
     // Button outlets
     @IBAction func b1(_ sender: UIButton) {
@@ -66,6 +68,8 @@ class PlaylistVC: UITableViewController {
     }
     
     func mainPlaylistFunc() {
+        descriptionLabel.text = "Games that need the most improvement are listed at the top"
+        descriptionLabel.numberOfLines = 0
         let defaults = UserDefaults.standard
         let userName = defaults.string(forKey:"username")!
         let urlGame1 = URL(string: "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname=" + userName + "&game=1")!
