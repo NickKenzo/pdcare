@@ -28,6 +28,7 @@ class BalanceGameOverScene: SKScene{
         quitbutton=self.childNode(withName:"quitbutton") as! SKSpriteNode
         retrybutton=self.childNode(withName:"retrybutton") as! SKSpriteNode
         scoreDisplay = self.childNode(withName: "scoreDisplay") as! SKLabelNode
+        sendScore(score: score)
         if score <= 0 {
             scoreDisplay.text = "Score: 0"
         }
@@ -81,6 +82,23 @@ class BalanceGameOverScene: SKScene{
                 //}
             }
         }
+    }
+    
+    func sendScore(score: Int) {
+        let defaults = UserDefaults.standard
+        let userName = defaults.string(forKey:"username")!
+        let urlString = "http://pdcare14.com/api/createscore.php?username=pdcareon_admin&password=pdcareadmin&name="+userName+"&score="+String(score)+"&game=1"
+        let url = URL(string: urlString)!
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+            print("Data:")
+            print(data ?? "No data")
+            print("Response:")
+            print(response ?? "No response")
+        })
+        task.resume()
+        
     }
     
 }
