@@ -21,7 +21,7 @@ import Foundation
 // Set persistent user settings
 let defaults = UserDefaults.standard
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var LoginUsername: UITextField!
@@ -46,6 +46,10 @@ class LoginVC: UIViewController {
         guard let textLoginUsername = LoginUsername.text else { return }
         guard let textLoginPassword = LoginPassword.text else { return }
         
+        if ((textLoginUsername).isEmpty || (textLoginPassword).isEmpty) {
+            return
+        }
+        
         if(callLogin(username: textLoginUsername, password: textLoginPassword)){
 
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
@@ -58,6 +62,10 @@ class LoginVC: UIViewController {
         guard let textSignUpFirstName = SignUpFirstName.text else { return }
         guard let textSignUpUsername = SignUpUsername.text else { return }
         guard let textSignUpPassword = SignUpPassword.text else { return }
+        
+        if ((textSignUpEmail).isEmpty || (textSignUpFirstName).isEmpty || (textSignUpUsername).isEmpty || (textSignUpPassword).isEmpty) {
+            return
+        }
            
         if(callSignUp(email: textSignUpEmail, firstName: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
             
@@ -77,7 +85,12 @@ class LoginVC: UIViewController {
         }
         SaveCredentials?.isOn = defaults.bool(forKey: "saveCredentials")
         
-        
+        self.LoginUsername?.delegate = self
+        self.LoginPassword?.delegate = self
+        self.SignUpEmail?.delegate = self
+        self.SignUpFirstName?.delegate = self
+        self.SignUpUsername?.delegate = self
+        self.SignUpPassword?.delegate = self
         
     }
     
@@ -92,8 +105,16 @@ class LoginVC: UIViewController {
         }        
     }
     
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=.?")
+        return allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string))
+    }
 }
+
+
+
+
 
 
 //API call for Logging in
@@ -130,7 +151,7 @@ func callSignUp(email: String, firstName: String, username: String, password: St
         
     var Success = false
     let initURL = "http://pdcare14.com/api/createprofile.php?username=pdcareon_admin&password=pdcareadmin&name=\(firstName)&email=\(email)&uname=\(username)&upwd=\(password)"
-    let url = URL(string: initURL)!
+    let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
 
     let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
         
