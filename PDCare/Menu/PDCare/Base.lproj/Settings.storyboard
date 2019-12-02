@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3sv-It-plc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3sv-It-plc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Xhz-V2-Qs4">
-                            <rect key="frame" x="0.0" y="446" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="316" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
@@ -82,35 +82,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="130" id="JKr-Wy-jpD">
-                                        <rect key="frame" x="0.0" y="288" width="375" height="130"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JKr-Wy-jpD" id="aOz-vV-mcm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stay Offline" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tft-VF-ERy" userLabel="offlineLabel">
-                                                    <rect key="frame" x="50" y="50" width="213" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KNG-cy-WG7" userLabel="offlineSwitch">
-                                                    <rect key="frame" x="263" y="49.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="changeOfflineSetting:" destination="3sv-It-plc" eventType="valueChanged" id="Mks-MB-ZD1"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="KNG-cy-WG7" firstAttribute="centerY" secondItem="aOz-vV-mcm" secondAttribute="centerY" id="5mX-2e-bKw"/>
-                                                <constraint firstItem="Tft-VF-ERy" firstAttribute="leading" secondItem="aOz-vV-mcm" secondAttribute="leading" constant="50" id="SYY-ZG-HXE"/>
-                                                <constraint firstItem="KNG-cy-WG7" firstAttribute="centerX" secondItem="aOz-vV-mcm" secondAttribute="centerX" constant="100" id="bFs-G5-pZ8"/>
-                                                <constraint firstItem="Tft-VF-ERy" firstAttribute="centerY" secondItem="aOz-vV-mcm" secondAttribute="centerY" id="qUg-02-CEw"/>
-                                                <constraint firstItem="KNG-cy-WG7" firstAttribute="leading" secondItem="Tft-VF-ERy" secondAttribute="trailing" id="yM5-gQ-HBk"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -135,7 +106,6 @@
                     <connections>
                         <outlet property="audioSwitch" destination="Qd0-T3-TTw" id="d4o-72-XnF"/>
                         <outlet property="notificationSwitch" destination="F35-bG-FSx" id="PIr-SW-ZZn"/>
-                        <outlet property="offlineSwitch" destination="KNG-cy-WG7" id="mXK-Bo-GhT"/>
                         <segue destination="10l-W9-3AC" kind="show" identifier="ProfileSegue" id="4p5-wW-0JZ"/>
                     </connections>
                 </tableViewController>
