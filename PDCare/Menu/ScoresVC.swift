@@ -60,7 +60,7 @@ class ScoresVC: UIViewController {
         scrollView.addSubview(balanceGraphView)
         scrollView.addSubview(drawingGraphView)
         scrollView.addSubview(memoryGraphView)
-        scrollView.contentSize = CGSize(width: balanceGraphView.frame.size.width, height: 1000)
+        scrollView.contentSize = CGSize(width: balanceGraphView.frame.size.width, height: 1200)
     }
     
     func updateGraph(graphView: LineChartView!, numbers: [Int]){
