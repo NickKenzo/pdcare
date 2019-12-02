@@ -269,47 +269,25 @@ class MemoryGameVC: UIViewController {
     
     
     func generateGameOverButtons() {
-        let stackView = createStackView(with: NSLayoutConstraint.Axis.vertical)
-        
         // Try again button
-        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 400, width: 200, height: 150))
         tryAgainButton.backgroundColor = UIColor.red
         tryAgainButton.setTitle("Try Again", for: .normal)
         tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
         tryAgainButton.tag = 11
-        tryAgainButton.center.x = self.view.center.x
         self.view.addSubview(tryAgainButton)
         
         gameOverButtons.append(tryAgainButton)
-        stackView.addArrangedSubview(tryAgainButton)
         
         // Quit button
-        let quitButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        let quitButton: UIButton = UIButton(frame: CGRect(x: 100, y: 600, width: 200, height: 150))
         quitButton.backgroundColor = UIColor.red
         quitButton.setTitle("Quit", for: .normal)
         quitButton.addTarget(self, action: #selector(quitAction), for: .touchUpInside)
         quitButton.tag = 12
-        quitButton.center.x = self.view.center.x
         self.view.addSubview(quitButton)
         
         gameOverButtons.append(quitButton)
-        stackView.addArrangedSubview(quitButton)
-        
-        view.addSubview(stackView)
-
-        stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    }
-    
-    func createStackView(with layout: NSLayoutConstraint.Axis) -> UIStackView {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = layout
-        stackView.distribution = .fillEqually
-        stackView.spacing = 25
-        stackView.widthAnchor.constraint(equalToConstant: 210).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 350).isActive = true
-        return stackView
     }
     
     @objc func tryAgainAction(sender: UIButton!) {
