@@ -35,17 +35,29 @@ class ScoresVC: UIViewController {
         super.viewDidLoad()
         
         let defaults = UserDefaults.standard
-        let balanceNumbers = grabUserData(username: defaults.string(forKey:"username")!, gameID: 1)
-        let drawingNumbers = grabUserData(username: defaults.string(forKey:"username")!, gameID: 2)
-        let memoryNumbers = grabUserData(username: defaults.string(forKey:"username")!, gameID: 3)
+        
+        DispatchQueue.global(qos: .background).async {
+            let balanceNumbers = self.grabUserData(username: defaults.string(forKey:"username")!, gameID: 1)
+            let drawingNumbers = self.grabUserData(username: defaults.string(forKey:"username")!, gameID: 2)
+            let memoryNumbers = self.grabUserData(username: defaults.string(forKey:"username")!, gameID: 3)
+
+            DispatchQueue.main.async {
+                self.updateGraph(graphView: self.balanceGraphView, numbers: balanceNumbers)
+                self.updateGraph(graphView: self.drawingGraphView, numbers: drawingNumbers)
+                self.updateGraph(graphView: self.memoryGraphView, numbers: memoryNumbers)
+            }
+        }
+        
+        balanceGraphView.noDataText = "Chart data loading..."
+        balanceGraphView.noDataFont = .systemFont(ofSize: 20)
+        drawingGraphView.noDataText = "Chart data loading..."
+        drawingGraphView.noDataFont = .systemFont(ofSize: 20)
+        memoryGraphView.noDataText = "Chart data loading..."
+        memoryGraphView.noDataFont = .systemFont(ofSize: 20)
         
         scrollView.addSubview(balanceGraphView)
         scrollView.addSubview(drawingGraphView)
         scrollView.addSubview(memoryGraphView)
-        updateGraph(graphView: balanceGraphView, numbers: balanceNumbers)
-        updateGraph(graphView: drawingGraphView, numbers: drawingNumbers)
-        updateGraph(graphView: memoryGraphView, numbers: memoryNumbers)
-        
         scrollView.contentSize = CGSize(width: balanceGraphView.frame.size.width, height: 1000)
     }
     
@@ -104,16 +116,17 @@ class ScoresVC: UIViewController {
         
         let initURL = "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname="+username+"&game="+String(gameID)
         let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
-
+        let semaphore = DispatchSemaphore(value: 0)
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             
             guard let data = data else { return }
             let APIdata = String(data: data, encoding: .utf8)!
             
             scores = self.processUserData(userData: APIdata, inputRegex: "score\":\"(\\d+)\"")
+            semaphore.signal()
         }
         task.resume()
-        sleep(1) //to make the http request happen before returning
+        _ = semaphore.wait(wallTimeout: .distantFuture)
         return scores
     }
 
