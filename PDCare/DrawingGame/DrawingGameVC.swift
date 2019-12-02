@@ -217,19 +217,9 @@ class DrawingGameVC: UIViewController{
     }
     
     func generateGameOverButtons() {
-        // Try again button
-        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 500, width: 100, height: 60))
-        //tryAgainButton.backgroundColor = UIColor.red
-        tryAgainButton.setImage(UIImage(named:"retrybutton.png"), for: .normal)
-        tryAgainButton.setTitle("Try Again", for: .normal)
-        tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
-        tryAgainButton.tag = 11
-        self.view.addSubview(tryAgainButton)
-        
-        gameOverButtons.append(tryAgainButton)
         
         // Next button
-        let nextButton: UIButton = UIButton(frame: CGRect(x: 210, y: 500, width: 100, height: 60))
+        let nextButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 120))
         //nextButton.backgroundColor = UIColor.red
         nextButton.setImage(UIImage(named:"nextbutton.png"), for: .normal)
         nextButton.setTitle("Next", for: .normal)
