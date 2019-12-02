@@ -15,6 +15,7 @@
 //  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/AppDelegate.swift
 
 import UIKit
+import UserNotifications
 
 var notificationsEnabled = false;
 
