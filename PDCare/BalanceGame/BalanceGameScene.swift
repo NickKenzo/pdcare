@@ -50,7 +50,7 @@ class BalanceGameScene: SKScene, SKPhysicsContactDelegate{
     override func didMove(to view: SKView) {
         
         self.physicsWorld.contactDelegate = self
-        mapNum = Int.random(in: 0 ..< 2)
+        mapNum = Int.random(in: 0 ..< 8)
         
         // Initialize sprites
         ball = self.childNode(withName: "ball") as! SKSpriteNode
