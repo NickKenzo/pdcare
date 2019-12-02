@@ -1,0 +1,6 @@
+framework module Pods_PDCare {
+  umbrella header "Pods-PDCare-umbrella.h"
+
+  export *
+  module * { export * }
+}

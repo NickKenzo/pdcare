@@ -13,7 +13,7 @@
 //
 //  Change history and authors who worked on this file can
 //  be found in the Git history here:
-//  https://github.com/NickKenzo/pdcare/commits/Version1/PDCare/BalanceGameVC.swift
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/BalanceGameVC.swift
 
 import UIKit
 import SpriteKit

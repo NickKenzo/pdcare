@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P4r-O6-u8y">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P4r-O6-u8y">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,14 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamemenubackground" translatesAutoresizingMaskIntoConstraints="NO" id="z3S-l8-go1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="RZD-lX-Q5I">
-                                <rect key="frame" x="50" y="70" width="275" height="547"/>
+                                <rect key="frame" x="50" y="50" width="275" height="567"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-If-jSu">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="162.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="169"/>
                                         <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <state key="normal" title="Balance">
+                                        <state key="normal" title="Balance" backgroundImage="button_balance">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -38,10 +39,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JM2-G6-Jmm">
-                                        <rect key="frame" x="0.0" y="192.5" width="275" height="162"/>
+                                        <rect key="frame" x="0.0" y="199" width="275" height="169"/>
                                         <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <state key="normal" title="Draw">
+                                        <state key="normal" title="Draw" backgroundImage="buttondraw">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -54,10 +55,10 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-Yo-qv9">
-                                        <rect key="frame" x="0.0" y="384.5" width="275" height="162.5"/>
+                                        <rect key="frame" x="0.0" y="398" width="275" height="169"/>
                                         <color key="backgroundColor" red="0.0" green="0.77732969259999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <state key="normal" title="Memory">
+                                        <state key="normal" title="Memory" backgroundImage="buttonmemory">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -74,8 +75,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8ax-ef-9yJ" firstAttribute="bottom" secondItem="z3S-l8-go1" secondAttribute="bottom" id="ZD1-TK-yv9"/>
+                            <constraint firstItem="8ax-ef-9yJ" firstAttribute="trailing" secondItem="z3S-l8-go1" secondAttribute="trailing" id="bSM-mh-RfN"/>
                             <constraint firstItem="RZD-lX-Q5I" firstAttribute="leading" secondItem="8ax-ef-9yJ" secondAttribute="leading" constant="50" id="iwH-WG-isn"/>
                             <constraint firstItem="8ax-ef-9yJ" firstAttribute="bottom" secondItem="RZD-lX-Q5I" secondAttribute="bottom" constant="50" id="ktT-qz-3oU"/>
+                            <constraint firstItem="z3S-l8-go1" firstAttribute="leading" secondItem="8ax-ef-9yJ" secondAttribute="leading" id="lKE-qU-SA8"/>
+                            <constraint firstItem="z3S-l8-go1" firstAttribute="top" secondItem="8ax-ef-9yJ" secondAttribute="top" id="q1d-bg-2tX"/>
                             <constraint firstItem="RZD-lX-Q5I" firstAttribute="top" secondItem="8ax-ef-9yJ" secondAttribute="top" constant="50" id="uv9-FX-aM7"/>
                             <constraint firstItem="8ax-ef-9yJ" firstAttribute="trailing" secondItem="RZD-lX-Q5I" secondAttribute="trailing" constant="50" id="v38-sQ-tMg"/>
                         </constraints>
@@ -95,7 +100,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="rpv-eS-8fV" kind="presentation" identifier="memorySegue" id="NqF-7n-wxr"/>
+                        <segue destination="rpv-eS-8fV" kind="presentation" identifier="memorySegue" modalPresentationStyle="fullScreen" id="NqF-7n-wxr"/>
                         <segue destination="gGL-5B-bCe" kind="showDetail" identifier="balanceSegue" id="dMB-bL-oet"/>
                         <segue destination="qw1-2r-AJv" kind="show" identifier="drawingSegue" id="Jj0-mX-23f"/>
                         <segue destination="2Ym-gT-fep" kind="show" identifier="SettingsSegue" id="4Lv-KU-Gie"/>
@@ -144,4 +149,10 @@
             <point key="canvasLocation" x="2154" y="16"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_balance" width="275" height="169"/>
+        <image name="buttondraw" width="275" height="169"/>
+        <image name="buttonmemory" width="275" height="169"/>
+        <image name="gamemenubackground" width="4429" height="7878"/>
+    </resources>
 </document>

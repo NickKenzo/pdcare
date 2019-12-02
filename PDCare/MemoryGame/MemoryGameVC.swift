@@ -1,16 +1,28 @@
 //
 //  MemoryGameController.swift
 //  SimonSays
+//  CMPT 275 Group 14 "P.D. Caretakers"
 //
 //  Created by nskinner on 10/25/19.
 //  Copyright © 2019 PDCare. All rights reserved.
 //
+//  This file handles the view controller for the memory game
+//
+//  Known Bugs: None
+//
+//  Change history and authors who worked on this file can
+//  be found in the Git history here:
+//  https://github.com/NickKenzo/pdcare/commits/Version2/PDCare/MemoryGameVC.swift
 
 import UIKit
 import SpriteKit
 import GameplayKit
 
+
 class MemoryGameVC: UIViewController {
+    
+    let defaults = UserDefaults.standard
+    
     // Holds the sequence of button to be pressed
     var sequence: [Int] = []
     
@@ -19,6 +31,9 @@ class MemoryGameVC: UIViewController {
     
     // Holds buttons for game over event
     var gameOverButtons = [UIButton]()
+    
+    // Holds labels for game over event
+    var gameOverLabels = [UILabel]()
     
     var animateButtonTag = 0
     var colours = [[179.0, 0.0, 0.0], [0.0, 163.0, 204.0],
@@ -48,10 +63,6 @@ class MemoryGameVC: UIViewController {
     // Used to wait some time to change button color
     var buttonColorTimer = Timer()
     
-    // Game over label outlets
-    @IBOutlet weak var gameOverOutlet: UILabel!
-    @IBOutlet weak var scoreOutlet: UILabel!
-    
     //@IBOutlet weak var watchOrPlayLabel: UILabel!
     @IBOutlet weak var startCounter: UILabel!
     @IBOutlet weak var red: UIButton!
@@ -67,7 +78,6 @@ class MemoryGameVC: UIViewController {
     func setUpGame() {
         // Disable and hide buttons initially
         self.disableAndHideButtons(flag: true)
-        self.hideGameOverLables()
         
         red.backgroundColor = UIColor(red: CGFloat(colours[0][0])/255.0, green: CGFloat(colours[0][1])/255.0, blue: CGFloat(colours[0][2])/255.0, alpha: 0.5)
         blue.backgroundColor = UIColor(red: CGFloat(colours[1][0])/255.0, green: CGFloat(colours[1][1])/255.0, blue: CGFloat(colours[1][2])/255.0, alpha: 0.5)
@@ -91,7 +101,6 @@ class MemoryGameVC: UIViewController {
         startCounter.text = String(startTime)
         startTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MemoryGameVC.startGameTimer), userInfo: nil, repeats: true)
     }
-    
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -123,7 +132,6 @@ class MemoryGameVC: UIViewController {
         
         // Stop when the sequenceCount is equal to the length of the sequence array
         if sequenceCount == sequence.count {
-            print(sequence)
             sequenceDisplayTimer.invalidate()
             self.disableEnableButtons(flag: false)
             sequenceCount = 0
@@ -163,9 +171,6 @@ class MemoryGameVC: UIViewController {
             }
         }
         else {
-            print("show game over scene wrong sequence")
-            print("Your Score")
-            print(sequence.count - 1)
             self.gameOver()
         }
     }
@@ -179,9 +184,6 @@ class MemoryGameVC: UIViewController {
         gameTime -= 1
         if gameTime == 0 {
             gameTimer.invalidate()
-            print("show game over scene time's up")
-            print("Your Score")
-            print(sequence.count - 1)
             self.gameOver()
         }
     }
@@ -244,11 +246,31 @@ class MemoryGameVC: UIViewController {
         self.hideAndDisableButtons()
         self.showGameOverLables()
         self.generateGameOverButtons()
+        self.sendScore()
     }
+    
+    func sendScore() {
+        let gameScore = String(sequence.count - 1)
+        let userName = self.defaults.string(forKey:"username")!
+        
+        let urlString = "http://pdcare14.com/api/createscore.php?username=pdcareon_admin&password=pdcareadmin&name="+userName+"&score="+gameScore+"&game=2"
+        let url = URL(string: urlString)!
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: url, completionHandler: { data, response, error in
+            print("Data:")
+            print(data ?? "No data")
+            print("Response:")
+            print(response ?? "No response")
+        })
+        task.resume()
+    }
+    
+    
     
     func generateGameOverButtons() {
         // Try again button
-        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 90, y: 400, width: 100, height: 50))
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 350, width: 200, height: 100))
         tryAgainButton.backgroundColor = UIColor.red
         tryAgainButton.setTitle("Try Again", for: .normal)
         tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
@@ -258,7 +280,7 @@ class MemoryGameVC: UIViewController {
         gameOverButtons.append(tryAgainButton)
         
         // Quit button
-        let quitButton: UIButton = UIButton(frame: CGRect(x: 210, y: 400, width: 100, height: 50))
+        let quitButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 100))
         quitButton.backgroundColor = UIColor.red
         quitButton.setTitle("Quit", for: .normal)
         quitButton.addTarget(self, action: #selector(quitAction), for: .touchUpInside)
@@ -272,6 +294,9 @@ class MemoryGameVC: UIViewController {
         while gameOverButtons.count > 0 {
             gameOverButtons.popLast()?.removeFromSuperview()
         }
+        while gameOverLabels.count > 0 {
+            gameOverLabels.popLast()?.removeFromSuperview()
+        }
         self.setUpGame()
     }
     
@@ -280,14 +305,20 @@ class MemoryGameVC: UIViewController {
     }
     
     func showGameOverLables() {
-        gameOverOutlet.isHidden = false
-        scoreOutlet.text = "Score: " + String(sequence.count - 1)
-        scoreOutlet.isHidden = false
+        let label1 = UILabel(frame: CGRect(x: 100, y: 160, width: 200, height: 32))
+        label1.textAlignment = .center
+        label1.text = "Game Over"
+        label1.font = label1.font.withSize(32)
+        self.view.addSubview(label1)
+        
+        gameOverLabels.append(label1)
+        
+        let label2 = UILabel(frame: CGRect(x: 100, y: 210, width: 200, height: 32))
+        label2.textAlignment = .center
+        label2.text = "Score: " + String(sequence.count - 1)
+        label2.font = label2.font.withSize(32)
+        self.view.addSubview(label2)
+        
+        gameOverLabels.append(label2)
     }
-    
-    func hideGameOverLables() {
-        gameOverOutlet.isHidden = true
-        scoreOutlet.isHidden = true
-    }
-    
 } // End of MemoryGameVC
