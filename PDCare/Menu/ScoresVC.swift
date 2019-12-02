@@ -33,7 +33,9 @@ class ScoresVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        URLCache.shared.removeAllCachedResponses()
+        URLCache.shared.diskCapacity = 0
+        URLCache.shared.memoryCapacity = 0
         let defaults = UserDefaults.standard
         
         DispatchQueue.global(qos: .background).async {
@@ -116,8 +118,14 @@ class ScoresVC: UIViewController {
         
         let initURL = "http://pdcare14.com/api/getscores.php?username=pdcareon_admin&password=pdcareadmin&uname="+username+"&game="+String(gameID)
         let url = URL(string: initURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+        
+        let config = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: config)
+        let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 60.0)
+        
         let semaphore = DispatchSemaphore(value: 0)
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+        
+        let task = session.dataTask(with: request) {(data, response, error) in
             
             guard let data = data else { return }
             let APIdata = String(data: data, encoding: .utf8)!
@@ -127,7 +135,11 @@ class ScoresVC: UIViewController {
         }
         task.resume()
         _ = semaphore.wait(wallTimeout: .distantFuture)
-        return scores
+        URLCache.shared.removeAllCachedResponses()
+        URLCache.shared.diskCapacity = 0
+        URLCache.shared.memoryCapacity = 0
+        
+        return scores.reversed()
     }
 
     func processUserData(userData: String, inputRegex: String) -> [Int] {
