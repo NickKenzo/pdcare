@@ -23,7 +23,7 @@ let defaults = UserDefaults.standard
 
 class LoginVC: UIViewController, UITextFieldDelegate {
     
-    
+    //Declartion for UI elements
     @IBOutlet weak var LoginUsername: UITextField!
     @IBOutlet weak var LoginPassword: UITextField!
     @IBOutlet weak var SignUpEmail: UITextField!
@@ -46,10 +46,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let textLoginUsername = LoginUsername.text else { return }
         guard let textLoginPassword = LoginPassword.text else { return }
         
+        //Check for empty Strings
         if ((textLoginUsername).isEmpty || (textLoginPassword).isEmpty) {
             return
         }
         
+        //Try Login and Segue if success
         if(callLogin(username: textLoginUsername, password: textLoginPassword)){
 
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
@@ -63,10 +65,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let textSignUpUsername = SignUpUsername.text else { return }
         guard let textSignUpPassword = SignUpPassword.text else { return }
         
+        //Check for empty Strings
         if ((textSignUpEmail).isEmpty || (textSignUpFirstName).isEmpty || (textSignUpUsername).isEmpty || (textSignUpPassword).isEmpty) {
             return
         }
            
+        //Try Sign Up and Segue if success
         if(callSignUp(email: textSignUpEmail, firstName: textSignUpFirstName, username: textSignUpUsername, password: textSignUpPassword)){
             
             performSegue(withIdentifier: "MainMenuSegue", sender: self)
@@ -80,6 +84,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         SaveCredentials?.transform = CGAffineTransform(scaleX: 2, y: 2)
         
+        //Set SaveCredentials true or false
         if !(exist(key: "saveCredentials")){
             defaults.set(false, forKey: "saveCredentials")
         }
@@ -98,6 +103,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         
         if ((SaveCredentials?.isOn ?? false) && exist(key: "username") && exist(key: "password")){
             
+            //Go to next page if SaveCredentials is true
             if(callLogin(username: defaults.string(forKey: "username")!, password: defaults.string(forKey: "password")!)){
 
                 performSegue(withIdentifier: "MainMenuSegue", sender: self)
@@ -105,10 +111,17 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }        
     }
     
+    //Set allowed characters for textfields
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=.?")
         return allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+    
+    //Closes keyboard when return is tapped
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 
@@ -132,6 +145,7 @@ func callLogin(username: String, password: String) -> Bool {
         //Validating login
         if APIdata.contains("{") {
             
+            //Storing User Information
             defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"uid\":\"(.+)\",\"name"), forKey: "userID")
             defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"uname\":\"(.+)\",\"upwd"), forKey: "username")
             defaults.set(GrabUserData(userData: APIdata, inputRegex: "\"upwd\":\"(.+)\",\"create"), forKey: "password")
@@ -160,6 +174,7 @@ func callSignUp(email: String, firstName: String, username: String, password: St
         //Validating login
         if String(data: data, encoding: .utf8)!.contains("There is already a user with that email or username.") == false {
             
+            //Storing User Information
             defaults.set(username, forKey: "username")
             defaults.set(password, forKey: "password")
             defaults.set(email, forKey: "email")
