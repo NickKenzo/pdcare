@@ -68,6 +68,7 @@ class MemoryGameVC: UIViewController {
     @IBOutlet weak var red: UIButton!
     @IBOutlet weak var blue: UIButton!
     @IBOutlet weak var green: UIButton!
+    @IBOutlet weak var memorybackgroundUIView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,7 @@ class MemoryGameVC: UIViewController {
     func setUpGame() {
         // Disable and hide buttons initially
         self.disableAndHideButtons(flag: true)
+        memorybackgroundUIView.image=UIImage(named:"memorygamebackground.png")
         
         red.backgroundColor = UIColor(red: CGFloat(colours[0][0])/255.0, green: CGFloat(colours[0][1])/255.0, blue: CGFloat(colours[0][2])/255.0, alpha: 0.5)
         blue.backgroundColor = UIColor(red: CGFloat(colours[1][0])/255.0, green: CGFloat(colours[1][1])/255.0, blue: CGFloat(colours[1][2])/255.0, alpha: 0.5)
@@ -243,6 +245,7 @@ class MemoryGameVC: UIViewController {
     }
        
     func gameOver() {
+        memorybackgroundUIView.image=nil
         self.hideAndDisableButtons()
         self.showGameOverLables()
         self.generateGameOverButtons()
@@ -270,8 +273,9 @@ class MemoryGameVC: UIViewController {
     
     func generateGameOverButtons() {
         // Try again button
-        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 350, width: 200, height: 100))
-        tryAgainButton.backgroundColor = UIColor.red
+        let tryAgainButton: UIButton = UIButton(frame: CGRect(x: 100, y: 350, width: 200, height: 120))
+        //tryAgainButton.backgroundColor = UIColor.red
+        tryAgainButton.setImage(UIImage(named:"retrybutton.png"), for: .normal)
         tryAgainButton.setTitle("Try Again", for: .normal)
         tryAgainButton.addTarget(self, action: #selector(tryAgainAction), for: .touchUpInside)
         tryAgainButton.tag = 11
@@ -280,8 +284,9 @@ class MemoryGameVC: UIViewController {
         gameOverButtons.append(tryAgainButton)
         
         // Quit button
-        let quitButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 100))
-        quitButton.backgroundColor = UIColor.red
+        let quitButton: UIButton = UIButton(frame: CGRect(x: 100, y: 500, width: 200, height: 120))
+        //quitButton.backgroundColor = UIColor.red
+        quitButton.setImage(UIImage(named:"quitbutton.png"), for: .normal)
         quitButton.setTitle("Quit", for: .normal)
         quitButton.addTarget(self, action: #selector(quitAction), for: .touchUpInside)
         quitButton.tag = 12
