@@ -27,6 +27,7 @@ class DrawingGameVC: UIViewController{
     
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var tempImageView: UIImageView!
+    @IBOutlet weak var tempImageView2: UIImageView!
     
     
     
@@ -35,7 +36,7 @@ class DrawingGameVC: UIViewController{
     
     var lastPoint = CGPoint.zero
     var color = UIColor.black
-    var brushWidth: CGFloat = 1.0   //thickness of the drawn lines
+    var brushWidth: CGFloat = 20.0   //thickness of the drawn lines
     var opacity: CGFloat = 1.0
     var swiped = false
     var score:CGFloat = 0.0
